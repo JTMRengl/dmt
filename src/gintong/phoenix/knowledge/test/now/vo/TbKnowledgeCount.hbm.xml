@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-6-1 11:07:15 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.knowledge.test.now.vo.TbKnowledgeCount" table="tb_knowledge_count" catalog="phoenix_knowledge_test" optimistic-lock="version">
+        <composite-id name="id" class="gintong.phoenix.knowledge.test.now.vo.TbKnowledgeCountId">
+            <key-property name="id" type="long">
+                <column name="id" />
+            </key-property>
+            <key-property name="knowledgeId" type="long">
+                <column name="knowledgeId" />
+            </key-property>
+            <key-property name="hotNum" type="long">
+                <column name="hotNum" />
+            </key-property>
+        </composite-id>
+        <property name="commentNum" type="java.lang.Long">
+            <column name="commentNum">
+                <comment>&#198;&#192;&#194;&#219;&#202;&#253;</comment>
+            </column>
+        </property>
+        <property name="shareNum" type="java.lang.Long">
+            <column name="shareNum">
+                <comment>&#183;&#214;&#207;&#237;&#202;&#253;</comment>
+            </column>
+        </property>
+        <property name="collectNum" type="java.lang.Long">
+            <column name="collectNum">
+                <comment>&#202;&#213;&#178;&#216;&#202;&#253;</comment>
+            </column>
+        </property>
+        <property name="clickNum" type="java.lang.Long">
+            <column name="clickNum">
+                <comment>&#181;&#227;&#187;&#247;&#202;&#253;</comment>
+            </column>
+        </property>
+        <property name="source" type="java.lang.Short">
+            <column name="source">
+                <comment>&#214;&#170;&#202;&#182;&#192;&#180;&#212;&#180;(0-&#207;&#181;&#205;&#179; 1-&#211;&#195;&#187;&#167;)</comment>
+            </column>
+        </property>
+        <property name="type" type="java.lang.Short">
+            <column name="type" />
+        </property>
+    </class>
+</hibernate-mapping>

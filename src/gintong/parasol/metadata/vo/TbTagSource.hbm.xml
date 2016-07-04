@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-6-2 19:11:41 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.parasol.metadata.vo.TbTagSource" table="tb_tag_source" catalog="parasol_metadata" optimistic-lock="version">
+        <id name="id" type="long">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="tagId" type="long">
+            <column name="tagId" not-null="true">
+                <comment>&#177;&#234;&#199;&#169;ID</comment>
+            </column>
+        </property>
+        <property name="appId" type="long">
+            <column name="appId" not-null="true">
+                <comment>Source &#181;&#196;&#211;&#166;&#211;&#195;ID</comment>
+            </column>
+        </property>
+        <property name="userId" type="long">
+            <column name="userId" not-null="true">
+                <comment>&#180;&#180;&#189;&#168;TagSource&#181;&#196;&#200;&#203;</comment>
+            </column>
+        </property>
+        <property name="sourceId" type="long">
+            <column name="sourceId" not-null="true">
+                <comment>&#215;&#202;&#212;&#180;ID</comment>
+            </column>
+        </property>
+        <property name="sourceType" type="java.lang.Long">
+            <column name="sourceType">
+                <comment>&#215;&#202;&#212;&#180;&#192;&#224;&#208;&#205; &#214;&#170;&#202;&#182;&#161;&#162;&#200;&#203;&#194;&#246;</comment>
+            </column>
+        </property>
+        <property name="createAt" type="java.lang.Long">
+            <column name="createAt">
+                <comment>&#184;&#252;&#208;&#194;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

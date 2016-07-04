@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-5-25 14:34:27 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.tagsTest.now.vo.TbTag" table="tb_tag" catalog="parasol_tags_test" optimistic-lock="version">
+        <id name="id" type="long">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="userId" type="long">
+            <column name="userId" not-null="true">
+                <comment>&#211;&#195;&#187;&#167;ID</comment>
+            </column>
+        </property>
+        <property name="appId" type="long">
+            <column name="appId" not-null="true">
+                <comment>&#211;&#166;&#211;&#195;ID</comment>
+            </column>
+        </property>
+        <property name="tagType" type="java.lang.Long">
+            <column name="tagType">
+                <comment>
+                tag&#181;&#196;&#183;&#214;&#192;&#224;&#163;&#168;&#177;&#200;&#200;&#231;&#202;&#199;&#163;&#186;&#214;&#170;&#202;&#182;&#161;&#162;&#215;&#233;&#214;&#175;&#161;&#162;&#200;&#203;&#161;&#162;&#205;&#188;&#198;&#172;&#163;&#169;&#196;&#172;&#200;&#207;0</comment>
+            </column>
+        </property>
+        <property name="tagName" type="string">
+            <column name="tagName" not-null="true">
+                <comment>&#177;&#234;&#199;&#169;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>       
+    </class>
+</hibernate-mapping>

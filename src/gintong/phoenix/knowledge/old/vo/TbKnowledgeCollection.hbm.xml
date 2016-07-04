@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-6-5 9:54:45 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.knowledge.old.vo.TbKnowledgeCollection" table="tb_knowledge_collection" catalog="phoenix_knowledge" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="knowledgeId" type="java.lang.Long">
+            <column name="knowledge_id">
+                <comment>&#214;&#170;&#202;&#182;id</comment>
+            </column>
+        </property>
+        <property name="createtime" type="timestamp">
+            <column name="createtime" length="19">
+                <comment>&#202;&#213;&#178;&#216;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="source" type="java.lang.Integer">
+            <column name="source">
+                <comment>
+                &#192;&#180;&#212;&#180;(1&#163;&#186;&#215;&#212;&#188;&#186;&#163;&#172;2&#163;&#186;&#186;&#195;&#211;&#209;&#163;&#172;3&#163;&#186;&#189;&#240;&#205;&#169;&#196;&#212;&#163;&#172;4&#163;&#186;&#200;&#171;&#198;&#189;&#204;&#168;&#163;&#172;5&#163;&#186;&#215;&#233;&#214;&#175;)</comment>
+            </column>
+        </property>
+        <property name="categoryId" type="java.lang.Long">
+            <column name="category_id">
+                <comment>&#196;&#191;&#194;&#188;id(&#215;&#243;&#178;&#224;&#196;&#191;&#194;&#188;.id)</comment>
+            </column>
+        </property>
+        <property name="collectionTags" type="string">
+            <column name="collection_tags">
+                <comment>&#202;&#213;&#178;&#216;&#177;&#234;&#199;&#169;</comment>
+            </column>
+        </property>
+        <property name="collectionComment" type="string">
+            <column name="collection_comment" length="1000">
+                <comment>&#202;&#213;&#178;&#216;&#198;&#192;&#194;&#219;</comment>
+            </column>
+        </property>
+        <property name="userId" type="java.lang.Long">
+            <column name="userId">
+                <comment>&#211;&#195;&#187;&#167;ID</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-6-5 9:54:45 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.knowledge.old.vo.TbCategory" table="tb_category" catalog="phoenix_knowledge" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="uid" type="java.lang.Long">
+            <column name="uid">
+                <comment>phoenix_user.tb_user.id</comment>
+            </column>
+        </property>
+        <property name="name" type="string">
+            <column name="name">
+                <comment>&#183;&#214;&#192;&#224;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="parentId" type="java.lang.Long">
+            <column name="parentId">
+                <comment>&#184;&#184;&#192;&#224;ID</comment>
+            </column>
+        </property>
+        <property name="sortId" type="string">
+            <column name="sortId">
+                <comment>&#197;&#197;&#208;&#242;ID&#163;&#172;&#190;&#197;&#206;&#187;&#210;&#187;&#188;&#182;
+                &#200;&#231;000000001000000001,&#206;&#170;&#210;&#187;&#188;&#182;&#183;&#214;&#192;&#224;&#207;&#194;&#181;&#196;&#181;&#218;&#210;&#187;&#184;&#246;&#183;&#214;&#192;&#224;</comment>
+            </column>
+        </property>
+        <property name="state" type="string">
+            <column name="state">
+                <comment>&#183;&#214;&#192;&#224;&#215;&#180;&#204;&#172; 0:&#213;&#253;&#179;&#163; 1:&#201;&#190;&#179;&#253;</comment>
+            </column>
+        </property>
+        <property name="subtime" type="timestamp">
+            <column name="subtime" length="19" not-null="true" />
+        </property>
+        <property name="modtime" type="timestamp">
+            <column name="modtime" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

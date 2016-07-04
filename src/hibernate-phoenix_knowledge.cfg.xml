@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">dev</property>
+        <property name="hibernate.connection.url">jdbc:mysql://192.168.101.42/phoenix_knowledge?useUnicode=true&amp;characterEncoding=UTF-8</property>
+        <property name="hibernate.connection.username">dev</property>
+        <property name="hibernate.connection.pool.size">2000</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <mapping resource="gintong/phoenix/knowledge/old/vo/TbKnowledgeComment.hbm.xml"/>
+        <mapping resource="gintong/phoenix/knowledge/old/vo/TbKnowledgeReport.hbm.xml"/>
+        <mapping resource="gintong/phoenix/knowledge/old/vo/TbKnowledgeCollection.hbm.xml"/>
+        <mapping resource="gintong/phoenix/knowledge/old/vo/TbKnowledgeBase.hbm.xml"/>
+        <mapping resource="gintong/phoenix/knowledge/old/vo/TbConnectInfo.hbm.xml"/> 
+        <mapping resource="gintong/phoenix/knowledge/old/vo/TbUserPermission.hbm.xml"/>
+        <mapping resource="gintong/phoenix/knowledge/old/vo/TbUserCategory.hbm.xml"/>
+        <mapping resource="gintong/phoenix/knowledge/old/vo/TbKnowledgeCategory.hbm.xml"/>
+        <mapping resource="gintong/phoenix/knowledge/old/vo/TbKnowledgeStatics.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

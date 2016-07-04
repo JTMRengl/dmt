@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-6-2 19:11:41 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.parasol.metadata.vo.TbDirectoryType" table="tb_directory_type" catalog="parasol_metadata" optimistic-lock="version">
+        <id name="id" type="long">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="appId" type="long">
+            <column name="appId" not-null="true">
+                <comment>&#211;&#166;&#211;&#195;ID</comment>
+            </column>
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="250" not-null="true">
+                <comment>&#183;&#214;&#192;&#224;&#195;&#251;&#215;&#214;
+                (&#200;&#203;&#194;&#246;&#161;&#162;&#215;&#233;&#214;&#175;&#161;&#162;&#208;&#232;&#199;&#243;&#161;&#162;&#214;&#170;&#202;&#182;&#163;&#169;&#163;&#172;&#211;&#166;&#211;&#195;&#207;&#181;&#205;&#179;&#215;&#212;&#188;&#186;&#182;&#168;&#210;&#229;&#181;&#196;&#183;&#214;&#192;&#224;</comment>
+            </column>
+        </property>
+        <property name="updateAt" type="java.lang.Long">
+            <column name="updateAt">
+                <comment>&#184;&#252;&#208;&#194;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

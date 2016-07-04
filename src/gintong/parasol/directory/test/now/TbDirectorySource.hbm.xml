@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-5-26 15:08:34 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.parasol.directory.test.now.TbDirectorySource" table="tb_directory_source" catalog="parasol_directory_test" optimistic-lock="version">
+        <id name="id" type="long">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="directoryId" type="long">
+            <column name="directoryId" not-null="true">
+                <comment>&#196;&#191;&#194;&#188;ID</comment>
+            </column>
+        </property>
+        <property name="appId" type="long">
+            <column name="appId" not-null="true">
+                <comment>Source &#181;&#196;&#211;&#166;&#211;&#195;ID</comment>
+            </column>
+        </property>
+        <property name="userId" type="long">
+            <column name="userId" not-null="true">
+                <comment>&#211;&#195;&#187;&#167;ID</comment>
+            </column>
+        </property>
+        <property name="sourceId" type="long">
+            <column name="sourceId" not-null="true">
+                <comment>&#215;&#202;&#212;&#180;ID</comment>
+            </column>
+        </property>
+        <property name="sourceType" type="int">
+            <column name="sourceType" not-null="true">
+                <comment>&#215;&#202;&#212;&#180;&#192;&#224;&#208;&#205;
+                1&#161;&#162;&#200;&#203;&#194;&#246;&#163;&#172;2&#161;&#162;&#191;&#205;&#187;&#167;&#161;&#162;3&#161;&#162;&#214;&#170;&#202;&#182;&#161;&#162;4&#161;&#162;&#208;&#232;&#199;&#243;</comment>
+            </column>
+        </property>
+        <property name="sourceUrl" type="string">
+            <column name="sourceUrl" length="250">
+                <comment>&#215;&#212;&#188;&#186;&#181;&#216;&#214;&#183;</comment>
+            </column>
+        </property>
+        <property name="sourceTitle" type="string">
+            <column name="sourceTitle" length="100">
+                <comment>&#215;&#202;&#212;&#180;&#177;&#234;&#204;&#226;</comment>
+            </column>
+        </property>
+        <property name="sourceData" type="string">
+            <column name="sourceData" length="250">
+                <comment>&#215;&#202;&#212;&#180;&#181;&#196;&#185;&#216;&#188;&#252;&#202;&#253;&#190;&#221;&#163;&#172;&#177;&#184;&#211;&#195;</comment>
+            </column>
+        </property>
+        <property name="invokeMethod" type="string">
+            <column name="invokeMethod" length="50">
+                <comment>&#215;&#202;&#212;&#180;&#191;&#201;&#210;&#212;&#202;&#185;&#211;&#195;&#181;&#196;&#183;&#189;&#183;&#168;&#163;&#172;&#177;&#184;&#211;&#195;</comment>
+            </column>
+        </property>
+        <property name="createAt" type="java.lang.Long">
+            <column name="createAt">
+                <comment>&#184;&#252;&#208;&#194;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

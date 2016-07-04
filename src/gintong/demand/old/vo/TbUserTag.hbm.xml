@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-5-25 14:28:32 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.demand.old.vo.TbUserTag" table="tb_user_tag" catalog="phoenix_demand" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="userId" type="java.lang.Long">
+            <column name="user_id" />
+        </property>
+        <property name="tag" type="string">
+            <column name="tag" />
+        </property>
+        <property name="ctime" type="timestamp">
+            <column name="ctime" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

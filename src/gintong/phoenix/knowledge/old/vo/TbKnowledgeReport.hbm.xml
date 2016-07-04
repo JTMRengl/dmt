@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-6-5 9:54:45 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.knowledge.old.vo.TbKnowledgeReport" table="tb_knowledge_report" catalog="phoenix_knowledge" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="knowledgeId" type="java.lang.Long">
+            <column name="knowledge_id">
+                <comment>&#214;&#170;&#202;&#182;id</comment>
+            </column>
+        </property>
+        <property name="type" type="string">
+            <column name="type" length="2">
+                <comment>&#192;&#224;&#208;&#205;(1-&#201;&#171;&#199;&#233;&#210;&#249;&#187;&#224; 2-&#201;&#167;&#200;&#197;&#195;&#161;&#194;&#238; 3-
+                &#185;&#227;&#184;&#230;&#198;&#219;&#213;&#169; 4-&#183;&#180;&#182;&#175;&#209;&#212;&#194;&#219; 5-&#198;&#228;&#203;&#251;)</comment>
+            </column>
+        </property>
+        <property name="repDesc" type="string">
+            <column name="rep_desc" length="500">
+                <comment>&#195;&#232;&#202;&#246;</comment>
+            </column>
+        </property>
+        <property name="createtime" type="timestamp">
+            <column name="createtime" length="19">
+                <comment>&#180;&#180;&#189;&#168;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="userId" type="java.lang.Long">
+            <column name="user_id">
+                <comment>&#190;&#217;&#177;&#168;&#200;&#203;id</comment>
+            </column>
+        </property>
+        <property name="userName" type="string">
+            <column name="userName" length="50">
+                <comment>&#190;&#217;&#177;&#168;&#200;&#203;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="knowledgeTitle" type="string">
+            <column name="knowledgeTitle">
+                <comment>&#214;&#170;&#202;&#182;&#177;&#234;&#204;&#226;</comment>
+            </column>
+        </property>
+        <property name="updateTime" type="timestamp">
+            <column name="updateTime" length="19">
+                <comment>&#208;&#222;&#184;&#196;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="results" type="string">
+            <column name="results" length="500">
+                <comment>&#180;&#166;&#192;&#237;&#189;&#225;&#185;&#251;</comment>
+            </column>
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status">
+                <comment>&#180;&#166;&#192;&#237;&#215;&#180;&#204;&#172;( 0 -&#206;&#180;&#180;&#166;&#192;&#237; 1-&#210;&#209;&#180;&#166;&#192;&#237; )</comment>
+            </column>
+        </property>
+        <property name="columnType" type="java.lang.Short">
+            <column name="columnType">
+                <comment>&#192;&#184;&#196;&#191;&#192;&#224;&#208;&#205;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

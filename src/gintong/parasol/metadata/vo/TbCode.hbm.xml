@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-6-2 19:11:41 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.parasol.metadata.vo.TbCode" table="tb_code" catalog="parasol_metadata" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="pid" type="long">
+            <column name="pid" not-null="true">
+                <comment>&#184;&#184;&#214;&#247;&#188;&#252;</comment>
+            </column>
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="20">
+                <comment>&#192;&#224;&#208;&#205;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="numberCode" type="string">
+            <column name="numberCode" length="20">
+                <comment>&#177;&#224;&#194;&#235;</comment>
+            </column>
+        </property>
+        <property name="nameIndex" type="string">
+            <column name="nameIndex" length="50">
+                <comment>&#188;&#242;&#198;&#180;&#210;&#244;</comment>
+            </column>
+        </property>
+        <property name="nameIndexAll" type="string">
+            <column name="nameIndexAll" length="200">
+                <comment>&#200;&#171;&#198;&#180;&#210;&#244;</comment>
+            </column>
+        </property>
+        <property name="remark" type="string">
+            <column name="remark" length="500">
+                <comment>&#204;&#225;&#202;&#190;&#208;&#197;&#207;&#162;</comment>
+            </column>
+        </property>
+        <property name="isRoot" type="string">
+            <column name="isRoot" length="20">
+                <comment>&#202;&#199;&#184;&#249;&#194;&#240;</comment>
+            </column>
+        </property>
+        <property name="levelType" type="java.lang.Integer">
+            <column name="levelType">
+                <comment>
+                &#188;&#182;&#177;&#240;&#192;&#224;&#208;&#205;&#163;&#168;&#177;&#234;&#202;&#190;&#213;&#226;&#184;&#246;&#188;&#182;&#177;&#240;&#202;&#199;&#208;&#208;&#210;&#181;&#187;&#242;&#213;&#223;&#201;&#182;&#163;&#169;</comment>
+            </column>
+        </property>
+        <property name="useType" type="java.lang.Integer">
+            <column name="useType">
+                <comment>&#215;&#247;&#211;&#195;&#192;&#224;&#208;&#205; 0 &#207;&#181;&#205;&#179;&#192;&#224;&#208;&#205;&#163;&#172;1
+                &#215;&#212;&#182;&#168;&#210;&#229;&#192;&#224;&#208;&#205;</comment>
+            </column>
+        </property>
+        <property name="orderNo" type="java.lang.Integer">
+            <column name="orderNo">
+                <comment>&#213;&#185;&#202;&#190;&#203;&#179;&#208;&#242;&#186;&#197;</comment>
+            </column>
+        </property>
+        <property name="creator" type="java.lang.Long">
+            <column name="creator">
+                <comment>&#180;&#180;&#189;&#168;&#213;&#223;</comment>
+            </column>
+        </property>
+        <property name="ctime" type="java.lang.Long">
+            <column name="ctime">
+                <comment>&#180;&#180;&#189;&#168;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="createBy" type="string">
+            <column name="createBy" length="50">
+                <comment>&#180;&#180;&#189;&#168;&#200;&#203;&#208;&#213;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="hasChild" type="java.lang.Integer">
+            <column name="hasChild">
+                <comment>&#202;&#199;&#183;&#241;&#211;&#208;&#207;&#194;&#188;&#182;</comment>
+            </column>
+        </property>
+        <property name="disabled" type="java.lang.Integer">
+            <column name="disabled">
+                <comment>&#202;&#199;&#183;&#241;&#191;&#201;&#211;&#195;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

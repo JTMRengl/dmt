@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-6-5 9:54:45 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.knowledge.old.vo.TbKnowledgeStatics" table="tb_knowledge_statics" catalog="phoenix_knowledge" optimistic-lock="version">
+        <id name="knowledgeId" type="long">
+            <column name="knowledge_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="commentCount" type="java.lang.Long">
+            <column name="commentCount">
+                <comment>&#198;&#192;&#194;&#219;&#202;&#253;</comment>
+            </column>
+        </property>
+        <property name="shareCount" type="java.lang.Long">
+            <column name="shareCount">
+                <comment>&#183;&#214;&#207;&#237;&#202;&#253;</comment>
+            </column>
+        </property>
+        <property name="collectionCount" type="java.lang.Long">
+            <column name="collectionCount">
+                <comment>&#202;&#213;&#178;&#216;&#202;&#253;</comment>
+            </column>
+        </property>
+        <property name="clickCount" type="java.lang.Long">
+            <column name="clickCount">
+                <comment>&#181;&#227;&#187;&#247;&#202;&#253;</comment>
+            </column>
+        </property>
+        <property name="source" type="java.lang.Short">
+            <column name="source">
+                <comment>&#214;&#170;&#202;&#182;&#192;&#180;&#212;&#180;(0-&#207;&#181;&#205;&#179; 1-&#211;&#195;&#187;&#167;)</comment>
+            </column>
+        </property>
+        <property name="type" type="java.lang.Short">
+            <column name="type" />
+        </property>
+    </class>
+</hibernate-mapping>

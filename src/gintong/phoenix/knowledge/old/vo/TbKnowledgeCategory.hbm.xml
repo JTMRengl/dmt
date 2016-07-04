@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-6-5 9:54:45 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.knowledge.old.vo.TbKnowledgeCategory" table="tb_knowledge_category" catalog="phoenix_knowledge" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="knowledgeId" type="java.lang.Long">
+            <column name="knowledge_id">
+                <comment>&#214;&#170;&#202;&#182;id</comment>
+            </column>
+        </property>
+        <property name="categoryId" type="java.lang.Long">
+            <column name="category_id">
+                <comment>&#196;&#191;&#194;&#188;Id</comment>
+            </column>
+        </property>
+        <property name="status" type="java.lang.Character">
+            <column name="status" length="1">
+                <comment>
+                &#215;&#180;&#204;&#172;&#163;&#168;0&#163;&#186;&#178;&#187;&#201;&#250;&#208;&#167;&#163;&#172;1&#163;&#186;&#201;&#250;&#208;&#167;&#163;&#169;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

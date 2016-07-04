@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-5-26 15:08:34 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.parasol.directory.test.now.TbDirectory" table="tb_directory" catalog="parasol_directory_test" optimistic-lock="version">
+        <id name="id" type="long">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="pid" type="long">
+            <column name="pid" not-null="true">
+                <comment>&#184;&#184;&#214;&#247;&#188;&#252;</comment>
+            </column>
+        </property>
+        <property name="appId" type="long">
+            <column name="appId" not-null="true">
+                <comment>&#211;&#166;&#211;&#195;ID</comment>
+            </column>
+        </property>
+        <property name="userId" type="long">
+            <column name="userId" not-null="true">
+                <comment>&#211;&#195;&#187;&#167;ID&#163;&#168;Ower&#163;&#169;</comment>
+            </column>
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="50" not-null="true">
+                <comment>&#196;&#191;&#194;&#188;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="nameIndex" type="string">
+            <column name="nameIndex" length="250">
+                <comment>&#198;&#180;&#210;&#244;&#188;&#242;&#198;&#192;</comment>
+            </column>
+        </property>
+        <property name="nameIndexAll" type="string">
+            <column name="nameIndexAll" length="250">
+                <comment>&#200;&#171;&#198;&#180;</comment>
+            </column>
+        </property>
+        <property name="remark" type="string">
+            <column name="remark" length="250">
+                <comment>&#195;&#232;&#202;&#246;</comment>
+            </column>
+        </property>
+        <property name="numberCode" type="string">
+            <column name="numberCode" length="250">
+                <comment>&#177;&#163;&#180;&#230;&#184;&#184;&#199;&#215;&#210;&#175;&#210;&#175;&#161;&#163;&#161;&#163;&#161;&#163;</comment>
+            </column>
+        </property>
+        <property name="orderNo" type="java.lang.Integer">
+            <column name="orderNo">
+                <comment>&#203;&#179;&#208;&#242;</comment>
+            </column>
+        </property>
+        <property name="typeId" type="long">
+            <column name="typeId" not-null="true">
+                <comment>&#183;&#214;&#192;&#224;&#195;&#251;&#215;&#214;
+                (&#200;&#203;&#194;&#246;&#161;&#162;&#215;&#233;&#214;&#175;&#161;&#162;&#208;&#232;&#199;&#243;&#161;&#162;&#214;&#170;&#202;&#182;&#163;&#169;&#163;&#172;&#211;&#166;&#211;&#195;&#207;&#181;&#205;&#179;&#215;&#212;&#188;&#186;&#182;&#168;&#210;&#229;&#181;&#196;&#183;&#214;&#192;&#224;</comment>
+            </column>
+        </property>
+        <property name="updateAt" type="java.lang.Long">
+            <column name="updateAt">
+                <comment>&#184;&#252;&#208;&#194;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

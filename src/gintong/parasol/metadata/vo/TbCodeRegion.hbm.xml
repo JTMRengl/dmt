@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-6-2 19:11:41 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.parasol.metadata.vo.TbCodeRegion" table="tb_code_region" catalog="parasol_metadata" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="parentId" type="java.lang.Long">
+            <column name="parentId">
+                <comment>&#184;&#184;&#189;&#218;&#181;&#227;</comment>
+            </column>
+        </property>
+        <property name="numberCode" type="string">
+            <column name="numberCode" length="20">
+                <comment>&#177;&#224;&#194;&#235;</comment>
+            </column>
+        </property>
+        <property name="cname" type="string">
+            <column name="cname" length="50">
+                <comment>&#214;&#208;&#206;&#196;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="ename" type="string">
+            <column name="ename" length="50">
+                <comment>&#211;&#162;&#206;&#196;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="type" type="java.lang.Integer">
+            <column name="type">
+                <comment>
+                0&#163;&#186;&#185;&#250;&#196;&#218;&#163;&#172;1&#163;&#186;&#204;&#168;&#205;&#229;&#163;&#172;2&#163;&#186;&#184;&#219;&#176;&#196;&#204;&#168;&#163;&#172;3&#163;&#186;&#194;&#237;&#192;&#180;&#206;&#247;&#209;&#199;&#163;&#172;4&#163;&#186;&#185;&#250;&#205;&#226;</comment>
+            </column>
+        </property>
+        <property name="orders" type="java.lang.Integer">
+            <column name="orders">
+                <comment>&#208;&#242;&#186;&#197;</comment>
+            </column>
+        </property>
+        <property name="tbId" type="string">
+            <column name="tbId" length="50">
+                <comment>&#204;&#212;&#177;&#166;&#181;&#196;&#177;&#224;&#194;&#235;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

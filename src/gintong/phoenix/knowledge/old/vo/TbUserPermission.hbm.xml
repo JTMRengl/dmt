@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-6-5 9:54:45 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.knowledge.old.vo.TbUserPermission" table="tb_user_permission" catalog="phoenix_knowledge" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="receiveUserId" type="java.lang.Long">
+            <column name="receive_user_id">
+                <comment>&#189;&#211;&#202;&#213;&#213;&#223;Id</comment>
+            </column>
+        </property>
+        <property name="knowledgeId" type="java.lang.Long">
+            <column name="knowledge_id">
+                <comment>&#214;&#170;&#202;&#182;id</comment>
+            </column>
+        </property>
+        <property name="sendUserId" type="java.lang.Long">
+            <column name="send_user_id">
+                <comment>&#183;&#162;&#198;&#240;&#213;&#223;id</comment>
+            </column>
+        </property>
+        <property name="type" type="java.lang.Integer">
+            <column name="type">
+                <comment>
+                &#192;&#224;&#208;&#205;&#163;&#168;2-&#180;&#243;&#192;&#214;&#163;&#172;3-&#214;&#208;&#192;&#214;&#163;&#172;4-&#208;&#161;&#192;&#214;&#163;&#169;</comment>
+            </column>
+        </property>
+        <property name="mento" type="string">
+            <column name="mento">
+                <comment>&#183;&#214;&#207;&#237;&#193;&#244;&#209;&#212;</comment>
+            </column>
+        </property>
+        <property name="createtime" type="timestamp">
+            <column name="createtime" length="19">
+                <comment>&#180;&#180;&#189;&#168;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="columnType" type="java.lang.Short">
+            <column name="column_type">
+                <comment>
+                &#214;&#170;&#202;&#182;&#203;&#249;&#202;&#244;&#192;&#224;&#196;&#191;ID&#163;&#172;&#185;&#178;&#202;&#174;&#210;&#187;&#214;&#214;&#182;&#165;&#188;&#182;&#192;&#224;&#196;&#191;&#214;&#174;&#210;&#187;</comment>
+            </column>
+        </property>
+        <property name="columnId" type="java.lang.Long">
+            <column name="column_id">
+                <comment>&#192;&#184;&#196;&#191;id</comment>
+            </column>
+        </property>
+        <property name="ispush" type="java.lang.Integer">
+            <column name="ispush">
+                <comment>&#202;&#199;&#183;&#241;&#205;&#198;&#203;&#205;&#163;&#168;1-&#202;&#199;&#163;&#172;0-&#183;&#241;&#163;&#169;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

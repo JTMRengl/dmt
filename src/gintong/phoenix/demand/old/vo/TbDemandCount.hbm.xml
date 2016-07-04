@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-5-31 14:15:05 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.demand.old.vo.TbDemandCount" table="tb_demand_count" catalog="phoenix_demand" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="demandId" type="java.lang.Long">
+            <column name="demandId">
+                <comment>&#208;&#232;&#199;&#243;Id</comment>
+            </column>
+        </property>
+        <property name="readCount" type="java.lang.Long">
+            <column name="readCount">
+                <comment>&#177;&#187;&#212;&#196;&#182;&#193;&#184;&#246;&#202;&#253;&#205;&#179;&#188;&#198;</comment>
+            </column>
+        </property>
+        <property name="shareCount" type="java.lang.Long">
+            <column name="shareCount">
+                <comment>&#177;&#187;&#183;&#214;&#207;&#237;&#184;&#246;&#202;&#253;&#205;&#179;&#188;&#198;</comment>
+            </column>
+        </property>
+        <property name="collectCount" type="java.lang.Long">
+            <column name="collectCount">
+                <comment>&#177;&#187;&#202;&#213;&#178;&#216;&#184;&#246;&#202;&#253;&#205;&#179;&#188;&#198;</comment>
+            </column>
+        </property>
+        <property name="evaluateCount" type="java.lang.Long">
+            <column name="evaluateCount">
+                <comment>&#177;&#187;&#198;&#192;&#188;&#219;&#184;&#246;&#202;&#253;&#205;&#179;&#188;&#198;</comment>
+            </column>
+        </property>
+        <property name="demandType" type="java.lang.Long">
+            <column name="demandType" />
+        </property>
+    </class>
+</hibernate-mapping>

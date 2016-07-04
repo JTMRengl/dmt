@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-5-25 14:28:32 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.demand.old.vo.TbDemandDetect" table="tb_demand_detect" catalog="phoenix_demand" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="industryid" type="string">
+            <column name="industryid" length="10">
+                <comment>&#208;&#208;&#210;&#181;Id</comment>
+            </column>
+        </property>
+        <property name="sourceId" type="java.lang.Long">
+            <column name="sourceId">
+                <comment>&#212;&#180;Id</comment>
+            </column>
+        </property>
+        <property name="ptype" type="java.lang.Integer">
+            <column name="ptype">
+                <comment>
+                &#200;&#168;&#207;&#222;&#192;&#224;&#208;&#205;(2&#206;&#170;&#180;&#243;&#192;&#214;&#163;&#172;3&#206;&#170;&#214;&#208;&#192;&#214;,4&#206;&#170;&#208;&#161;&#192;&#214;)</comment>
+            </column>
+        </property>
+        <property name="sourceType" type="java.lang.Integer">
+            <column name="sourceType">
+                <comment>&#192;&#180;&#212;&#180;&#192;&#224;&#208;&#205;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

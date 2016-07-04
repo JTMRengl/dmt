@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-5-31 14:15:05 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.demand.old.vo.C3p0test" table="c3p0test" catalog="phoenix_demand" optimistic-lock="version">
+        <id name="a" type="java.lang.Character">
+            <column name="a" length="1" />
+            <generator class="assigned" />
+        </id>
+    </class>
+</hibernate-mapping>

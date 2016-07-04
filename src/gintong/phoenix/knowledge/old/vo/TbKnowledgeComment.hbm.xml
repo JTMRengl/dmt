@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-6-5 9:54:45 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.knowledge.old.vo.TbKnowledgeComment" table="tb_knowledge_comment" catalog="phoenix_knowledge" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="knowledgeId" type="java.lang.Long">
+            <column name="knowledge_id">
+                <comment>&#214;&#170;&#202;&#182;id</comment>
+            </column>
+        </property>
+        <property name="content" type="string">
+            <column name="content" length="500">
+                <comment>&#198;&#192;&#194;&#219;&#196;&#218;&#200;&#221;</comment>
+            </column>
+        </property>
+        <property name="createtime" type="timestamp">
+            <column name="createtime" length="19">
+                <comment>&#198;&#192;&#194;&#219;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="status" type="java.lang.Boolean">
+            <column name="status">
+                <comment>
+                &#198;&#192;&#194;&#219;&#215;&#180;&#204;&#172;(0&#163;&#186;&#210;&#209;&#201;&#190;&#179;&#253;&#163;&#172;1&#163;&#186;&#213;&#253;&#179;&#163;)</comment>
+            </column>
+        </property>
+        <property name="parentid" type="java.lang.Long">
+            <column name="parentid">
+                <comment>
+                &#201;&#207;&#188;&#182;&#198;&#192;&#194;&#219;id&#163;&#168;0&#163;&#186;&#184;&#249;&#188;&#182;&#163;&#172;&#183;&#199;0&#163;&#186;&#182;&#212;&#211;&#166;&#198;&#192;&#194;&#219;Id&#163;&#169;</comment>
+            </column>
+        </property>
+        <property name="userId" type="java.lang.Long">
+            <column name="user_id">
+                <comment>&#211;&#195;&#187;&#167;id</comment>
+            </column>
+        </property>
+        <property name="count" type="java.lang.Long">
+            <column name="count">
+                <comment>&#215;&#211;&#198;&#192;&#194;&#219;&#202;&#253;</comment>
+            </column>
+        </property>
+        <property name="username" type="string">
+            <column name="username">
+                <comment>&#211;&#195;&#187;&#167;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="pic" type="string">
+            <column name="pic">
+                <comment>&#205;&#183;&#207;&#241;&#181;&#216;&#214;&#183;</comment>
+            </column>
+        </property>
+        <property name="isVisible" type="java.lang.Byte">
+            <column name="is_visible">
+                <comment>&#198;&#193;&#177;&#206;&#215;&#180;&#204;&#172;(0&#163;&#186;&#198;&#193;&#177;&#206;&#161;&#162;1&#163;&#186;&#191;&#201;&#188;&#251;)</comment>
+            </column>
+        </property>
+        <property name="isDelete" type="java.lang.Byte">
+            <column name="is_delete">
+                <comment>&#201;&#190;&#179;&#253;&#215;&#180;&#204;&#172;(0&#163;&#186;&#196;&#172;&#200;&#207;&#161;&#162;1&#163;&#186;&#201;&#190;&#179;&#253;)</comment>
+            </column>
+        </property>
+        <property name="deleteTime" type="timestamp">
+            <column name="delete_time" length="19">
+                <comment>&#201;&#190;&#179;&#253;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="deleteUserId" type="java.lang.Long">
+            <column name="delete_user_id">
+                <comment>&#201;&#190;&#179;&#253;&#213;&#223;ID</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

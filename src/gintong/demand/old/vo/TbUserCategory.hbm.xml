@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-5-25 14:28:32 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.demand.old.vo.TbUserCategory" table="tb_user_category" catalog="phoenix_demand" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="userId" type="java.lang.Long">
+            <column name="user_id">
+                <comment>&#211;&#195;&#187;&#167;Id</comment>
+            </column>
+        </property>
+        <property name="categoryName" type="string">
+            <column name="category_name" length="50">
+                <comment>&#196;&#191;&#194;&#188;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="sortId" type="string">
+            <column name="sort_id">
+                <comment>&#194;&#183;&#190;&#182;Id&#163;&#172;000000001000000001</comment>
+            </column>
+        </property>
+        <property name="ctime" type="timestamp">
+            <column name="ctime" length="19" not-null="true">
+                <comment>&#180;&#180;&#189;&#168;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="parentId" type="java.lang.Long">
+            <column name="parent_id">
+                <comment>&#184;&#184;&#188;&#182;id</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

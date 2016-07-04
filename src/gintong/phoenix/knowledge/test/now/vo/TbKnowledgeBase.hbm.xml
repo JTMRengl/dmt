@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-6-4 21:28:47 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.knowledge.test.now.vo.TbKnowledgeBase" table="tb_knowledge_base" catalog="phoenix_knowledge_test" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="knowledgeId" type="long">
+            <column name="knowledge_id" not-null="true">
+                <comment>&#214;&#170;&#202;&#182;id</comment>
+            </column>
+        </property>
+        <property name="createUserId" type="java.lang.Long">
+            <column name="create_user_id">
+                <comment>&#180;&#180;&#189;&#168;&#200;&#203;</comment>
+            </column>
+        </property>
+        <property name="createUserName" type="string">
+            <column name="create_user_name" length="50">
+                <comment>&#180;&#180;&#189;&#168;&#200;&#203;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="columnId" type="java.lang.Long">
+            <column name="column_id">
+                <comment>
+                &#214;&#170;&#202;&#182;&#192;&#224;&#208;&#205;&#163;&#168;&#196;&#172;&#200;&#207;0&#163;&#186;&#198;&#228;&#203;&#251;,1&#163;&#186;&#215;&#202;&#209;&#182;&#163;&#172;2&#163;&#186;&#205;&#182;&#200;&#218;&#185;&#164;&#190;&#223;&#163;&#172;3&#163;&#186;&#208;&#208;&#210;&#181;&#163;&#172;4&#163;&#186;&#190;&#173;&#181;&#228;&#176;&#184;&#192;&#253;&#163;&#172;5&#163;&#186;&#205;&#188;&#202;&#233;&#177;&#168;&#184;&#230;&#163;&#172;6&#163;&#186;&#215;&#202;&#178;&#250;&#185;&#220;&#192;&#237;&#163;&#172;7&#163;&#186;&#186;&#234;&#185;&#219;&#163;&#172;8&#163;&#186;&#185;&#219;&#181;&#227;&#163;&#172;9&#163;&#186;&#197;&#208;&#192;&#253;&#163;&#172;10&#163;&#172;&#183;&#168;&#194;&#201;&#183;&#168;&#185;&#230;&#163;&#172;11&#163;&#186;&#206;&#196;&#213;&#194;&#163;&#169;</comment>
+            </column>
+        </property>
+        <property name="type" type="java.lang.Byte">
+            <column name="type">
+                <comment>
+                &#192;&#224;&#208;&#205;&#163;&#172;0&#206;&#170;&#207;&#181;&#205;&#179;&#180;&#180;&#189;&#168;&#163;&#172;1&#206;&#170;&#211;&#195;&#187;&#167;&#180;&#180;&#189;&#168;</comment>
+            </column>
+        </property>
+        <property name="source" type="string">
+            <column name="source">
+                <comment>&#192;&#180;&#212;&#180;</comment>
+            </column>
+        </property>
+        <property name="contentDesc" type="string">
+            <column name="content_desc">
+                <comment>&#195;&#232;&#202;&#246;(&#214;&#170;&#202;&#182;&#199;&#176;50&#184;&#246;&#215;&#214;&#183;&#251;)</comment>
+            </column>
+        </property>
+        <property name="title" type="string">
+            <column name="title">
+                <comment>&#177;&#234;&#204;&#226;</comment>
+            </column>
+        </property>
+        <property name="essence" type="java.lang.Character">
+            <column name="essence" length="1">
+                <comment>&#202;&#199;&#183;&#241;&#188;&#211;&#190;&#171;(0&#163;&#186;&#183;&#241;&#163;&#172;1&#163;&#186;&#190;&#171;)</comment>
+            </column>
+        </property>
+        <property name="visible" type="java.lang.Byte">
+            <column name="visible">
+                <comment>
+                &#191;&#201;&#188;&#251;&#183;&#182;&#206;&#167;&#163;&#172;&#196;&#172;&#200;&#207;0&#163;&#186;&#206;&#170;&#200;&#171;&#198;&#189;&#204;&#168;&#191;&#201;&#188;&#251;&#163;&#172;1&#163;&#186;&#206;&#170;&#215;&#212;&#188;&#186;&#191;&#201;&#188;&#251;&#163;&#172;2&#163;&#186;&#186;&#195;&#211;&#209;&#191;&#201;&#188;&#251;</comment>
+            </column>
+        </property>
+        <property name="publicDate" type="java.lang.Long">
+            <column name="public_date">
+                <comment>&#183;&#162;&#178;&#188;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="modifyDate" type="java.lang.Long">
+            <column name="modify_date">
+                <comment>&#208;&#222;&#184;&#196;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="auditStatus" type="java.lang.Byte">
+            <column name="audit_status">
+                <comment>
+                &#201;&#243;&#186;&#203;&#215;&#180;&#204;&#172;(0&#163;&#186;&#206;&#180;&#205;&#168;&#185;&#253;&#163;&#172;1&#163;&#186;&#201;&#243;&#186;&#203;&#214;&#208;&#163;&#172;2&#163;&#186;&#201;&#243;&#186;&#203;&#205;&#168;&#185;&#253;)</comment>
+            </column>
+        </property>
+        <property name="status" type="boolean">
+            <column name="status" not-null="true">
+                <comment>
+                &#215;&#180;&#204;&#172;&#163;&#168;0&#206;&#170;&#206;&#222;&#208;&#167;/&#201;&#190;&#179;&#253;&#163;&#172;1&#206;&#170;&#211;&#208;&#208;&#167;&#163;&#172;2&#206;&#170;&#178;&#221;&#184;&#229;&#163;&#172;3,&#163;&#186;&#187;&#216;&#202;&#213;&#213;&#190;&#163;&#169;</comment>
+            </column>
+        </property>
+        <property name="reportStatus" type="java.lang.Byte">
+            <column name="report_status">
+                <comment>
+                &#190;&#217;&#177;&#168;&#215;&#180;&#204;&#172;(3&#163;&#186;&#190;&#217;&#177;&#168;&#201;&#243;&#186;&#203;&#206;&#180;&#205;&#168;&#185;&#253;&#163;&#172;&#188;&#180;&#206;&#222;&#183;&#199;&#183;&#168;&#207;&#214;&#207;&#243;&#163;&#172;2&#163;&#186;&#190;&#217;&#177;&#168;&#201;&#243;&#186;&#203;&#205;&#168;&#185;&#253;&#163;&#172;1:&#206;&#180;&#177;&#187;&#190;&#217;&#177;&#168;&#163;&#172;0&#163;&#186;&#210;&#209;&#177;&#187;&#190;&#217;&#177;&#168;)</comment>
+            </column>
+        </property>
+        <property name="createDate" type="long">
+            <column name="create_date" not-null="true">
+                <comment>&#180;&#180;&#189;&#168;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="attachmentId" type="java.lang.Integer">
+            <column name="attachment_id" />
+        </property>
+        <property name="pictureId" type="string">
+            <column name="picture_id" />
+        </property>
+        <property name="tags" type="string">
+            <column name="tags">
+                <comment>&#177;&#234;&#199;&#169;Id&#188;&#175;&#186;&#207;</comment>
+            </column>
+        </property>
+        <property name="content" type="string">
+            <column name="content" length="65535" />
+        </property>
+        <property name="modifyUserId" type="java.lang.Integer">
+            <column name="modify_user_id" />
+        </property>
+        <property name="modifyUserName" type="string">
+            <column name="modify_user_name" />
+        </property>
+        <property name="userStar" type="java.lang.Byte">
+            <column name="userStar">
+                <comment>&#208;&#199;&#177;&#234;(1:&#202;&#199;,0:&#183;&#241;(&#196;&#172;&#200;&#207;))</comment>
+            </column>
+        </property>
+        <property name="isOld" type="java.lang.Boolean">
+            <column name="isOld">
+                <comment>&#202;&#199;&#183;&#241;&#202;&#199;&#190;&#201;&#202;&#253;&#190;&#221;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

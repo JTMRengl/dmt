@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-5-31 14:15:05 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.demand.old.vo.TbDemandReport" table="tb_demand_report" catalog="phoenix_demand" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="content" type="string">
+            <column name="content" length="100">
+                <comment>&#190;&#217;&#177;&#168;&#196;&#218;&#200;&#221;</comment>
+            </column>
+        </property>
+        <property name="reason" type="string">
+            <column name="reason" length="100">
+                <comment>&#190;&#217;&#177;&#168;&#192;&#237;&#211;&#201;</comment>
+            </column>
+        </property>
+        <property name="contact" type="java.lang.Long">
+            <column name="contact">
+                <comment>&#193;&#170;&#207;&#181;&#200;&#203;&#181;&#231;&#187;&#176;</comment>
+            </column>
+        </property>
+        <property name="userId" type="java.lang.Long">
+            <column name="user_id">
+                <comment>&#190;&#217;&#177;&#168;&#200;&#203;id(&#212;&#221;&#202;&#177;&#178;&#187;&#207;&#212;&#202;&#190;)</comment>
+            </column>
+        </property>
+        <property name="userName" type="string">
+            <column name="user_name" length="50">
+                <comment>&#190;&#217;&#177;&#168;&#200;&#203;&#208;&#213;&#195;&#251;(&#212;&#221;&#202;&#177;&#178;&#187;&#207;&#212;&#202;&#190;)</comment>
+            </column>
+        </property>
+        <property name="demandId" type="java.lang.Long">
+            <column name="demand_id">
+                <comment>&#208;&#232;&#199;&#243;ID</comment>
+            </column>
+        </property>
+        <property name="createTime" type="string">
+            <column name="create_time" length="50">
+                <comment>&#190;&#217;&#177;&#168;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

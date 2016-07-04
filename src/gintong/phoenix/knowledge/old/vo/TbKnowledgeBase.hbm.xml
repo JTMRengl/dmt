@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-6-5 9:54:45 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.knowledge.old.vo.TbKnowledgeBase" table="tb_knowledge_base" catalog="phoenix_knowledge" optimistic-lock="version">
+        <id name="knowledgeId" type="long">
+            <column name="knowledge_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="userId" type="java.lang.Long">
+            <column name="user_id">
+                <comment>&#211;&#195;&#187;&#167;id</comment>
+            </column>
+        </property>
+        <property name="title" type="string">
+            <column name="title">
+                <comment>&#177;&#234;&#204;&#226;</comment>
+            </column>
+        </property>
+        <property name="author" type="string">
+            <column name="author" length="50">
+                <comment>&#215;&#247;&#213;&#223;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="path" type="string">
+            <column name="path" length="50">
+                <comment>&#192;&#184;&#196;&#191;&#194;&#183;&#190;&#182;</comment>
+            </column>
+        </property>
+        <property name="createtime" type="timestamp">
+            <column name="createtime" length="19">
+                <comment>&#183;&#162;&#177;&#237;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="tag" type="string">
+            <column name="tag">
+                <comment>&#177;&#234;&#199;&#169;</comment>
+            </column>
+        </property>
+        <property name="CDesc" type="string">
+            <column name="c_desc">
+                <comment>&#188;&#242;&#189;&#233;</comment>
+            </column>
+        </property>
+        <property name="columnId" type="java.lang.Long">
+            <column name="column_id">
+                <comment>&#192;&#184;&#196;&#191;id</comment>
+            </column>
+        </property>
+        <property name="picPath" type="string">
+            <column name="pic_path">
+                <comment>&#183;&#226;&#195;&#230;&#205;&#188;&#198;&#172;&#181;&#216;&#214;&#183;</comment>
+            </column>
+        </property>
+        <property name="columnType" type="java.lang.Short">
+            <column name="column_type">
+                <comment>11&#214;&#214;&#192;&#184;&#196;&#191;&#192;&#224;&#208;&#205;</comment>
+            </column>
+        </property>
+        <property name="essence" type="java.lang.Short">
+            <column name="essence">
+                <comment>essence &#202;&#199;&#183;&#241;&#188;&#211;&#190;&#171;&#163;&#168;0-&#178;&#187;&#188;&#211; 1-&#188;&#211;&#163;&#169;</comment>
+            </column>
+        </property>
+        <property name="taskid" type="string">
+            <column name="taskid">
+                <comment>&#184;&#189;&#188;&#254;taskid</comment>
+            </column>
+        </property>
+        <property name="userStar" type="java.lang.Integer">
+            <column name="userStar" />
+        </property>
+    </class>
+</hibernate-mapping>

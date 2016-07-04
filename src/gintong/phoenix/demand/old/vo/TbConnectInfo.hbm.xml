@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-5-31 14:15:05 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.demand.old.vo.TbConnectInfo" table="tb_connect_info" catalog="phoenix_demand" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="demandId" type="java.lang.Long">
+            <column name="demandId">
+                <comment>&#214;&#170;&#202;&#182;ID</comment>
+            </column>
+        </property>
+        <property name="tag" type="string">
+            <column name="tag">
+                <comment>&#185;&#216;&#193;&#170;&#177;&#234;&#199;&#169;</comment>
+            </column>
+        </property>
+        <property name="connType" type="java.lang.Integer">
+            <column name="connType">
+                <comment>
+                &#185;&#216;&#193;&#170;&#192;&#224;&#208;&#205;(2-p:&#200;&#203;&#194;&#246;1-,r:&#202;&#194;&#188;&#254;5-,o:&#215;&#233;&#214;&#175;,6-k:&#214;&#170;&#202;&#182;)</comment>
+            </column>
+        </property>
+        <property name="connId" type="java.lang.Long">
+            <column name="connId">
+                <comment>&#185;&#216;&#193;&#170;&#202;&#253;&#190;&#221;ID</comment>
+            </column>
+        </property>
+        <property name="connName" type="string">
+            <column name="connName">
+                <comment>&#185;&#216;&#193;&#170;&#202;&#253;&#190;&#221;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="ownerId" type="java.lang.Long">
+            <column name="ownerId">
+                <comment>&#211;&#181;&#211;&#208;&#213;&#223;ID</comment>
+            </column>
+        </property>
+        <property name="owner" type="string">
+            <column name="owner" length="32">
+                <comment>&#211;&#181;&#211;&#208;&#213;&#223;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="requirementtype" type="string">
+            <column name="requirementtype" length="10">
+                <comment>&#208;&#232;&#199;&#243;&#192;&#224;&#208;&#205;(&#208;&#232;&#199;&#243;&#202;&#185;&#211;&#195;)</comment>
+            </column>
+        </property>
+        <property name="career" type="string">
+            <column name="career" length="64">
+                <comment>&#214;&#176;&#210;&#181;&#163;&#168;&#200;&#203;&#202;&#185;&#211;&#195;&#163;&#169;</comment>
+            </column>
+        </property>
+        <property name="company" type="string">
+            <column name="company">
+                <comment>&#185;&#171;&#203;&#190;&#163;&#168;&#200;&#203;&#202;&#185;&#211;&#195;&#163;&#169;</comment>
+            </column>
+        </property>
+        <property name="address" type="string">
+            <column name="address">
+                <comment>&#181;&#216;&#214;&#183;&#163;&#168;&#215;&#233;&#214;&#175;&#202;&#185;&#211;&#195;&#163;&#169;</comment>
+            </column>
+        </property>
+        <property name="hy" type="string">
+            <column name="hy">
+                <comment>&#208;&#208;&#210;&#181;&#163;&#168;&#215;&#233;&#214;&#175;&#202;&#185;&#211;&#195;&#163;&#169;</comment>
+            </column>
+        </property>
+        <property name="columnPath" type="string">
+            <column name="columnPath">
+                <comment>&#192;&#184;&#196;&#191;&#194;&#183;&#190;&#182;(&#214;&#170;&#202;&#182;&#202;&#185;&#211;&#195;)</comment>
+            </column>
+        </property>
+        <property name="columnType" type="java.lang.Integer">
+            <column name="columnType">
+                <comment>&#192;&#184;&#196;&#191;&#192;&#224;&#208;&#205;&#163;&#168;&#214;&#170;&#202;&#182;&#202;&#185;&#211;&#195;&#163;&#169;</comment>
+            </column>
+        </property>
+        <property name="url" type="string">
+            <column name="url" length="500">
+                <comment>&#204;&#248;&#215;&#170;URL</comment>
+            </column>
+        </property>
+        <property name="picPath" type="string">
+            <column name="picPath">
+                <comment>&#205;&#183;&#207;&#241;&#194;&#183;&#190;&#182;</comment>
+            </column>
+        </property>
+        <property name="allasso" type="java.lang.Integer">
+            <column name="allasso" />
+        </property>
+    </class>
+</hibernate-mapping>

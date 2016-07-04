@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-3-10 11:48:31 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+  <class catalog="hp_db" name="datacenterservice.vo.User" optimistic-lock="version" table="user">
+    <id name="id" type="java.lang.Integer">
+      <column name="ID"/>
+      <generator class="identity"/>
+    </id>
+    <property name="code" type="string">
+      <column length="10" name="CODE" not-null="true">
+        <comment>±àºÅ</comment>
+      </column>
+    </property>
+    <property name="gender" type="int">
+      <column name="GENDER" not-null="true">
+        <comment>ÐÔ±ð</comment>
+      </column>
+    </property>
+    <property name="age" type="int">
+      <column name="AGE" not-null="true">
+        <comment>ÄêÁä</comment>
+      </column>
+    </property>
+    <property name="height" type="float">
+      <column name="HEIGHT" not-null="true" precision="12" scale="0">
+        <comment>Éí¸ß</comment>
+      </column>
+    </property>
+    <property name="weight" type="float">
+      <column name="WEIGHT" not-null="true" precision="12" scale="0">
+        <comment>ÌåÖØ</comment>
+      </column>
+    </property>
+    <property name="bmi" type="float">
+      <column name="BMI" not-null="true" precision="12" scale="0">
+        <comment>ÌåÐÎÖ¸Êý</comment>
+      </column>
+    </property>
+    <property name="systolicPressure" type="int">
+      <column name="SYSTOLIC_PRESSURE" not-null="true">
+        <comment>ÊÕËõÑ¹</comment>
+      </column>
+    </property>
+    <property name="diastolicPressure" type="int">
+      <column name="DIASTOLIC_PRESSURE" not-null="true">
+        <comment>ÊæÕÅÑ¹</comment>
+      </column>
+    </property>
+    <property name="pulseRate" type="int">
+      <column name="PULSE_RATE" not-null="true">
+        <comment>Âö²«ÆµÂÊ</comment>
+      </column>
+    </property>
+    <property name="oxygen" type="int">
+      <column name="OXYGEN" not-null="true">
+        <comment>ÑªÑõ</comment>
+      </column>
+    </property>
+    <property name="colorBlindness" type="int">
+      <column name="COLOR_BLINDNESS" not-null="true">
+        <comment>É«Ã¤</comment>
+      </column>
+    </property>
+    <property name="registrationDate" type="string">
+      <column length="14" name="REGISTRATION_DATE">
+        <comment>×¢²áÈÕÆÚ</comment>
+      </column>
+    </property>
+    <property name="queryTime" type="string">
+      <column length="14" name="QUERY_TIME">
+        <comment>²éÑ¯Ê±¼ä</comment>
+      </column>
+    </property>
+    <property name="extendedField1" type="string">
+      <column length="50" name="EXTENDED_FIELD_1">
+        <comment>À©Õ¹×Ö¶Î1</comment>
+      </column>
+    </property>
+    <property name="extendedField2" type="string">
+      <column length="50" name="EXTENDED_FIELD_2">
+        <comment>À©Õ¹×Ö¶Î2</comment>
+      </column>
+    </property>
+    <property name="extendedField3" type="string">
+      <column length="50" name="EXTENDED_FIELD_3">
+        <comment>À©Õ¹×Ö¶Î3</comment>
+      </column>
+    </property>
+  </class>
+</hibernate-mapping>

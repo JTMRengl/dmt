@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-6-1 11:07:15 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.knowledge.test.now.vo.TbKnowledgeReference" table="tb_knowledge_reference" catalog="phoenix_knowledge_test" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="knowledgeId" type="java.lang.Long">
+            <column name="knowledge_id">
+                <comment>
+                &#214;&#170;&#202;&#182;Id&#163;&#168;&#205;&#182;&#200;&#218;&#185;&#164;&#190;&#223;&#186;&#205;&#208;&#208;&#210;&#181;&#211;&#208;&#163;&#169;</comment>
+            </column>
+        </property>
+        <property name="articleName" type="string">
+            <column name="article_name" length="50">
+                <comment>&#210;&#253;&#211;&#195;&#215;&#202;&#193;&#207;&#206;&#196;&#213;&#194;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="url" type="string">
+            <column name="url">
+                <comment>URL&#181;&#216;&#214;&#183;</comment>
+            </column>
+        </property>
+        <property name="websiteName" type="string">
+            <column name="website_name">
+                <comment>&#205;&#248;&#213;&#190;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="status" type="java.lang.Character">
+            <column name="status" length="1">
+                <comment>
+                &#177;&#234;&#202;&#190;&#177;&#190;&#204;&#245;&#215;&#202;&#193;&#207;&#202;&#199;&#183;&#241;&#211;&#208;&#208;&#167;&#163;&#172;1&#163;&#186;&#206;&#170;&#211;&#208;&#208;&#167;&#163;&#172;0&#163;&#186;&#206;&#170;&#206;&#222;&#208;&#167;</comment>
+            </column>
+        </property>
+        <property name="createDate" type="long">
+            <column name="create_date" not-null="true">
+                <comment>&#180;&#180;&#189;&#168;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="refDate" type="long">
+            <column name="ref_date" not-null="true">
+                <comment>&#210;&#253;&#211;&#195;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="modifyDate" type="long">
+            <column name="modify_date" not-null="true">
+                <comment>&#215;&#238;&#186;&#243;&#184;&#252;&#208;&#194;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

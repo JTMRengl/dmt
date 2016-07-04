@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-5-31 14:15:05 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.demand.old.vo.TbUserDemandPermission" table="tb_user_demand_permission" catalog="phoenix_demand" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="demandId" type="java.lang.Long">
+            <column name="demandId">
+                <comment>&#208;&#232;&#199;&#243;ID</comment>
+            </column>
+        </property>
+        <property name="sendId" type="java.lang.Long">
+            <column name="sendId">
+                <comment>&#183;&#162;&#203;&#205;&#213;&#223;ID</comment>
+            </column>
+        </property>
+        <property name="receiveId" type="java.lang.Long">
+            <column name="receiveId">
+                <comment>&#189;&#211;&#202;&#213;&#213;&#223;ID</comment>
+            </column>
+        </property>
+        <property name="demandType" type="java.lang.Integer">
+            <column name="demandType">
+                <comment>&#205;&#182;&#200;&#218;&#215;&#202;&#208;&#232;&#199;&#243;&#192;&#224;&#208;&#205;</comment>
+            </column>
+        </property>
+        <property name="createtime" type="timestamp">
+            <column name="createtime" length="19" not-null="true">
+                <comment>&#180;&#180;&#189;&#168;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="ptype" type="java.lang.Integer">
+            <column name="pType">
+                <comment>ptype&#163;&#168;&#200;&#168;&#207;&#222;&#192;&#224;&#208;&#205;&#163;&#172;1&#163;&#186;&#182;&#192;&#192;&#214; ,
+                2&#163;&#186;&#180;&#243;&#192;&#214;&#163;&#172;3&#163;&#186;&#214;&#208;&#192;&#214;&#163;&#172;4&#163;&#186;&#208;&#161;&#192;&#214;&#163;&#169;</comment>
+            </column>
+        </property>
+        <property name="isPush" type="java.lang.Integer">
+            <column name="isPush">
+                <comment>&#202;&#199;&#183;&#241;&#202;&#199;&#180;&#243;&#202;&#253;&#190;&#221;&#205;&#198;&#188;&#246;(1-&#202;&#199; 0-&#183;&#241;)</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>
