@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbRUserShield" table="tb_r_user_shield" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="userId" type="java.lang.Long">
+            <column name="userId">
+                <comment>&#211;&#195;&#187;&#167;id</comment>
+            </column>
+        </property>
+        <property name="deadline" type="string">
+            <column name="deadline" length="500">
+                <comment>&#198;&#218;&#207;&#222;</comment>
+            </column>
+        </property>
+        <property name="startTime" type="string">
+            <column name="startTime" length="50">
+                <comment>&#198;&#193;&#177;&#206;&#191;&#170;&#202;&#188;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="endTime" type="string">
+            <column name="endTime" length="50">
+                <comment>&#198;&#193;&#177;&#206;&#189;&#225;&#202;&#248;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="reason" type="string">
+            <column name="reason" length="500">
+                <comment>&#198;&#193;&#177;&#206;&#192;&#237;&#211;&#201;</comment>
+            </column>
+        </property>
+        <property name="creator" type="string">
+            <column name="creator" length="500">
+                <comment>&#178;&#217;&#215;&#247;&#200;&#203;&#208;&#213;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="creatorId" type="java.lang.Long">
+            <column name="creatorId">
+                <comment>&#178;&#217;&#215;&#247;&#200;&#203;id</comment>
+            </column>
+        </property>
+        <property name="ctime" type="string">
+            <column name="ctime" length="50">
+                <comment>&#178;&#217;&#215;&#247;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="utime" type="string">
+            <column name="utime" length="50">
+                <comment>&#187;&#214;&#184;&#180;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="regainType" type="java.lang.Integer">
+            <column name="regainType">
+                <comment>&#187;&#214;&#184;&#180;&#192;&#224;&#208;&#205; 1&#161;&#162;&#178;&#217;&#215;&#247;&#178;&#217;&#215;&#247;
+                2&#161;&#162;&#198;&#228;&#203;&#251;&#212;&#173;&#210;&#242;</comment>
+            </column>
+        </property>
+        <property name="regainReason" type="string">
+            <column name="regainReason" length="500">
+                <comment>&#187;&#214;&#184;&#180;&#192;&#237;&#211;&#201;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

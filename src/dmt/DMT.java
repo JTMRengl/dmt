@@ -25,6 +25,7 @@ import gintong.parasol.directory.test.now.TbDirectory;
 import gintong.parasol.directory.test.now.TbDirectorySource;
 import gintong.parasol.metadata.vo.TbCodeRegion;
 import gintong.permission.test.now.TbPermission;
+import gintong.phoenix.user.TbUser;
 import gintong.tagsTest.now.vo.TbTag;
 import gintong.tagsTest.now.vo.TbTagSource;
 import java.awt.BorderLayout;
@@ -66,6 +67,8 @@ public class DMT extends JFrame {
     
     private SessionFactory sessionFactoryold;
     private SessionFactory sessionFactorynew;    
+    private SessionFactory sessionFactoryuser;    
+    
     private JTextArea textArea;
     
     private String numberCode = "";
@@ -162,6 +165,11 @@ public class DMT extends JFrame {
             Configuration cfgnew = new Configuration();
             cfgnew.configure("hibernate-parasol_metadata.cfg.xml");
             sessionFactorynew = cfgnew.buildSessionFactory();
+            
+            //mysql-用户数据
+            Configuration cfguser = new Configuration();
+            cfgnew.configure("phoenix_user_hibernate.cfg.xml");
+            sessionFactoryuser = cfguser.buildSessionFactory();            
 
             //省id
             long provinceId = 0;
@@ -177,7 +185,7 @@ public class DMT extends JFrame {
                     n++;
                     Document document = mongoCursor.next();
                     System.out.println("当前数据 _id = " + document.get("_id"));
-
+                    
                     String[] areas = null;
                     if (document.get("area") != null) {
                         areas = document.get("area").toString().split("-");
@@ -224,7 +232,15 @@ public class DMT extends JFrame {
 
                             Document newDocument = new Document();
                             newDocument.append("area", area);
-                            //newDocument.append("_id", "575147da448ff8511e6fb103"); 
+                            //修改ownerIsVirtual,1是组织，2是用户
+
+                            String ownerId = document.get("ownerId").toString();
+                            Boolean bb = getVirtual(Long.parseLong(ownerId));
+                            if(bb){
+                                newDocument.append("ownerIsVirtual", 1);
+                            }else{
+                                newDocument.append("ownerIsVirtual", 2);
+                            }  
 
                             collection.updateOne(document, new Document("$set", newDocument));
 
@@ -1174,6 +1190,24 @@ public class DMT extends JFrame {
         
         return id;
     }   
+    public Boolean getVirtual(long ownerId) throws RemoteException{
+        Boolean virtual = false;
+         try {        
+            String hql = "from TbUser where id = " + ownerId;
+            System.out.println("hql=" + hql);
+            Session ss = sessionFactoryuser.openSession();
+            TbUser tbUser = (TbUser) ss.createQuery(hql).setMaxResults(1).uniqueResult();
+            if(tbUser != null){
+                virtual = tbUser.getVirtual();
+            }
+            ss.close();
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        }       
+        
+        return virtual;
+    }    
+    
     
     //
     public long getCityIdId(long provinceId, String cname) throws RemoteException{

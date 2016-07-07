@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbDynamicShield" table="tb_dynamic_shield" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="userId" type="java.lang.Long">
+            <column name="userId">
+                <comment>&#198;&#193;&#177;&#206;&#200;&#203;Id</comment>
+            </column>
+        </property>
+        <property name="shieldUserId" type="java.lang.Long">
+            <column name="shieldUserId">
+                <comment>&#177;&#187;&#198;&#193;&#177;&#206;&#200;&#203;Id</comment>
+            </column>
+        </property>
+        <property name="ctime" type="timestamp">
+            <column name="ctime" length="19">
+                <comment>&#198;&#193;&#177;&#206;&#202;&#177;&#188;&#228;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbUserDynamic" table="tb_user_dynamic" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="industryOptionId" type="string">
+            <column name="industryOptionId">
+                <comment>&#208;&#208;&#210;&#181;&#181;&#196;ID&#188;&#175;&#186;&#207;&#161;&#174;1-2,3-4&#161;&#175;</comment>
+            </column>
+        </property>
+        <property name="industryOptionName" type="string">
+            <column name="industryOptionName">
+                <comment>&#208;&#208;&#210;&#181;&#181;&#196;ID&#188;&#175;&#186;&#207;&#161;&#174;1-2,3-4&#161;&#175;</comment>
+            </column>
+        </property>
+        <property name="jsxqYn" type="string">
+            <column name="jsxqYn">
+                <comment>&#215;&#168;&#188;&#210;Y&#209;&#161;&#214;&#208;</comment>
+            </column>
+        </property>
+        <property name="rzxqOptionId" type="string">
+            <column name="rzxqOptionId">
+                <comment>&#215;&#168;&#188;&#210;&#192;&#224;&#208;&#205;&#181;&#196;ID&#188;&#175;&#186;&#207;&#161;&#174;1-2,3-4&#161;&#175;</comment>
+            </column>
+        </property>
+        <property name="rzxqOptionName" type="string">
+            <column name="rzxqOptionName">
+                <comment>&#205;&#182;&#215;&#202;&#192;&#224;&#208;&#205;&#181;&#196;ID&#188;&#175;&#186;&#207;&#161;&#174;1-2,3-4&#161;&#175;</comment>
+            </column>
+        </property>
+        <property name="rzxqYn" type="string">
+            <column name="rzxqYn">
+                <comment>&#200;&#218;&#215;&#202;Y&#209;&#161;&#214;&#208;</comment>
+            </column>
+        </property>
+        <property name="typeOptionId" type="string">
+            <column name="typeOptionId">
+                <comment>&#205;&#182;&#215;&#202;&#192;&#224;&#208;&#205;&#181;&#196;ID&#188;&#175;&#186;&#207;&#161;&#174;1-2,3-4&#161;&#175;</comment>
+            </column>
+        </property>
+        <property name="typeOptionName" type="string">
+            <column name="typeOptionName">
+                <comment>&#200;&#218;&#215;&#202;&#192;&#224;&#208;&#205;&#181;&#196;ID&#188;&#175;&#186;&#207;&#161;&#174;1-2,3-4&#161;&#175;</comment>
+            </column>
+        </property>
+        <property name="tzxqYn" type="string">
+            <column name="tzxqYn">
+                <comment>&#205;&#182;&#215;&#202;Y&#209;&#161;&#214;&#208;</comment>
+            </column>
+        </property>
+        <property name="userId" type="long">
+            <column name="userId" not-null="true">
+                <comment>&#211;&#195;&#187;&#167;Id</comment>
+            </column>
+        </property>
+        <property name="zjxqOptionId" type="string">
+            <column name="zjxqOptionId">
+                <comment>&#200;&#218;&#215;&#202;&#192;&#224;&#208;&#205;&#181;&#196;ID&#188;&#175;&#186;&#207;&#161;&#174;1-2,3-4&#161;&#175;</comment>
+            </column>
+        </property>
+        <property name="zjxqOptionName" type="string">
+            <column name="zjxqOptionName">
+                <comment>&#215;&#168;&#188;&#210;&#192;&#224;&#208;&#205;&#181;&#196;ID&#188;&#175;&#186;&#207;&#161;&#174;1-2,3-4&#161;&#175;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

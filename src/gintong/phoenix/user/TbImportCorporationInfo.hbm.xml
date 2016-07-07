@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbImportCorporationInfo" table="tb_import_corporation_info" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="fileId" type="java.lang.Long">
+            <column name="fileId">
+                <comment>&#181;&#188;&#200;&#235;&#181;&#196;&#184;&#189;&#188;&#254;id</comment>
+            </column>
+        </property>
+        <property name="count" type="java.lang.Integer">
+            <column name="count">
+                <comment>&#181;&#188;&#200;&#235;&#187;&#250;&#185;&#185;&#181;&#196;&#215;&#220;&#202;&#253;&#193;&#191;</comment>
+            </column>
+        </property>
+        <property name="status" type="java.lang.Byte">
+            <column name="status">
+                <comment>&#215;&#180;&#204;&#172; 0&#181;&#188;&#200;&#235;&#214;&#208; 1&#181;&#188;&#200;&#235;&#189;&#225;&#202;&#248;</comment>
+            </column>
+        </property>
+        <property name="ctime" type="string">
+            <column name="ctime" length="50">
+                <comment>&#178;&#217;&#215;&#247;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="creator" type="string">
+            <column name="creator" length="500">
+                <comment>&#178;&#217;&#215;&#247;&#200;&#203;&#208;&#213;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="creatorId" type="java.lang.Long">
+            <column name="creatorId">
+                <comment>&#178;&#217;&#215;&#247;&#200;&#203;id</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

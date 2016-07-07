@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbSearchHotKey" table="tb_search_hot_key" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="levelFirstId" type="java.lang.Integer">
+            <column name="level_first_id">
+                <comment>&#210;&#187;&#188;&#182;&#183;&#214;&#192;&#224;</comment>
+            </column>
+        </property>
+        <property name="hotKey" type="string">
+            <column name="hot_key" length="100">
+                <comment>&#200;&#200;&#203;&#209;&#185;&#216;&#188;&#252;&#180;&#202;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

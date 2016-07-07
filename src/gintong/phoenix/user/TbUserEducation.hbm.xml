@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbUserEducation" table="tb_user_education" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="abroad" type="string">
+            <column name="abroad">
+                <comment>&#186;&#163;&#205;&#226;</comment>
+            </column>
+        </property>
+        <property name="beginTime" type="string">
+            <column name="beginTime">
+                <comment>&#191;&#170;&#202;&#188;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="degree" type="int">
+            <column name="degree" not-null="true">
+                <comment>&#209;&#167;&#192;&#250; 0&#208;&#161;&#209;&#167; 1&#179;&#245;&#214;&#208; 2&#184;&#223;&#214;&#208; 3&#214;&#208;&#215;&#168; 4&#215;&#168;&#191;&#198;
+                5&#177;&#190;&#191;&#198; 6&#203;&#182;&#202;&#191; 7&#178;&#169;&#202;&#191;</comment>
+            </column>
+        </property>
+        <property name="description" type="string">
+            <column name="description">
+                <comment>&#195;&#232;&#202;&#246;</comment>
+            </column>
+        </property>
+        <property name="endTime" type="string">
+            <column name="endTime">
+                <comment>&#189;&#225;&#202;&#248;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="major" type="string">
+            <column name="major">
+                <comment>&#215;&#168;&#210;&#181;</comment>
+            </column>
+        </property>
+        <property name="school" type="string">
+            <column name="school">
+                <comment>&#209;&#167;&#208;&#163;</comment>
+            </column>
+        </property>
+        <property name="userId" type="long">
+            <column name="userId" not-null="true">
+                <comment>&#211;&#195;&#187;&#167;Id</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbUserEvaluate" table="tb_user_evaluate" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="userComment" type="string">
+            <column name="userComment">
+                <comment>&#211;&#195;&#187;&#167;&#198;&#192;&#188;&#219;</comment>
+            </column>
+        </property>
+        <property name="count" type="java.lang.Long">
+            <column name="count">
+                <comment>&#212;&#222;&#205;&#172;&#202;&#253;</comment>
+            </column>
+        </property>
+        <property name="userId" type="java.lang.Long">
+            <column name="userId">
+                <comment>&#214;&#247;&#210;&#179;&#211;&#195;&#187;&#167;id</comment>
+            </column>
+        </property>
+        <property name="createId" type="java.lang.Long">
+            <column name="createId">
+                <comment>&#180;&#180;&#189;&#168;&#198;&#192;&#194;&#219;&#211;&#195;&#187;&#167;id</comment>
+            </column>
+        </property>
+        <property name="commentTime" type="timestamp">
+            <column name="commentTime" length="19">
+                <comment>&#180;&#180;&#189;&#168;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="userType" type="java.lang.Integer">
+            <column name="userType">
+                <comment>
+                &#211;&#195;&#187;&#167;&#192;&#224;&#208;&#205;&#163;&#186;1-&#212;&#218;&#207;&#223;&#184;&#246;&#200;&#203;&#211;&#195;&#187;&#167;&#163;&#187;2-&#200;&#203;&#194;&#246;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

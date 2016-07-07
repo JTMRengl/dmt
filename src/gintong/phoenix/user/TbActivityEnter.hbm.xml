@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbActivityEnter" table="tb_activity_enter" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="userId" type="java.lang.Long">
+            <column name="userId">
+                <comment>&#211;&#195;&#187;&#167;id</comment>
+            </column>
+        </property>
+        <property name="userName" type="string">
+            <column name="userName" length="100">
+                <comment>&#208;&#213;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="mobile" type="string">
+            <column name="mobile" length="100">
+                <comment>&#202;&#214;&#187;&#250;</comment>
+            </column>
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="100">
+                <comment>&#211;&#202;&#207;&#228;</comment>
+            </column>
+        </property>
+        <property name="corporation" type="string">
+            <column name="corporation" length="200">
+                <comment>&#185;&#171;&#203;&#190;</comment>
+            </column>
+        </property>
+        <property name="job" type="string">
+            <column name="job" length="200">
+                <comment>&#214;&#176;&#206;&#187;</comment>
+            </column>
+        </property>
+        <property name="ctime" type="string">
+            <column name="ctime" length="30">
+                <comment>&#180;&#180;&#189;&#168;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status">
+                <comment>&#215;&#180;&#204;&#172;&#163;&#186;0&#206;&#180;&#201;&#184;&#209;&#161; 1&#210;&#209;&#201;&#184;&#209;&#161;</comment>
+            </column>
+        </property>
+        <property name="intent" type="string">
+            <column name="intent" length="1000">
+                <comment>&#196;&#191;&#181;&#196;</comment>
+            </column>
+        </property>
+        <property name="activityId" type="java.lang.Long">
+            <column name="activityId">
+                <comment>&#187;&#238;&#182;&#175;id</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

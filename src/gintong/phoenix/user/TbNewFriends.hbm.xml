@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbNewFriends" table="tb_new_friends" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="creatorId" type="java.lang.Long">
+            <column name="creatorId">
+                <comment>&#180;&#180;&#189;&#168;&#200;&#203;Id</comment>
+            </column>
+        </property>
+        <property name="userId" type="java.lang.Long">
+            <column name="userId">
+                <comment>&#211;&#195;&#187;&#167;id</comment>
+            </column>
+        </property>
+        <property name="peopleId" type="java.lang.Long">
+            <column name="peopleId">
+                <comment>&#200;&#203;&#194;&#246;id</comment>
+            </column>
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status">
+                <comment>&#188;&#211;&#186;&#195;&#211;&#209;&#215;&#180;&#204;&#172;
+                0:&#206;&#180;&#180;&#166;&#192;&#237;&#163;&#172;1&#163;&#186;&#181;&#200;&#180;&#253;&#214;&#208;
+                2&#163;&#186;&#210;&#209;&#179;&#201;&#206;&#170;&#186;&#195;&#211;&#209;</comment>
+            </column>
+        </property>
+        <property name="type" type="java.lang.Integer">
+            <column name="type">
+                <comment>&#200;&#203;&#194;&#246;&#198;&#165;&#197;&#228;&#192;&#224;&#208;&#205; 1:&#208;&#194;&#189;&#168;&#200;&#203;&#194;&#246;
+                2&#163;&#186;&#182;&#212;&#183;&#189;&#199;&#235;&#199;&#243;&#188;&#211;&#196;&#227;&#206;&#170;&#186;&#195;&#211;&#209;
+                3&#163;&#186;&#210;&#253;&#188;&#246;&#186;&#195;&#211;&#209;</comment>
+            </column>
+        </property>
+        <property name="mate" type="java.lang.Integer">
+            <column name="mate">
+                <comment>
+                &#198;&#165;&#197;&#228;&#208;&#206;&#202;&#189;&#163;&#172;1&#163;&#186;&#202;&#214;&#187;&#250;&#186;&#197;&#163;&#172;2&#163;&#186;&#211;&#202;&#207;&#228;</comment>
+            </column>
+        </property>
+        <property name="ctime" type="string">
+            <column name="ctime" length="100">
+                <comment>&#180;&#180;&#189;&#168;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="utime" type="string">
+            <column name="utime" length="100">
+                <comment>&#184;&#252;&#208;&#194;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

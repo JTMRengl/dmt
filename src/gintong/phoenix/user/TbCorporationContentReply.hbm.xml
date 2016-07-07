@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbCorporationContentReply" table="tb_corporation_content_reply" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="orgId" type="java.lang.Long">
+            <column name="orgId">
+                <comment>&#187;&#250;&#185;&#185;id</comment>
+            </column>
+        </property>
+        <property name="contentId" type="java.lang.Long">
+            <column name="contentId">
+                <comment>&#192;&#180;&#183;&#195;&#200;&#203;id</comment>
+            </column>
+        </property>
+        <property name="ctime" type="string">
+            <column name="ctime" length="20">
+                <comment>&#192;&#180;&#183;&#195;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="hfrId" type="java.lang.Long">
+            <column name="hfrId">
+                <comment>&#187;&#216;&#184;&#180;&#200;&#203;</comment>
+            </column>
+        </property>
+        <property name="content" type="string">
+            <column name="content" length="65535">
+                <comment>&#187;&#216;&#184;&#180;&#196;&#218;&#200;&#221;</comment>
+            </column>
+        </property>
+        <property name="hfrm" type="string">
+            <column name="hfrm" length="50">
+                <comment>&#187;&#216;&#184;&#180;&#200;&#203;&#195;&#251;&#215;&#214;</comment>
+            </column>
+        </property>
+        <property name="level" type="java.lang.Integer">
+            <column name="level">
+                <comment>
+                &#187;&#216;&#184;&#180;&#188;&#182;&#177;&#240;0&#210;&#187;&#188;&#182;&#187;&#216;&#184;&#180;1&#182;&#254;&#188;&#182;&#187;&#216;&#184;&#180;</comment>
+            </column>
+        </property>
+        <property name="parentId" type="java.lang.Long">
+            <column name="parentId">
+                <comment>&#182;&#254;&#188;&#182;&#187;&#216;&#184;&#180;&#181;&#196;&#184;&#184;id &#210;&#187;&#188;&#182;&#196;&#172;&#200;&#207;&#206;&#170;0</comment>
+            </column>
+        </property>
+        <property name="titleId" type="java.lang.Long">
+            <column name="titleId">
+                <comment>&#178;&#250;&#198;&#183;&#177;&#234;&#204;&#226;ID</comment>
+            </column>
+        </property>
+        <property name="title" type="string">
+            <column name="title" length="50">
+                <comment>&#178;&#250;&#198;&#183;&#177;&#234;&#204;&#226;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

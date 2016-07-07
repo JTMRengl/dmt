@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbUserAll" table="tb_user_all" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="userId" type="long">
+            <column name="userId" not-null="true">
+                <comment>&#211;&#195;&#187;&#167;id</comment>
+            </column>
+        </property>
+        <property name="allId" type="long">
+            <column name="allId" not-null="true">
+                <comment>&#186;&#195;&#211;&#209;&#200;&#203;&#194;&#246;&#181;&#200;&#181;&#196;id</comment>
+            </column>
+        </property>
+        <property name="name" type="string">
+            <column name="name">
+                <comment>&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="img" type="string">
+            <column name="img">
+                <comment>&#205;&#183;&#207;&#241;</comment>
+            </column>
+        </property>
+        <property name="nameFirst" type="string">
+            <column name="nameFirst" length="1">
+                <comment>&#208;&#213;&#195;&#251;&#202;&#215;&#215;&#214;&#196;&#184;</comment>
+            </column>
+        </property>
+        <property name="nameIndex" type="string">
+            <column name="nameIndex" length="50">
+                <comment>&#188;&#242;&#198;&#180;&#210;&#244;</comment>
+            </column>
+        </property>
+        <property name="pinyin" type="string">
+            <column name="pinyin" length="100">
+                <comment>&#200;&#171;&#198;&#180;&#210;&#244;</comment>
+            </column>
+        </property>
+        <property name="type" type="java.lang.Integer">
+            <column name="type">
+                <comment>&#192;&#224;&#177;&#240;&#163;&#168;1-&#186;&#195;&#211;&#209;&#163;&#187;2-&#200;&#203;&#194;&#246;&#163;&#187;&#163;&#169;</comment>
+            </column>
+        </property>
+        <property name="comStr" type="string">
+            <column name="comStr" length="100">
+                <comment>&#188;&#242;&#181;&#165;&#195;&#232;&#202;&#246;&#163;&#186;&#185;&#171;&#203;&#190;&#195;&#251; + &#191;&#213;&#184;&#241; +
+                &#214;&#176;&#206;&#187;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

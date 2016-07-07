@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbRUserGroup" table="tb_r_user_group" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="groupId" type="java.lang.Long">
+            <column name="group_id">
+                <comment>&#215;&#233;ID</comment>
+            </column>
+        </property>
+        <property name="RUserId" type="java.lang.Long">
+            <column name="r_user_id">
+                <comment>&#186;&#195;&#211;&#209;&#185;&#216;&#207;&#181;&#177;&#237;ID</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

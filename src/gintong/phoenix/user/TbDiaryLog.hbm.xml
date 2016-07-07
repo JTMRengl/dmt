@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbDiaryLog" table="tb_diary_log" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="diaryId" type="java.lang.Long">
+            <column name="diary_id">
+                <comment>&#187;&#216;&#184;&#180;id</comment>
+            </column>
+        </property>
+        <property name="content" type="string">
+            <column name="content">
+                <comment>&#187;&#216;&#184;&#180;&#196;&#218;&#200;&#221;</comment>
+            </column>
+        </property>
+        <property name="type" type="java.lang.Integer">
+            <column name="type">
+                <comment>
+                &#178;&#217;&#215;&#247;&#192;&#224;&#208;&#205;:1.&#185;&#219;&#181;&#227;&#187;&#216;&#184;&#180;2.&#205;&#182;&#215;&#202;&#187;&#216;&#184;&#180;3.&#200;&#218;&#215;&#202;&#187;&#216;&#184;&#180;4.&#205;&#182;&#200;&#218;&#185;&#164;&#190;&#223;&#204;&#214;&#194;&#219;&#199;&#248;&#187;&#216;&#184;&#180;</comment>
+            </column>
+        </property>
+        <property name="result" type="string">
+            <column name="result">
+                <comment>&#180;&#166;&#192;&#237;&#189;&#225;&#185;&#251;</comment>
+            </column>
+        </property>
+        <property name="reason" type="string">
+            <column name="reason">
+                <comment>&#180;&#166;&#192;&#237;&#212;&#173;&#210;&#242;</comment>
+            </column>
+        </property>
+        <property name="ctime" type="string">
+            <column name="ctime" length="50">
+                <comment>&#178;&#217;&#215;&#247;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="creatorId" type="java.lang.Long">
+            <column name="creator_id">
+                <comment>&#178;&#217;&#215;&#247;&#200;&#203;id</comment>
+            </column>
+        </property>
+        <property name="creator" type="string">
+            <column name="creator">
+                <comment>&#178;&#217;&#215;&#247;&#200;&#203;&#208;&#213;&#195;&#251;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

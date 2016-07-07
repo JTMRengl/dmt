@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbEvaluateApprover" table="tb_evaluate_approver" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="ueid" type="java.lang.Long">
+            <column name="ueid">
+                <comment>&#211;&#195;&#187;&#167;&#198;&#192;&#188;&#219;id</comment>
+            </column>
+        </property>
+        <property name="userId" type="java.lang.Long">
+            <column name="userId">
+                <comment>&#212;&#222;&#205;&#172;&#213;&#223;id</comment>
+            </column>
+        </property>
+        <property name="agreeTime" type="timestamp">
+            <column name="agreeTime" length="19">
+                <comment>&#212;&#222;&#205;&#172;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

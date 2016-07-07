@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbUserJob" table="tb_user_job" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="beginTime" type="string">
+            <column name="beginTime">
+                <comment>&#191;&#170;&#202;&#188;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="department" type="string">
+            <column name="department">
+                <comment>&#181;&#165;&#206;&#187;&#178;&#191;&#195;&#197;</comment>
+            </column>
+        </property>
+        <property name="description" type="string">
+            <column name="description">
+                <comment>&#195;&#232;&#202;&#246;</comment>
+            </column>
+        </property>
+        <property name="endTime" type="string">
+            <column name="endTime">
+                <comment>&#189;&#225;&#202;&#248;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="inc" type="string">
+            <column name="inc">
+                <comment>&#181;&#165;&#206;&#187;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="industry" type="string">
+            <column name="industry">
+                <comment>&#181;&#165;&#206;&#187;&#208;&#208;&#210;&#181;</comment>
+            </column>
+        </property>
+        <property name="position" type="string">
+            <column name="position">
+                <comment>&#214;&#176;&#206;&#241;</comment>
+            </column>
+        </property>
+        <property name="userId" type="long">
+            <column name="userId" not-null="true">
+                <comment>&#211;&#195;&#187;&#167;Id</comment>
+            </column>
+        </property>
+        <property name="industryIds" type="string">
+            <column name="industryIds">
+                <comment>&#181;&#165;&#206;&#187;&#208;&#208;&#210;&#181;ids</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

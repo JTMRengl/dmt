@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbActivityManager" table="tb_activity_manager" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="activityId" type="java.lang.Integer">
+            <column name="activityId">
+                <comment>&#187;&#238;&#182;&#175;id</comment>
+            </column>
+        </property>
+        <property name="managerId" type="java.lang.Integer">
+            <column name="managerId">
+                <comment>&#185;&#220;&#192;&#237;&#212;&#177;id</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

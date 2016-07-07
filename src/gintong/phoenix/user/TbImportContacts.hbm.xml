@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbImportContacts" table="tb_import_contacts" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="1000">
+                <comment>&#177;&#187;&#209;&#251;&#199;&#235;&#200;&#203;&#208;&#213;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="email" type="string">
+            <column name="email">
+                <comment>&#177;&#187;&#209;&#251;&#199;&#235;&#200;&#203;&#181;&#196;&#181;&#216;&#214;&#183;&#163;&#186;email</comment>
+            </column>
+        </property>
+        <property name="userId" type="java.lang.Long">
+            <column name="user_id">
+                <comment>&#209;&#251;&#199;&#235;&#200;&#203;&#181;&#196;id</comment>
+            </column>
+        </property>
+        <property name="taskId" type="string">
+            <column name="task_id" length="128">
+                <comment>taskId</comment>
+            </column>
+        </property>
+        <property name="state" type="java.lang.Character">
+            <column name="state" length="1">
+                <comment>&#183;&#162;&#203;&#205;&#215;&#180;&#204;&#172; 0&#206;&#170;&#206;&#180;&#215;&#162;&#178;&#225; 1&#206;&#170;&#210;&#209;&#215;&#162;&#178;&#225;
+                2&#206;&#170;&#210;&#209;&#202;&#199;&#186;&#195;&#211;&#209;</comment>
+            </column>
+        </property>
+        <property name="createTime" type="timestamp">
+            <column name="create_time" length="19">
+                <comment>&#183;&#162;&#203;&#205;&#209;&#251;&#199;&#235;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="isSend" type="java.lang.Character">
+            <column name="is_send" length="1">
+                <comment>&#202;&#199;&#183;&#241;&#210;&#209;&#183;&#162;&#203;&#205; 1:&#202;&#199;,0:&#183;&#241;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

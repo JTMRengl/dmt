@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbActivity" table="tb_activity" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="title" type="string">
+            <column name="title" length="200">
+                <comment>&#187;&#238;&#182;&#175;&#214;&#247;&#204;&#226;</comment>
+            </column>
+        </property>
+        <property name="summary" type="string">
+            <column name="summary" length="1000">
+                <comment>&#187;&#238;&#182;&#175;&#189;&#233;&#201;&#220;</comment>
+            </column>
+        </property>
+        <property name="ctime" type="string">
+            <column name="ctime" length="30">
+                <comment>&#180;&#180;&#189;&#168;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status">
+                <comment>&#187;&#238;&#182;&#175;&#215;&#180;&#204;&#172;:0&#189;&#248;&#208;&#208; 1&#189;&#225;&#202;&#248;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

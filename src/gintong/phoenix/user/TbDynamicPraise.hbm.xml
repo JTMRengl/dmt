@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbDynamicPraise" table="tb_dynamic_praise" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="pid" type="long">
+            <column name="pId" not-null="true">
+                <comment>&#212;&#222;&#205;&#172;&#213;&#223;id</comment>
+            </column>
+        </property>
+        <property name="dynamicId" type="long">
+            <column name="dynamicId" not-null="true">
+                <comment>&#182;&#175;&#204;&#172;id</comment>
+            </column>
+        </property>
+        <property name="ptype" type="java.lang.Integer">
+            <column name="ptype">
+                <comment>&#212;&#222;&#205;&#172;&#213;&#223;&#192;&#224;&#208;&#205;(&#211;&#195;&#187;&#167;/&#215;&#233;&#214;&#175;)</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

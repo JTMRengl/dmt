@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbCompanyNreg" table="tb_company_nreg" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="key" type="string">
+            <column name="key" length="30">
+                <comment>&#185;&#164;&#201;&#204;&#215;&#220;&#178;&#233;&#209;&#175;KEY</comment>
+            </column>
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="128">
+                <comment>&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="corporationName" type="string">
+            <column name="corporation_name" length="500">
+                <comment>&#198;&#243;&#210;&#181;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="nregNo" type="string">
+            <column name="nreg_no" length="25">
+                <comment>&#198;&#243;&#210;&#181;&#215;&#162;&#178;&#225;&#186;&#197;</comment>
+            </column>
+        </property>
+        <property name="regSteate" type="string">
+            <column name="reg_steate" length="10">
+                <comment>&#198;&#243;&#210;&#181;&#215;&#180;&#204;&#172;</comment>
+            </column>
+        </property>
+        <property name="corporationEnterpriseType" type="string">
+            <column name="corporation_enterprise_type" length="30">
+                <comment>&#198;&#243;&#210;&#181;&#192;&#224;&#208;&#205;</comment>
+            </column>
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="256">
+                <comment>&#215;&#161;&#203;&#249;</comment>
+            </column>
+        </property>
+        <property name="paidupCapital" type="string">
+            <column name="paidup_capital" length="50">
+                <comment>&#202;&#181;&#202;&#213;&#215;&#202;&#177;&#190;</comment>
+            </column>
+        </property>
+        <property name="annualVerification" type="string">
+            <column name="annual_verification" length="15">
+                <comment>&#196;&#234;&#188;&#236;&#189;&#225;&#185;&#251;</comment>
+            </column>
+        </property>
+        <property name="establishmentTime" type="string">
+            <column name="establishment_time" length="20">
+                <comment>&#179;&#201;&#193;&#162;&#200;&#213;&#198;&#218;</comment>
+            </column>
+        </property>
+        <property name="approvalTime" type="string">
+            <column name="approval_time" length="20">
+                <comment>&#186;&#203;&#215;&#188;&#200;&#213;&#198;&#218;</comment>
+            </column>
+        </property>
+        <property name="legalRepresentative" type="string">
+            <column name="legal_representative" length="100">
+                <comment>&#183;&#168;&#182;&#168;&#180;&#250;&#177;&#237;&#200;&#203;</comment>
+            </column>
+        </property>
+        <property name="registeredCapital" type="string">
+            <column name="registered_capital" length="50">
+                <comment>&#215;&#162;&#178;&#225;&#215;&#202;&#177;&#190;</comment>
+            </column>
+        </property>
+        <property name="operatingPeriod" type="string">
+            <column name="operating_period" length="128">
+                <comment>&#190;&#173;&#211;&#170;&#198;&#218;&#207;&#222;</comment>
+            </column>
+        </property>
+        <property name="businessRangement" type="string">
+            <column name="business_rangement" length="2048">
+                <comment>&#190;&#173;&#211;&#170;&#183;&#182;&#206;&#167;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

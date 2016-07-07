@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbRDelete" table="tb_r_delete" catalog="phoenix_user" optimistic-lock="version">
+        <composite-id name="id" class="gintong.phoenix.user.TbRDeleteId">
+            <key-property name="userId" type="long">
+                <column name="user_id" />
+            </key-property>
+            <key-property name="targetId" type="long">
+                <column name="target_id" />
+            </key-property>
+            <key-property name="targetType" type="int">
+                <column name="target_type" />
+            </key-property>
+        </composite-id>
+        <property name="dtime" type="timestamp">
+            <column name="dtime" length="19">
+                <comment>&#215;&#238;&#186;&#243;&#210;&#187;&#180;&#206;&#201;&#190;&#179;&#253;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

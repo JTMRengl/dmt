@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbCorporationContent" table="tb_corporation_content" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="title" type="string">
+            <column name="title" length="200">
+                <comment>&#177;&#234;&#204;&#226;</comment>
+            </column>
+        </property>
+        <property name="content" type="string">
+            <column name="content">
+                <comment>&#196;&#218;&#200;&#221;</comment>
+            </column>
+        </property>
+        <property name="ctime" type="string">
+            <column name="ctime" length="20">
+                <comment>&#180;&#180;&#189;&#168;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="utime" type="string">
+            <column name="utime" length="20">
+                <comment>&#208;&#222;&#184;&#196;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="type" type="java.lang.Integer">
+            <column name="type">
+                <comment>0&#185;&#171;&#184;&#230; 1&#188;&#242;&#189;&#233; 2&#178;&#250;&#198;&#183;</comment>
+            </column>
+        </property>
+        <property name="categoryIds" type="string">
+            <column name="categoryIds" length="200">
+                <comment>&#178;&#250;&#198;&#183;&#192;&#224;&#208;&#205;,&#182;&#186;&#186;&#197;&#183;&#214;&#184;&#244;</comment>
+            </column>
+        </property>
+        <property name="categoryNames" type="string">
+            <column name="categoryNames" length="500">
+                <comment>&#178;&#250;&#198;&#183;&#192;&#224;&#208;&#205;&#195;&#251;&#179;&#198;,&#182;&#186;&#186;&#197;&#183;&#214;&#184;&#244;</comment>
+            </column>
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status">
+                <comment>&#198;&#244;&#211;&#195;&#215;&#180;&#204;&#172; 0 &#205;&#163;&#211;&#195; 1&#198;&#244;&#211;&#195;</comment>
+            </column>
+        </property>
+        <property name="orgId" type="java.lang.Long">
+            <column name="orgId" />
+        </property>
+    </class>
+</hibernate-mapping>

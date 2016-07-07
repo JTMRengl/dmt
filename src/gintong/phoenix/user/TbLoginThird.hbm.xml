@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbLoginThird" table="tb_login_third" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="openid" type="string">
+            <column name="openid" length="100">
+                <comment>openid</comment>
+            </column>
+        </property>
+        <property name="accesstoken" type="string">
+            <column name="accesstoken" length="100">
+                <comment>&#183;&#195;&#206;&#202;&#187;&#225;&#187;&#176;</comment>
+            </column>
+        </property>
+        <property name="expiresday" type="string">
+            <column name="expiresday" length="50">
+                <comment>&#185;&#253;&#198;&#218;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="loginType" type="java.lang.Integer">
+            <column name="loginType">
+                <comment>&#181;&#199;&#194;&#188;&#192;&#224;&#208;&#205;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

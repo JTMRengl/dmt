@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbCorporationType" table="tb_corporation_type" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="20">
+                <comment>&#192;&#224;&#208;&#205;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="type" type="string">
+            <column name="type" length="20">
+                <comment>&#192;&#224;&#208;&#205;&#215;&#233;</comment>
+            </column>
+        </property>
+        <property name="level" type="java.lang.Integer">
+            <column name="level">
+                <comment>&#188;&#182;&#177;&#240;</comment>
+            </column>
+        </property>
+        <property name="creator" type="java.lang.Long">
+            <column name="creator">
+                <comment>&#180;&#180;&#189;&#168;&#213;&#223;</comment>
+            </column>
+        </property>
+        <property name="ctime" type="string">
+            <column name="ctime" length="20">
+                <comment>&#180;&#180;&#189;&#168;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="useType" type="java.lang.Integer">
+            <column name="useType">
+                <comment>&#215;&#247;&#211;&#195;&#192;&#224;&#208;&#205; 0 &#207;&#181;&#205;&#179;&#192;&#224;&#208;&#205;&#163;&#172;1
+                &#215;&#212;&#182;&#168;&#210;&#229;&#192;&#224;&#208;&#205;</comment>
+            </column>
+        </property>
+        <property name="nameIndex" type="string">
+            <column name="nameIndex" length="50">
+                <comment>&#188;&#242;&#198;&#180;&#210;&#244;</comment>
+            </column>
+        </property>
+        <property name="nameIndexAll" type="string">
+            <column name="nameIndexAll" length="200">
+                <comment>&#200;&#171;&#198;&#180;&#210;&#244;</comment>
+            </column>
+        </property>
+        <property name="useCount" type="java.lang.Long">
+            <column name="useCount">
+                <comment>&#177;&#187;&#210;&#253;&#211;&#195;&#181;&#196;&#180;&#206;&#202;&#253;,&#200;&#200;&#182;&#200;</comment>
+            </column>
+        </property>
+        <property name="root" type="java.lang.Integer">
+            <column name="root">
+                <comment>1 &#205;&#182;&#215;&#202; 2 &#200;&#218;&#215;&#202; 3 &#215;&#168;&#188;&#210;</comment>
+            </column>
+        </property>
+        <property name="industry" type="java.lang.Integer">
+            <column name="industry">
+                <comment>0 &#178;&#187;&#202;&#199;&#208;&#208;&#210;&#181; 1 &#202;&#199;&#208;&#208;&#210;&#181;</comment>
+            </column>
+        </property>
+        <property name="number" type="string">
+            <column name="number" length="200">
+                <comment>&#177;&#224;&#186;&#197;&#163;&#172;1-2-3 &#180;&#248;&#184;&#184;id&#181;&#196;id</comment>
+            </column>
+        </property>
+        <property name="sysItemId" type="java.lang.Long">
+            <column name="sysItemId">
+                <comment>
+                &#215;&#212;&#182;&#168;&#210;&#229;&#183;&#214;&#180;&#202;&#182;&#212;&#211;&#166;&#181;&#196;&#207;&#181;&#205;&#179;&#183;&#214;&#206;&#246;id</comment>
+            </column>
+        </property>
+        <property name="sysItem" type="string">
+            <column name="sysItem" length="20">
+                <comment>&#215;&#212;&#182;&#168;&#210;&#229;&#183;&#214;&#180;&#202;&#182;&#212;&#211;&#166;&#181;&#196;&#207;&#181;&#205;&#179;&#183;&#214;&#180;&#202;</comment>
+            </column>
+        </property>
+        <property name="orderNo" type="java.lang.Integer">
+            <column name="orderNo">
+                <comment>&#213;&#185;&#202;&#190;&#203;&#179;&#208;&#242;&#186;&#197;</comment>
+            </column>
+        </property>
+        <property name="createBy" type="string">
+            <column name="createBy" length="50">
+                <comment>&#180;&#180;&#189;&#168;&#200;&#203;&#208;&#213;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="remark" type="string">
+            <column name="remark" length="500">
+                <comment>&#204;&#225;&#202;&#190;&#208;&#197;&#207;&#162;</comment>
+            </column>
+        </property>
+        <property name="hasChild" type="java.lang.Integer">
+            <column name="hasChild">
+                <comment>&#202;&#199;&#183;&#241;&#211;&#208;&#207;&#194;&#188;&#182;</comment>
+            </column>
+        </property>
+        <property name="mold" type="java.lang.Integer">
+            <column name="mold">
+                <comment>
+                &#187;&#250;&#185;&#185;&#192;&#224;&#208;&#205;&#163;&#172;1&#163;&#186;&#210;&#187;&#176;&#227;&#187;&#250;&#185;&#185;&#163;&#172;2&#163;&#186;&#189;&#240;&#200;&#218;&#187;&#250;&#185;&#185;&#163;&#172;3&#163;&#186;&#213;&#254;&#184;&#174;&#215;&#233;&#214;&#175;&#163;&#172;4&#163;&#186;&#214;&#208;&#189;&#233;&#187;&#250;&#185;&#185;&#163;&#172;5&#163;&#186;&#215;&#168;&#210;&#181;&#195;&#189;&#204;&#229;&#163;&#172;6&#163;&#186;&#201;&#204;&#187;&#225;&#188;&#176;&#208;&#208;&#210;&#181;&#208;&#173;&#187;&#225;&#163;&#172;7&#163;&#186;&#209;&#208;&#190;&#191;&#187;&#250;&#185;&#185;&#163;&#172;8&#163;&#186;&#183;&#199;&#211;&#175;&#192;&#251;&#215;&#233;&#214;&#175;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

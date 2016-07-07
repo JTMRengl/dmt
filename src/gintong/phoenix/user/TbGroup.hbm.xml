@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbGroup" table="tb_group" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="32">
+                <comment>&#215;&#233;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="userId" type="java.lang.Long">
+            <column name="user_id">
+                <comment>&#187;&#225;&#212;&#177;id</comment>
+            </column>
+        </property>
+        <property name="ctime" type="timestamp">
+            <column name="ctime" length="19">
+                <comment>&#180;&#180;&#189;&#168;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="utime" type="timestamp">
+            <column name="utime" length="19">
+                <comment>&#184;&#252;&#208;&#194;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="remark" type="string">
+            <column name="remark">
+                <comment>&#177;&#184;&#215;&#162;</comment>
+            </column>
+        </property>
+        <property name="virtual" type="java.lang.Integer">
+            <column name="virtual">
+                <comment>&#183;&#214;&#215;&#233;&#192;&#224;&#208;&#205; 0&#198;&#213;&#205;&#168;&#186;&#195;&#211;&#209; 1&#212;&#177;&#185;&#164;
+                2&#187;&#250;&#185;&#185;&#186;&#195;&#211;&#209;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

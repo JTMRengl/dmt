@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbDiaryRelation" table="tb_diary_relation" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="diaryId" type="java.lang.Long">
+            <column name="diaryId">
+                <comment>&#185;&#219;&#181;&#227;id</comment>
+            </column>
+        </property>
+        <property name="fbrId" type="java.lang.Long">
+            <column name="fbrId">
+                <comment>&#183;&#162;&#178;&#188;&#200;&#203;Id</comment>
+            </column>
+        </property>
+        <property name="replyId1" type="java.lang.Long">
+            <column name="replyId1">
+                <comment>&#210;&#187;&#188;&#182;&#198;&#192;&#194;&#219;id</comment>
+            </column>
+        </property>
+        <property name="replyId2" type="java.lang.Long">
+            <column name="replyId2">
+                <comment>&#182;&#254;&#188;&#182;&#198;&#192;&#194;&#219;id</comment>
+            </column>
+        </property>
+        <property name="parentId" type="java.lang.Long">
+            <column name="parentId">
+                <comment>&#198;&#192;&#194;&#219;&#181;&#196;&#184;&#184;id&#163;&#172;&#188;&#217;&#200;&#231;&#202;&#199;&#185;&#219;&#181;&#227;&#212;&#242;&#180;&#230;0
+                &#188;&#217;&#200;&#231;&#202;&#199;&#210;&#187;&#188;&#182;&#198;&#192;&#194;&#219;&#212;&#242;&#180;&#230;&#185;&#219;&#181;&#227;id
+                &#188;&#217;&#200;&#231;&#202;&#199;&#182;&#254;&#188;&#182;&#198;&#192;&#194;&#219;&#212;&#242;&#180;&#230;&#210;&#187;&#188;&#182;&#198;&#192;&#194;&#219;
+                &#188;&#211;&#200;&#235;&#202;&#199;&#182;&#254;&#188;&#182;&#198;&#192;&#194;&#219;&#181;&#196;&#198;&#192;&#194;&#219;&#212;&#242;&#180;&#230;&#182;&#254;&#188;&#182;&#198;&#192;&#194;&#219;id</comment>
+            </column>
+        </property>
+        <property name="userOneId" type="java.lang.Long">
+            <column name="userOneId">
+                <comment>&#178;&#217;&#215;&#247;&#200;&#203;id</comment>
+            </column>
+        </property>
+        <property name="userOneName" type="string">
+            <column name="userOneName" length="20">
+                <comment>&#178;&#217;&#215;&#247;&#200;&#203;&#208;&#213;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="userTwoId" type="java.lang.Long">
+            <column name="userTwoId">
+                <comment>&#177;&#187;@&#213;&#223;&#181;&#196;id</comment>
+            </column>
+        </property>
+        <property name="userTwoName" type="string">
+            <column name="userTwoName" length="50">
+                <comment>&#177;&#187;@&#213;&#223;&#181;&#196;&#208;&#213;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="ctime" type="string">
+            <column name="ctime" length="50">
+                <comment>&#180;&#180;&#189;&#168;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="type" type="java.lang.Integer">
+            <column name="type">
+                <comment>@&#192;&#224;&#208;&#205; 0 &#183;&#162;&#178;&#188;&#185;&#219;&#181;&#227;&#202;&#177;
+                1&#183;&#162;&#178;&#188;&#210;&#187;&#188;&#182;&#198;&#192;&#194;&#219; 2&#187;&#216;&#184;&#180;&#210;&#187;&#188;&#182;&#198;&#192;&#194;&#219;
+                3&#187;&#216;&#184;&#180;&#182;&#254;&#188;&#182;&#198;&#192;&#194;&#219;</comment>
+            </column>
+        </property>
+        <property name="userStatus" type="java.lang.Integer">
+            <column name="userStatus">
+                <comment>&#196;&#172;&#200;&#207;0&#206;&#180;&#182;&#193;,1&#210;&#209;&#182;&#193;</comment>
+            </column>
+        </property>
+        <property name="content" type="string">
+            <column name="content">
+                <comment>&#206;&#222;&#184;&#241;&#202;&#189;&#198;&#192;&#194;&#219;&#196;&#218;&#200;&#221;</comment>
+            </column>
+        </property>
+        <property name="delstatus" type="java.lang.Integer">
+            <column name="delstatus">
+                <comment>&#201;&#190;&#179;&#253;&#215;&#180;&#204;&#172; 0&#206;&#180;&#201;&#190;&#179;&#253; 1&#210;&#209;&#201;&#190;&#179;&#253;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

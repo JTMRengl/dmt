@@ -1,0 +1,201 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbCorporation" table="tb_corporation" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="200">
+                <comment>&#185;&#171;&#203;&#190;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="url" type="string">
+            <column name="url" length="500">
+                <comment>&#185;&#171;&#203;&#190; &#210;&#181;&#206;&#241;&#207;&#181;&#205;&#179;&#181;&#216;&#214;&#183;</comment>
+            </column>
+        </property>
+        <property name="parentId" type="java.lang.Long">
+            <column name="parentId">
+                <comment>&#196;&#184;&#185;&#171;&#203;&#190;id</comment>
+            </column>
+        </property>
+        <property name="ctime" type="timestamp">
+            <column name="ctime" length="19">
+                <comment>&#180;&#180;&#189;&#168;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="utime" type="timestamp">
+            <column name="utime" length="19">
+                <comment>&#208;&#222;&#184;&#196;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="number" type="string">
+            <column name="number" length="50">
+                <comment>
+                &#185;&#171;&#203;&#190;&#202;&#182;&#177;&#240;&#177;&#234;&#214;&#190;&#163;&#172;&#191;&#201;&#181;&#177;&#215;&#247;&#200;&#207;&#214;&#164;&#195;&#220;&#194;&#235;&#202;&#185;&#211;&#195;</comment>
+            </column>
+        </property>
+        <property name="shortName" type="string">
+            <column name="shortName" length="50">
+                <comment>&#187;&#250;&#185;&#185;&#185;&#171;&#203;&#190;&#188;&#242;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="license" type="string">
+            <column name="license" length="30">
+                <comment>&#211;&#170;&#210;&#181;&#214;&#180;&#213;&#213;&#215;&#162;&#178;&#225;&#186;&#197;</comment>
+            </column>
+        </property>
+        <property name="licenseCountry" type="string">
+            <column name="licenseCountry" length="50">
+                <comment>&#211;&#170;&#210;&#181;&#214;&#180;&#213;&#213;&#203;&#249;&#212;&#218;&#181;&#216;&#185;&#250;&#188;&#210;</comment>
+            </column>
+        </property>
+        <property name="licenseProvince" type="string">
+            <column name="licenseProvince" length="50">
+                <comment>&#211;&#170;&#210;&#181;&#214;&#180;&#213;&#213;&#203;&#249;&#212;&#218;&#181;&#216;&#202;&#161;</comment>
+            </column>
+        </property>
+        <property name="licenseCity" type="string">
+            <column name="licenseCity" length="50">
+                <comment>&#211;&#170;&#210;&#181;&#214;&#180;&#213;&#213;&#203;&#249;&#212;&#218;&#181;&#216;&#202;&#208;</comment>
+            </column>
+        </property>
+        <property name="licenseTown" type="string">
+            <column name="licenseTown" length="50">
+                <comment>&#211;&#170;&#210;&#181;&#214;&#180;&#213;&#213;&#203;&#249;&#212;&#218;&#181;&#216;&#207;&#216;</comment>
+            </column>
+        </property>
+        <property name="orgCode" type="string">
+            <column name="orgCode" length="30">
+                <comment>&#215;&#233;&#214;&#175;&#187;&#250;&#185;&#185;&#180;&#250;&#194;&#235;</comment>
+            </column>
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="500">
+                <comment>&#187;&#250;&#185;&#185;&#181;&#216;&#214;&#183;</comment>
+            </column>
+        </property>
+        <property name="areaCode" type="string">
+            <column name="areaCode" length="10">
+                <comment>&#187;&#250;&#185;&#185;&#181;&#231;&#187;&#176;&#199;&#248;&#186;&#197;</comment>
+            </column>
+        </property>
+        <property name="phone" type="string">
+            <column name="phone" length="20">
+                <comment>&#187;&#250;&#185;&#185;&#181;&#231;&#187;&#176;</comment>
+            </column>
+        </property>
+        <property name="extension" type="string">
+            <column name="extension" length="10">
+                <comment>&#187;&#250;&#185;&#185;&#181;&#231;&#187;&#176;&#183;&#214;&#187;&#250;&#186;&#197;</comment>
+            </column>
+        </property>
+        <property name="bank" type="string">
+            <column name="bank" length="50">
+                <comment>&#191;&#170;&#187;&#167;&#210;&#248;&#208;&#208;</comment>
+            </column>
+        </property>
+        <property name="account" type="string">
+            <column name="account" length="50">
+                <comment>&#191;&#170;&#187;&#167;&#210;&#248;&#208;&#208;&#213;&#202;&#186;&#197;</comment>
+            </column>
+        </property>
+        <property name="licensePic" type="string">
+            <column name="licensePic">
+                <comment>&#211;&#170;&#210;&#181;&#214;&#180;&#213;&#213;&#184;&#177;&#177;&#190;</comment>
+            </column>
+        </property>
+        <property name="linkName" type="string">
+            <column name="linkName" length="20">
+                <comment>&#193;&#170;&#207;&#181;&#200;&#203;&#208;&#213;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="linkGender" type="string">
+            <column name="linkGender" length="10">
+                <comment>&#193;&#170;&#207;&#181;&#200;&#203;&#208;&#212;&#177;&#240;</comment>
+            </column>
+        </property>
+        <property name="linkMobile" type="string">
+            <column name="linkMobile" length="20">
+                <comment>&#193;&#170;&#207;&#181;&#200;&#203;&#202;&#214;&#187;&#250;</comment>
+            </column>
+        </property>
+        <property name="linkIdcard" type="string">
+            <column name="linkIdcard" length="50">
+                <comment>&#193;&#170;&#207;&#181;&#200;&#203;&#201;&#237;&#183;&#221;&#214;&#164;&#186;&#197;</comment>
+            </column>
+        </property>
+        <property name="linkIdPic" type="string">
+            <column name="linkIdPic">
+                <comment>&#201;&#237;&#183;&#221;&#214;&#164;&#201;&#168;&#195;&#232;&#188;&#254;</comment>
+            </column>
+        </property>
+        <property name="legalName" type="string">
+            <column name="legalName" length="20">
+                <comment>&#187;&#250;&#185;&#185;&#183;&#168;&#200;&#203;&#208;&#213;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="legalIdcard" type="string">
+            <column name="legalIdcard" length="50">
+                <comment>&#187;&#250;&#185;&#185;&#183;&#168;&#200;&#203;&#201;&#237;&#183;&#221;&#214;&#164;&#186;&#197;</comment>
+            </column>
+        </property>
+        <property name="legalMobile" type="string">
+            <column name="legalMobile" length="20">
+                <comment>&#187;&#250;&#185;&#185;&#183;&#168;&#200;&#203;&#181;&#196;&#202;&#214;&#187;&#250;</comment>
+            </column>
+        </property>
+        <property name="legalIdPic" type="string">
+            <column name="legalIdPic">
+                <comment>&#183;&#168;&#200;&#203;&#201;&#237;&#183;&#221;&#214;&#164;&#201;&#168;&#195;&#232;&#188;&#254;</comment>
+            </column>
+        </property>
+        <property name="belong" type="java.lang.Long">
+            <column name="belong">
+                <comment>&#203;&#249;&#202;&#244;&#200;&#203;</comment>
+            </column>
+        </property>
+        <property name="typeId" type="java.lang.Long">
+            <column name="typeId">
+                <comment>&#187;&#250;&#185;&#185;&#208;&#206;&#204;&#172;Id</comment>
+            </column>
+        </property>
+        <property name="type" type="string">
+            <column name="type" length="50">
+                <comment>&#187;&#250;&#185;&#185;&#208;&#206;&#204;&#172;</comment>
+            </column>
+        </property>
+        <property name="industryIds" type="string">
+            <column name="industryIds" length="500">
+                <comment>&#208;&#208;&#210;&#181;ids</comment>
+            </column>
+        </property>
+        <property name="industryNames" type="string">
+            <column name="industryNames" length="500">
+                <comment>&#208;&#208;&#210;&#181;names</comment>
+            </column>
+        </property>
+        <property name="auth" type="java.lang.Byte">
+            <column name="auth">
+                <comment>-1 &#206;&#180;&#189;&#248;&#208;&#208;&#181;&#218;&#210;&#187;&#180;&#206;&#200;&#207;&#214;&#164;
+                0&#181;&#218;&#210;&#187;&#180;&#206;&#200;&#207;&#214;&#164;&#189;&#248;&#208;&#208;&#214;&#208;
+                1&#181;&#218;&#210;&#187;&#180;&#206;&#200;&#207;&#214;&#164;&#202;&#167;&#176;&#220;
+                2&#181;&#218;&#210;&#187;&#180;&#206;&#200;&#207;&#214;&#164;&#179;&#201;&#185;&#166;</comment>
+            </column>
+        </property>
+        <property name="accredit" type="string">
+            <column name="accredit">
+                <comment>&#202;&#218;&#200;&#168;&#208;&#173;&#210;&#233;&#202;&#233;taskid</comment>
+            </column>
+        </property>
+        <property name="addition" type="string">
+            <column name="addition" length="200">
+                <comment>&#205;&#248;&#214;&#183;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

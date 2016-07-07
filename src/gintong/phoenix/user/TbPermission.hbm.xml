@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbPermission" table="tb_permission" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="50">
+                <comment>&#178;&#217;&#215;&#247;&#200;&#168;&#207;&#222;&#207;&#212;&#202;&#190;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="number" type="string">
+            <column name="number" length="20" unique="true">
+                <comment>
+                &#178;&#217;&#215;&#247;&#200;&#168;&#207;&#222;&#181;&#196;&#206;&#168;&#210;&#187;&#177;&#234;&#214;&#190;&#183;&#251;&#163;&#172;&#180;&#250;&#194;&#235;&#214;&#208;&#184;&#249;&#190;&#221;&#180;&#203;&#202;&#244;&#208;&#212;&#189;&#248;&#208;&#208;&#197;&#208;&#182;&#207;&#163;&#172;&#192;&#253;&#200;&#231;
+                user:resetpass</comment>
+            </column>
+        </property>
+        <property name="remark" type="string">
+            <column name="remark" length="50">
+                <comment>&#177;&#184;&#215;&#162;</comment>
+            </column>
+        </property>
+        <property name="parentId" type="java.lang.Long">
+            <column name="parentId">
+                <comment>&#184;&#184;id&#163;&#172;&#211;&#195;&#211;&#218;&#213;&#185;&#202;&#190;&#178;&#227;&#188;&#182;&#189;&#225;&#185;&#185;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

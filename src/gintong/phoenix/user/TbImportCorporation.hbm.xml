@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbImportCorporation" table="tb_import_corporation" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="number" type="java.lang.Long">
+            <column name="number">
+                <comment>&#177;&#224;&#186;&#197;</comment>
+            </column>
+        </property>
+        <property name="name" type="string">
+            <column name="name">
+                <comment>&#187;&#250;&#185;&#185;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="belongId" type="java.lang.Long">
+            <column name="belongId">
+                <comment>&#203;&#249;&#202;&#244;&#200;&#203;id</comment>
+            </column>
+        </property>
+        <property name="belong" type="string">
+            <column name="belong">
+                <comment>&#203;&#249;&#202;&#244;&#200;&#203;</comment>
+            </column>
+        </property>
+        <property name="mobile" type="string">
+            <column name="mobile">
+                <comment>&#180;&#166;&#192;&#237;&#189;&#225;&#185;&#251;</comment>
+            </column>
+        </property>
+        <property name="email" type="string">
+            <column name="email">
+                <comment>&#180;&#166;&#192;&#237;&#189;&#225;&#185;&#251;</comment>
+            </column>
+        </property>
+        <property name="typeId" type="java.lang.Long">
+            <column name="typeId">
+                <comment>&#187;&#250;&#185;&#185;&#208;&#206;&#204;&#172;id</comment>
+            </column>
+        </property>
+        <property name="type" type="string">
+            <column name="type">
+                <comment>&#187;&#250;&#185;&#185;&#208;&#206;&#204;&#172;</comment>
+            </column>
+        </property>
+        <property name="status" type="java.lang.Byte">
+            <column name="status">
+                <comment>&#215;&#180;&#204;&#172; 0&#181;&#188;&#200;&#235;&#214;&#208; 1&#181;&#188;&#200;&#235;&#189;&#225;&#202;&#248;</comment>
+            </column>
+        </property>
+        <property name="infoId" type="java.lang.Long">
+            <column name="infoId">
+                <comment>&#197;&#250;&#180;&#206;Id</comment>
+            </column>
+        </property>
+        <property name="result" type="string">
+            <column name="result">
+                <comment>&#202;&#167;&#176;&#220;&#212;&#173;&#210;&#242;</comment>
+            </column>
+        </property>
+        <property name="ctime" type="string">
+            <column name="ctime" length="50">
+                <comment>&#181;&#188;&#200;&#235;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="creator" type="string">
+            <column name="creator" length="500">
+                <comment>&#178;&#217;&#215;&#247;&#200;&#203;&#208;&#213;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="creatorId" type="java.lang.Long">
+            <column name="creatorId">
+                <comment>&#178;&#217;&#215;&#247;&#200;&#203;id</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

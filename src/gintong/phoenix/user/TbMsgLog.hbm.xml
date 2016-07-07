@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbMsgLog" table="tb_msg_log" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="msgType" type="java.lang.Integer">
+            <column name="msg_type">
+                <comment>&#207;&#251;&#207;&#162;&#192;&#224;&#208;&#205; 1:&#188;&#211;&#186;&#195;&#211;&#209; 2 &#210;&#253;&#188;&#246;</comment>
+            </column>
+        </property>
+        <property name="userId" type="java.lang.Long">
+            <column name="user_id">
+                <comment>&#187;&#225;&#212;&#177;ID</comment>
+            </column>
+        </property>
+        <property name="userName" type="string">
+            <column name="user_name" length="20">
+                <comment>&#187;&#225;&#212;&#177;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="userOneId" type="java.lang.Long">
+            <column name="user_one_id">
+                <comment>&#187;&#225;&#212;&#177;A</comment>
+            </column>
+        </property>
+        <property name="userOne" type="string">
+            <column name="user_one" length="20">
+                <comment>&#187;&#225;&#212;&#177;A&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="userTwoId" type="java.lang.Long">
+            <column name="user_two_id">
+                <comment>&#187;&#225;&#212;&#177;B</comment>
+            </column>
+        </property>
+        <property name="userTwo" type="string">
+            <column name="user_two" length="20">
+                <comment>&#187;&#225;&#212;&#177;B&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="incId" type="java.lang.Long">
+            <column name="inc_id">
+                <comment>&#185;&#171;&#203;&#190;Id</comment>
+            </column>
+        </property>
+        <property name="incName" type="string">
+            <column name="inc_name">
+                <comment>&#185;&#171;&#203;&#190;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="requestFlag" type="string">
+            <column name="request_flag" length="200">
+                <comment>&#205;&#172;&#210;&#187;&#199;&#235;&#199;&#243;&#177;&#234;&#202;&#182;</comment>
+            </column>
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status">
+                <comment>&#215;&#180;&#204;&#172; 0&#206;&#180;&#180;&#166;&#192;&#237; -1 &#186;&#246;&#194;&#212; 1&#205;&#172;&#210;&#226;</comment>
+            </column>
+        </property>
+        <property name="ctime" type="timestamp">
+            <column name="ctime" length="19">
+                <comment>&#180;&#180;&#189;&#168;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="utime" type="timestamp">
+            <column name="utime" length="19">
+                <comment>&#184;&#252;&#208;&#194;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="remark" type="string">
+            <column name="remark">
+                <comment>&#177;&#184;&#215;&#162;</comment>
+            </column>
+        </property>
+        <property name="validate" type="string">
+            <column name="validate">
+                <comment>&#204;&#237;&#188;&#211;&#186;&#195;&#211;&#209;&#181;&#196;&#202;&#177;&#186;&#242;&#181;&#196;&#209;&#233;&#214;&#164;&#187;&#176;&#211;&#239;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

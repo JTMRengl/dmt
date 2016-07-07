@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-7 15:43:21 by Hibernate Tools 5.1.0.Beta1 -->
+<hibernate-mapping>
+    <class name="gintong.phoenix.user.TbCorporationConfig" table="tb_corporation_config" catalog="phoenix_user" optimistic-lock="version">
+        <id name="id" type="long">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="license" type="java.lang.Integer">
+            <column name="license">
+                <comment>&#211;&#170;&#210;&#181;&#214;&#180;&#213;&#213;&#215;&#162;&#178;&#225;&#186;&#197;</comment>
+            </column>
+        </property>
+        <property name="licenseProvince" type="java.lang.Integer">
+            <column name="licenseProvince">
+                <comment>&#211;&#170;&#210;&#181;&#214;&#180;&#213;&#213;&#203;&#249;&#212;&#218;&#181;&#216;</comment>
+            </column>
+        </property>
+        <property name="orgCode" type="java.lang.Integer">
+            <column name="orgCode">
+                <comment>&#215;&#233;&#214;&#175;&#187;&#250;&#185;&#185;&#180;&#250;&#194;&#235;</comment>
+            </column>
+        </property>
+        <property name="address" type="java.lang.Integer">
+            <column name="address">
+                <comment>&#187;&#250;&#185;&#185;&#181;&#216;&#214;&#183;</comment>
+            </column>
+        </property>
+        <property name="phone" type="java.lang.Integer">
+            <column name="phone">
+                <comment>&#187;&#250;&#185;&#185;&#181;&#231;&#187;&#176;</comment>
+            </column>
+        </property>
+        <property name="bank" type="java.lang.Integer">
+            <column name="bank">
+                <comment>&#191;&#170;&#187;&#167;&#210;&#248;&#208;&#208;</comment>
+            </column>
+        </property>
+        <property name="account" type="java.lang.Integer">
+            <column name="account">
+                <comment>&#191;&#170;&#187;&#167;&#210;&#248;&#208;&#208;&#213;&#202;&#186;&#197;</comment>
+            </column>
+        </property>
+        <property name="licensePic" type="java.lang.Integer">
+            <column name="licensePic">
+                <comment>&#211;&#170;&#210;&#181;&#214;&#180;&#213;&#213;&#184;&#177;&#177;&#190;</comment>
+            </column>
+        </property>
+        <property name="legalName" type="java.lang.Integer">
+            <column name="legalName">
+                <comment>&#187;&#250;&#185;&#185;&#183;&#168;&#200;&#203;&#208;&#213;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="legalIdcard" type="java.lang.Integer">
+            <column name="legalIdcard">
+                <comment>&#187;&#250;&#185;&#185;&#183;&#168;&#200;&#203;&#201;&#237;&#183;&#221;&#214;&#164;&#186;&#197;</comment>
+            </column>
+        </property>
+        <property name="legalMobile" type="java.lang.Integer">
+            <column name="legalMobile">
+                <comment>&#187;&#250;&#185;&#185;&#183;&#168;&#200;&#203;&#181;&#196;&#202;&#214;&#187;&#250;</comment>
+            </column>
+        </property>
+        <property name="legalIdPic" type="java.lang.Integer">
+            <column name="legalIdPic">
+                <comment>&#183;&#168;&#200;&#203;&#201;&#237;&#183;&#221;&#214;&#164;&#201;&#168;&#195;&#232;&#188;&#254;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>
