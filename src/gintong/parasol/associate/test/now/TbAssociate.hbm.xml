@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 2016-5-26 15:04:05 by Hibernate Tools 4.3.1.Final -->
 <hibernate-mapping>
-    <class name="gintong.parasol.associate.test.now.TbAssociate" table="tb_associate" catalog="parasol_associate_test" optimistic-lock="version">
+    <class name="gintong.parasol.associate.test.now.TbAssociate" table="tb_associate"  optimistic-lock="version">
         <id name="id" type="java.lang.Long">
             <column name="id" />
             <generator class="identity" />

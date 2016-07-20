@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 2016-5-25 14:34:27 by Hibernate Tools 4.3.1.Final -->
 <hibernate-mapping>
-    <class name="gintong.tagsTest.now.vo.TbTag" table="tb_tag" catalog="parasol_tags_test" optimistic-lock="version">
+    <class name="gintong.tagsTest.now.vo.TbTag" table="tb_tag" optimistic-lock="version">
         <id name="id" type="long">
             <column name="id" />
             <generator class="assigned" />

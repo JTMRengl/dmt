@@ -6,7 +6,10 @@
 package dmt;
 
 import com.mongodb.BasicDBObject;
+import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
+import com.mongodb.MongoOptions;
+import com.mongodb.ServerAddress;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
@@ -37,6 +40,7 @@ import java.rmi.RemoteException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -157,8 +161,10 @@ public class DMT extends JFrame {
         button7.addActionListener((ActionEvent arg0) -> {
             int n = 0;
             //mongodb-old
-            MongoClient mongoClient = new MongoClient("192.168.101.131", 27017);
-            MongoDatabase mongoDatabase = mongoClient.getDatabase("demand-test");
+//            MongoClient mongoClient = new MongoClient("192.168.101.131", 27017);
+//            MongoDatabase mongoDatabase = mongoClient.getDatabase("demand-test-2");
+            MongoClient mongoClient = new MongoClient("192.168.120.133", 27017);
+            MongoDatabase mongoDatabase = mongoClient.getDatabase("demand-new");            
             MongoCollection<Document> collection = mongoDatabase.getCollection("Demand");
 
             //写入mysql-标签数据
@@ -168,7 +174,7 @@ public class DMT extends JFrame {
             
             //mysql-用户数据
             Configuration cfguser = new Configuration();
-            cfgnew.configure("phoenix_user_hibernate.cfg.xml");
+            cfguser.configure("phoenix_user_hibernate.cfg.xml");
             sessionFactoryuser = cfguser.buildSessionFactory();            
 
             //省id
@@ -185,7 +191,7 @@ public class DMT extends JFrame {
                     n++;
                     Document document = mongoCursor.next();
                     System.out.println("当前数据 _id = " + document.get("_id"));
-                    
+                    Document newDocument = new Document();
                     String[] areas = null;
                     if (document.get("area") != null) {
                         areas = document.get("area").toString().split("-");
@@ -203,13 +209,13 @@ public class DMT extends JFrame {
 
                                 if (i == 1) {//省
                                     provinceId = getProvinceId(0, areas[i]);
-                                    System.out.println(areas[i] + "i = " + i + " 省id = " + provinceId);
+                                    //System.out.println(areas[i] + "i = " + i + " 省id = " + provinceId);
                                     provinceDoc.append("_id", provinceId).append("name", areas[i]);
                                     area.append("province", provinceDoc);
                                 }
                                 if (i == 2) {//市
                                     cityId = getCityIdId(provinceId, areas[i]);
-                                    System.out.println(areas[i] + "i = " + i + " 市id = " + cityId);
+                                    //System.out.println(areas[i] + "i = " + i + " 市id = " + cityId);
                                     if (cityId != 0) {
                                         cityDoc.append("_id", cityId).append("name", areas[i]);
                                         area.append("city", cityDoc);
@@ -219,7 +225,7 @@ public class DMT extends JFrame {
                                 }
                                 if (i == 3) {//区
                                     districtId = getCityIdId(cityId, areas[i]);
-                                    System.out.println(areas[i] + "i = " + i + " 区id = " + districtId);
+                                   // System.out.println(areas[i] + "i = " + i + " 区id = " + districtId);
                                     if (districtId != 0) {
                                         districtDoc.append("_id", districtId).append("name", areas[i]);
                                         area.append("district", districtDoc);
@@ -230,10 +236,16 @@ public class DMT extends JFrame {
                                 }
                             }
 
-                            Document newDocument = new Document();
                             newDocument.append("area", area);
                             //修改ownerIsVirtual,1是组织，2是用户
 
+                            //collection.findOneAndUpdate(document, new Document("$set", newDocument));
+                        } else {
+                            //System.out.println("area is null = " + areas[0]);
+                        }
+                                               
+                    }
+                    
                             String ownerId = document.get("ownerId").toString();
                             Boolean bb = getVirtual(Long.parseLong(ownerId));
                             if(bb){
@@ -242,13 +254,7 @@ public class DMT extends JFrame {
                                 newDocument.append("ownerIsVirtual", 2);
                             }  
 
-                            collection.updateOne(document, new Document("$set", newDocument));
-
-                            //collection.findOneAndUpdate(document, new Document("$set", newDocument));
-                        } else {
-                            System.out.println("area is null = " + areas[0]);
-                        }
-                    }
+                            collection.updateOne(document, new Document("$set", newDocument));                    
                 }
             } catch (Exception ex) {
                 Logger.getLogger(DMT.class.getName()).log(Level.SEVERE, null, ex);
@@ -281,6 +287,11 @@ public class DMT extends JFrame {
                             cfgnew.configure("hibernate-parasol_tags_test.cfg.xml");
                             sessionFactorynew = cfgnew.buildSessionFactory();  
                             
+                            MongoClient mongoClient = new MongoClient("192.168.120.133", 27017);
+                            MongoDatabase mongoDatabase = mongoClient.getDatabase("demand-new");
+                            MongoCollection<Document> collection = mongoDatabase.getCollection("Demand");   
+                            MongoCollection<Document> demandlog = mongoDatabase.getCollection("Demandlog");                            
+                            
                             
                             //第一部分
                             List<TbUserTag> tbUserTagList = tbUserTagList();                            
@@ -300,7 +311,7 @@ public class DMT extends JFrame {
                                    //固定字段，需求为1
                                    tbTag.setAppId(1);
                                    //固定字段，需求为4
-                                   tbTag.setTagType(4);
+                                   tbTag.setTagType(7);
                                    tbTag.setTagName(tbUserTag.getTag());
 
                                    session.save(tbTag);
@@ -310,6 +321,11 @@ public class DMT extends JFrame {
                                    i++;
                                    map.put(tbUserTag.getId() + "", tbTag.getId() + "");
                                    System.out.println("旧数据的id:" + tbUserTag.getId() + "新数据的id:" + tbTag.getId());
+                                   
+                                                                       //日志数据写入
+                                    Document logDocument = new Document("oldId",tbTag.getId()).
+                                            append("type","tb_tag");
+                                    demandlog.insertOne(logDocument);
                                 }catch(Exception ex){
                                     textArea.append( "id" + tbUserTag.getId() + " 发生异常,\n");
                                     ex.printStackTrace();
@@ -324,9 +340,9 @@ public class DMT extends JFrame {
                           
                             //第二部分
                             //mongodb
-                            MongoClient mongoClient = new MongoClient("192.168.101.131", 27017);
-                            MongoDatabase mongoDatabase = mongoClient.getDatabase("demand-test");
-                            MongoCollection<Document> collection = mongoDatabase.getCollection("Demand");                              
+//                            MongoClient mongoClient = new MongoClient("192.168.101.131", 27017);
+//                            MongoDatabase mongoDatabase = mongoClient.getDatabase("demand-test");
+//                            MongoCollection<Document> collection = mongoDatabase.getCollection("Demand");                              
                             
                             List<TbDemandTag> tbDemandTagList = tbDemandTagList();
                             int k = 0;
@@ -339,12 +355,12 @@ public class DMT extends JFrame {
                                     continue;
                                 }
                                 
-                                Session session = sessionFactorynew.openSession();
+                                Session session2 = sessionFactorynew.openSession();
                                 try{
 
                                    //标签数据写入    
                                    TbTagSource tbTagSource = new TbTagSource();
-                                   Transaction tx = session.beginTransaction();
+                                   Transaction tx = session2.beginTransaction();
 
                                    tbTagSource.setId(k+1);
                                    
@@ -367,7 +383,7 @@ public class DMT extends JFrame {
                                    
                                    tbTagSource.setSourceId(tbDemandTag.getDemandId());
                                    //固定字段，需求为4
-                                   tbTagSource.setSourceType(4);
+                                   tbTagSource.setSourceType(7);
                                    
                                    //sourceTitle,从mongo的demand中根基demand_id查询demandTitle
                                    tbTagSource.setSourceTitle(document.get("title") + "");                                                             
@@ -380,10 +396,14 @@ public class DMT extends JFrame {
                                    tbTagSource.setCreateAt(date.getTime());
 
                                    if(tbTagSource.getTagId() != 0){
-                                        session.save(tbTagSource);
+                                        session2.save(tbTagSource);
                                         tx.commit();  
                                         k++;
                                         System.out.println("tbTagSource表成功入库:" + k + " 条");
+                                                                            //日志数据写入
+                                         Document logDocument = new Document("oldId",tbTagSource.getId()).
+                                                 append("type","tb_tag_source");
+                                         demandlog.insertOne(logDocument);                                        
                                    }else{
                                         continue;
                                    }
@@ -422,7 +442,12 @@ public class DMT extends JFrame {
                             //写入mysql-目录数据
                             Configuration cfgnew = new Configuration();
                             cfgnew.configure("hibernate-parasol_tags_test.cfg.xml");
-                            sessionFactorynew = cfgnew.buildSessionFactory();     
+                            sessionFactorynew = cfgnew.buildSessionFactory();  
+                            
+                            MongoClient mongoClient = new MongoClient("192.168.120.133", 27017);
+                            MongoDatabase mongoDatabase = mongoClient.getDatabase("demand-new");
+                            MongoCollection<Document> collection = mongoDatabase.getCollection("Demand");   
+                            MongoCollection<Document> demandlog = mongoDatabase.getCollection("Demandlog");                            
 
                             
                             //第一部分
@@ -449,9 +474,10 @@ public class DMT extends JFrame {
                                         getNumberCode(tbUserCategory.getId(),tbUserCategory.getParentId(),"",false);
                                         tbDirectory.setNumberCode(numberCode);
                                     }
+                                    System.out.println("替换前NumberCode------------------------"  + " pid=" + tbDirectory.getPid());
                                     
                                     tbDirectory.setOrderNo(0);
-                                    tbDirectory.setTypeId(4);
+                                    tbDirectory.setTypeId(7);
                                     tbDirectory.setUpdateAt(System.currentTimeMillis());                               
                                     
                                    session.save(tbDirectory);
@@ -459,6 +485,11 @@ public class DMT extends JFrame {
                                    k++;
                                    System.out.println("旧id:" + tbUserCategory.getId() + " 新id" + tbDirectory.getId());
                                    map.put(tbUserCategory.getId() + "", tbDirectory.getId() + "");
+                                   
+                                                                       //日志数据写入
+                                    Document logDocument = new Document("oldId",tbDirectory.getId()).
+                                            append("type","tb_directory");
+                                    demandlog.insertOne(logDocument);                                   
                                 }catch(Exception ex){
                                     textArea.append( "id" + tbUserCategory.getId() + " 发生异常,\n");      
                                     ex.printStackTrace();;
@@ -491,13 +522,13 @@ public class DMT extends JFrame {
                                                 str = str + "-" + numberCodes[j];
                                             } 
                                             str = str.substring(1);
-                                            System.out.println("NumberCode------------------------" + str);
                                             tbDirectory.setNumberCode(str);
+                                            System.out.println("替换后NumberCode------------------------" + tbDirectory.getNumberCode() + " pid=" + tbDirectory.getPid());
                                         }
 
                                         ss.update(tbDirectory);
                                         tx.commit();
-                                        i++;
+                                        i++;                                       
                                     }catch(Exception ex){
                                        textArea.append( "id" + tbDirectory.getId() + " 发生异常,\n");      
                                        ex.printStackTrace();;
@@ -507,9 +538,9 @@ public class DMT extends JFrame {
                                 }
                             
                             //mongodb
-                            MongoClient mongoClient = new MongoClient("192.168.101.131", 27017);
-                            MongoDatabase mongoDatabase = mongoClient.getDatabase("demand-test");
-                            MongoCollection<Document> collection = mongoDatabase.getCollection("Demand");                         
+//                            MongoClient mongoClient = new MongoClient("192.168.101.131", 27017);
+//                            MongoDatabase mongoDatabase = mongoClient.getDatabase("demand-test");
+//                            MongoCollection<Document> collection = mongoDatabase.getCollection("Demand");                         
                             
                             
                             //第二部分
@@ -519,7 +550,6 @@ public class DMT extends JFrame {
                                 
                                 Session session = sessionFactorynew.openSession();
                                 try{
-                                    System.out.println("id:" + tbDemandCategory.getId());
                                    //目录数据写入    
                                    TbDirectorySource tbDirectorySource = new TbDirectorySource();
                                    
@@ -528,7 +558,6 @@ public class DMT extends JFrame {
                                    query.put("_id",tbDemandCategory.getDemandId());
                                    Document document = collection.find(query).first();  
                                    if(document != null){
-                                            //System.out.println("title:" + document.get("title")); 
                                             tbDirectorySource.setSourceTitle(document.get("title") + "");        
                                             
                                             if(document.get("_id") != null){
@@ -542,7 +571,7 @@ public class DMT extends JFrame {
                                    tbDirectorySource.setDirectoryId(Long.parseLong(map.get(tbDemandCategory.getCategoryId() + "")));
                                    tbDirectorySource.setUserId(getTbDirectoryUserIdByTagId(Long.parseLong(map.get(tbDemandCategory.getCategoryId() + ""))));
                                    tbDirectorySource.setAppId(1);
-                                   tbDirectorySource.setSourceType(4);
+                                   tbDirectorySource.setSourceType(7);
                                    tbDirectorySource.setSourceUrl("");
                                    
                                    tbDirectorySource.setSourceData("");
@@ -552,12 +581,16 @@ public class DMT extends JFrame {
                                    SimpleDateFormat format =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                                    String time = tbDemandCategory.getCtime() + "";
                                    Date date = format.parse(time);
-                                   //System.out.print("Format To times:" + date.getTime());  
+
                                    tbDirectorySource.setCreateAt(date.getTime());
 
                                    session.save(tbDirectorySource);
                                    tx.commit();        
-                                   w++;                                                
+                                   w++;           
+                                                                            //日志数据写入
+                                         Document logDocument = new Document("oldId",tbDirectorySource.getId()).
+                                                 append("type","tb_directory_source");
+                                         demandlog.insertOne(logDocument);                                    
                                             }    
                                    }   
                                 }catch(Exception ex){
@@ -597,8 +630,16 @@ public class DMT extends JFrame {
                             cfgnew.configure("hibernate-parasol_tags_test.cfg.xml");
                             sessionFactorynew = cfgnew.buildSessionFactory();     
                             
+                            MongoClient mongoClient = new MongoClient("192.168.120.133", 27017);
+                            MongoDatabase mongoDatabase = mongoClient.getDatabase("demand-new");
+                            MongoCollection<Document> demandlog = mongoDatabase.getCollection("Demandlog");                             
+                            
                             List<TbConnectInfo> tbConnectInfoList = tbConnectInfoList();
                             for(TbConnectInfo tbConnectInfo : tbConnectInfoList){
+//                                
+//                                if(k == 1){
+//                                    break;
+//                                }
                                 
                                 Session session = sessionFactorynew.openSession();
                                 try{
@@ -614,7 +655,7 @@ public class DMT extends JFrame {
                                             tbAssociate.setUserId(tbConnectInfo.getOwnerId());
                                         }
                                         tbAssociate.setAppId(1);
-                                        tbAssociate.setSourceTypeId(777);
+                                        tbAssociate.setSourceTypeId(7);
                                         tbAssociate.setSourceId(tbConnectInfo.getDemandId());
                                         
                                         if(tbConnectInfo.getConnName() != null){
@@ -627,16 +668,16 @@ public class DMT extends JFrame {
 
                                         //assocTypeId
                                         if(tbConnectInfo.getConnType() == 1){
-                                             tbAssociate.setAssocTypeId(777);
+                                             tbAssociate.setAssocTypeId(7);
                                         }
                                         if(tbConnectInfo.getConnType() == 2){
-                                             tbAssociate.setAssocTypeId(444);
+                                             tbAssociate.setAssocTypeId(1);
                                         }
                                         if(tbConnectInfo.getConnType() == 5){
-                                             tbAssociate.setAssocTypeId(555);
+                                             tbAssociate.setAssocTypeId(3);
                                         }
                                         if(tbConnectInfo.getConnType() == 6){
-                                             tbAssociate.setAssocTypeId(666);
+                                             tbAssociate.setAssocTypeId(8);
                                         }                                   
 
                                         tbAssociate.setAssocId(tbConnectInfo.getConnId());
@@ -646,8 +687,14 @@ public class DMT extends JFrame {
                                     tbAssociate.setCreateAt(System.currentTimeMillis());
 
                                     session.save(tbAssociate);
+                                    
+                                    System.out.println("迁移成功id:" + tbAssociate.getId());
                                     tx.commit();        
-                                    k++;                               
+                                    k++;     
+                                                                       //日志数据写入
+                                    Document logDocument = new Document("oldId",tbAssociate.getId()).
+                                            append("type","tb_associate");
+                                    demandlog.insertOne(logDocument);                                     
                                 }
                                     
                                 }catch(Exception ex){
@@ -670,69 +717,151 @@ public class DMT extends JFrame {
         
         JButton button6 = new JButton("权限");
         button6.addActionListener((ActionEvent arg0) -> {
-             try {            
+            int n = 0;
+          
                             //读取mysql-权限数据
-                            Configuration cfgold = new Configuration();
-                            cfgold.configure("hibernate-phoenix_demand.cfg.xml");
-                            sessionFactoryold = cfgold.buildSessionFactory();
+//                            Configuration cfgold = new Configuration();
+//                            cfgold.configure("hibernate-phoenix_demand.cfg.xml");
+//                            sessionFactoryold = cfgold.buildSessionFactory();
                             
                             //写入mysql-权限数据
                             Configuration cfgnew = new Configuration();
                             cfgnew.configure("hibernate-parasol_tags_test.cfg.xml");
-                            sessionFactorynew = cfgnew.buildSessionFactory();     
+                            sessionFactorynew = cfgnew.buildSessionFactory();    
+                           
+                            MongoClient mongoClient = new MongoClient("192.168.120.133", 27017);
+                            MongoDatabase mongoDatabase = mongoClient.getDatabase("demand-new");
+                            MongoCollection<Document> demandlog = mongoDatabase.getCollection("Demandlog");    
+                            MongoCollection<Document> collection = mongoDatabase.getCollection("Demand");
                             
-                            List<TbUserDemandPermission> tbUserDemandPermissionList = tbUserDemandPermissionList();
-                            for(TbUserDemandPermission tbUserDemandPermission : tbUserDemandPermissionList){
-                                
-                                
-                                Session session = sessionFactorynew.openSession();
-                                try{
-                                    System.out.println("tbUserDemandPermission.getId() ----------id:" + tbUserDemandPermission.getId());
+                            
+//                            ServerAddress serverAddress=new ServerAddress("192.168.120.133", 27017);
+//                            MongoOptions mongoOptions=new MongoOptions();
+//                            Mongo m = new Mongo(serverAddress,mongoOptions); 
+//                            m.addOption(com.mongodb.Bytes.QUERYOPTION_NOTIMEOUT);
+                            
+                            
+                            FindIterable<Document> findIterable = collection.find();
+                            MongoCursor<Document> mongoCursor = findIterable.iterator();
+                            
+                            List<Document> list = new ArrayList();
+                            while (mongoCursor.hasNext()) {
+                                 
+                                 try {  
+                                    Document document = mongoCursor.next();
+                                    list.add(document);
 
-                                   //权限数据写入    
-                                   TbPermission tbPermission = new TbPermission();
-                                   Transaction tx = session.beginTransaction();
-                                   
-                                   //tbPermission.setPerId(tbUserDemandPermission.getId());
-                                   tbPermission.setResId(tbUserDemandPermission.getDemandId());
-                                   short st = 4;
-                                   tbPermission.setResType(st);
-                                   tbPermission.setResAccRule("");
-                                   tbPermission.setResOwnerId(tbUserDemandPermission.getSendId());
-                                   if(tbUserDemandPermission.getPtype() == 1){
-                                       tbPermission.setPublicFlag(0);
-                                       tbPermission.setConnectFlag(0);
-                                       tbPermission.setShareFlag(0);
-                                   }
-                                   if(tbUserDemandPermission.getPtype() == 2){
-                                       if(tbUserDemandPermission.getReceiveId() == 0 || tbUserDemandPermission.getReceiveId() == -1){
-                                            tbPermission.setPublicFlag(1);
-                                            tbPermission.setConnectFlag(1);
-                                            tbPermission.setShareFlag(1);                                       
-                                       }else{
-                                            tbPermission.setPublicFlag(0);
-                                            tbPermission.setConnectFlag(1);
-                                            tbPermission.setShareFlag(1);                                       
-                                       }
-                                   }
-                                   if(tbUserDemandPermission.getPtype() == 3){
-                                            tbPermission.setPublicFlag(0);
-                                            tbPermission.setConnectFlag(1);
-                                            tbPermission.setShareFlag(0);                                  
-                                   }
-                                   if(tbUserDemandPermission.getPtype() == 4){
-                                            tbPermission.setPublicFlag(0);
-                                            tbPermission.setConnectFlag(1);
-                                            tbPermission.setShareFlag(0);                                   
-                                   }   
-                                   
-                                   //将日期格式转换成毫秒
-                                   SimpleDateFormat format =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                                   String time = tbUserDemandPermission.getCreatetime() + "";
-                                   Date date = format.parse(time);
-                                   System.out.print("Format To times:" + date.getTime());  
-                                   tbPermission.setPerTime(tbUserDemandPermission.getCreatetime());
-                                   tbPermission.setAppId(1);
+                                } catch (Exception ex) {
+                                    ex.printStackTrace();
+                                  //  Logger.getLogger(DMT.class.getName()).log(Level.SEVERE, null, ex);
+                                }                               
+                                
+                            }                            
+                            for(int i=0;i<list.size();i++){
+                                Session session = sessionFactorynew.openSession();
+                                try { 
+                                    
+                                    Document document = list.get(i);
+                                    //需求id
+                                    long id = Long.parseLong(document.get("_id").toString());
+                                    
+                                    if(id > 1000000){
+                                        continue;
+                                    }
+
+                                    //res_owner_id
+                                    long ownerId = Long.parseLong(document.get("ownerId").toString());    
+                                
+                                
+                                    //需求createTimes
+                                    SimpleDateFormat format =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
+                                    long createTime = Long.parseLong(document.get("createTime").toString());
+                                    Calendar calendar = Calendar.getInstance();
+                                    calendar.setTimeInMillis(createTime);
+                                    calendar.getTime();
+                                    System.out.println(format.format(calendar.getTime()));
+                                
+
+                                    TbPermission tbPermission = new TbPermission();
+                                    Transaction tx = session.beginTransaction(); 
+                                    tbPermission.setResOwnerId(ownerId);
+                                    tbPermission.setResId(id);
+                                    short st = 7;
+                                    tbPermission.setResType(st);
+                                    tbPermission.setResAccRule("");
+                                    tbPermission.setPublicFlag(1);
+                                    tbPermission.setShareFlag(1);
+                                    tbPermission.setConnectFlag(1);
+                                    tbPermission.setPerTime(calendar.getTime());
+                                    long aId = 7647448850l;
+                                    tbPermission.setAppId(aId);
+                                
+                                    session.save(tbPermission);
+                                    tx.commit(); 
+                                    //日志数据写入
+                                    Document logDocument = new Document("oldId",tbPermission.getPerId()).
+                                    append("type","tb_permission");
+                                    demandlog.insertOne(logDocument);  
+                                
+                                } catch (Exception ex) {
+                                    ex.printStackTrace();
+                                  //  Logger.getLogger(DMT.class.getName()).log(Level.SEVERE, null, ex);
+                                }finally{
+                                    session.close();
+                                }                                    
+                            }
+                            
+                            
+//                            
+//                            for(TbUserDemandPermission tbUserDemandPermission : tbUserDemandPermissionList){
+//                                
+//                                
+//                                Session session = sessionFactorynew.openSession();
+//                                try{
+//
+//
+//                                   //权限数据写入    
+//                                   TbPermission tbPermission = new TbPermission();
+//                                   Transaction tx = session.beginTransaction();
+//                                   tbPermission.setResId(tbUserDemandPermission.getDemandId());
+//                                   short st = 7;
+//                                   tbPermission.setResType(st);
+//                                   tbPermission.setResAccRule("");
+//                                   tbPermission.setResOwnerId(tbUserDemandPermission.getSendId());
+//                                   if(tbUserDemandPermission.getPtype() == 1){
+//                                       tbPermission.setPublicFlag(0);
+//                                       tbPermission.setConnectFlag(0);
+//                                       tbPermission.setShareFlag(0);
+//                                   }
+//                                   if(tbUserDemandPermission.getPtype() == 2){
+//                                       if(tbUserDemandPermission.getReceiveId() == 0 || tbUserDemandPermission.getReceiveId() == -1){
+//                                            tbPermission.setPublicFlag(1);
+//                                            tbPermission.setConnectFlag(1);
+//                                            tbPermission.setShareFlag(1);                                       
+//                                       }else{
+//                                            tbPermission.setPublicFlag(0);
+//                                            tbPermission.setConnectFlag(1);
+//                                            tbPermission.setShareFlag(1);                                       
+//                                       }
+//                                   }
+//                                   if(tbUserDemandPermission.getPtype() == 3){
+//                                            tbPermission.setPublicFlag(0);
+//                                            tbPermission.setConnectFlag(1);
+//                                            tbPermission.setShareFlag(0);                                  
+//                                   }
+//                                   if(tbUserDemandPermission.getPtype() == 4){
+//                                            tbPermission.setPublicFlag(0);
+//                                            tbPermission.setConnectFlag(1);
+//                                            tbPermission.setShareFlag(0);                                   
+//                                   }   
+//                                   
+//                                   //将日期格式转换成毫秒
+//                                   SimpleDateFormat format =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//                                   String time = tbUserDemandPermission.getCreatetime() + "";
+//                                   Date date = format.parse(time);
+//                                   System.out.print("Format To times:" + date.getTime());  
+//                                   tbPermission.setPerTime(tbUserDemandPermission.getCreatetime());
+//                                   tbPermission.setAppId(1);
                                    
                                    //新表
                                    //res_type = 3;
@@ -758,24 +887,26 @@ public class DMT extends JFrame {
                                    //per_time       
                                    //app_id = 1;
                                   
-                                   session.save(tbPermission);
-                                   tx.commit();        
+//                                   session.save(tbPermission);
+//                                   tx.commit(); 
                                    
-                                }catch(Exception ex){
-                                    textArea.append( "id" + tbUserDemandPermission.getId() + " 发生异常,\n");      
-                                    ex.printStackTrace();
-                                    continue;
-                                }finally{
-                                    session.close();
-                                }
-
-                            }
+//                                                                       //日志数据写入
+//                                    Document logDocument = new Document("oldId",tbPermission.getPerId()).
+//                                            append("type","tb_permission");
+//                                    demandlog.insertOne(logDocument);                                   
+                                   
+//                                }catch(Exception ex){
+//                                    textArea.append( "id" + tbUserDemandPermission.getId() + " 发生异常,\n");      
+//                                    ex.printStackTrace();
+//                                    continue;
+//                                }finally{
+//                                    session.close();
+//                                }
+//
+//                            }
 
                             
-                        } catch (RemoteException ex) {
-                            ex.printStackTrace();
-                          //  Logger.getLogger(DMT.class.getName()).log(Level.SEVERE, null, ex);
-                        }           
+
         });
         panel.add(button6);    
         
@@ -787,10 +918,12 @@ public class DMT extends JFrame {
             
             
                 //mongodb
-                MongoClient mongoClient = new MongoClient("192.168.101.131", 27017);
-                MongoDatabase mongoDatabase = mongoClient.getDatabase("demand-test");
-                MongoCollection<Document> collection = mongoDatabase.getCollection("Report");            
-            
+                //MongoClient mongoClient = new MongoClient("192.168.101.131", 27017);
+                MongoClient mongoClient = new MongoClient("192.168.120.133", 27017);
+                //MongoDatabase mongoDatabase = mongoClient.getDatabase("demand-test-2");
+                MongoDatabase mongoDatabase = mongoClient.getDatabase("demand-new");
+                MongoCollection<Document> collection = mongoDatabase.getCollection("Report");   
+                MongoCollection<Document> demandlog = mongoDatabase.getCollection("Demandlog");                
             
              try {            
                 
@@ -821,7 +954,12 @@ public class DMT extends JFrame {
                                     append("userId", tbDemandReport.getUserId()).
                                     append("createTime", date.getTime()).
                                     append("content", tbDemandReport.getContent());
-                                    collection.insertOne(newDocument);                               
+                                    collection.insertOne(newDocument);  
+                                    
+                                    //日志数据写入
+                                    Document logDocument = new Document("oldId",tbDemandReport.getId()).
+                                            append("type","Report");
+                                    demandlog.insertOne(logDocument);
                                 }
                                 
  
@@ -839,10 +977,11 @@ public class DMT extends JFrame {
             
  
                 //mongodb192.168.101.131
-                MongoClient mongoClient = new MongoClient("192.168.101.131", 27017);
-                MongoDatabase mongoDatabase = mongoClient.getDatabase("demand-test");
+                MongoClient mongoClient = new MongoClient("192.168.120.133", 27017);
+                //MongoDatabase mongoDatabase = mongoClient.getDatabase("demand-test-2");
+                MongoDatabase mongoDatabase = mongoClient.getDatabase("demand-new");
                 MongoCollection<Document> collection = mongoDatabase.getCollection("DemandCount");        
-            
+                MongoCollection<Document> demandCountlog = mongoDatabase.getCollection("Demandlog");            
             
                 try {            
 
@@ -874,6 +1013,11 @@ public class DMT extends JFrame {
                                    append("score", (tbDemandCount.getReadCount()*1 + tbDemandCount.getShareCount()*5 + tbDemandCount.getCollectCount()*5 + tbDemandCount.getEvaluateCount()*2)).
                                    append("demandType", demandType);
                                    collection.insertOne(newDocument);
+                                   
+                                    //日志数据写入
+                                    Document logDocument = new Document("oldId",tbDemandCount.getId()).
+                                            append("type","DemandCount");
+                                    demandCountlog.insertOne(logDocument);                                   
                                }                            
                            } catch (RemoteException ex) {
                                Logger.getLogger(DMT.class.getName()).log(Level.SEVERE, null, ex);
@@ -999,7 +1143,7 @@ public class DMT extends JFrame {
         
         List<TbDirectory> tbDirectoryList = null;
         try {        
-            String hql = "from TbDirectory where typeId = 4 order by id desc";
+            String hql = "from TbDirectory where typeId = 7 order by id desc";
             System.out.println("hql=" + hql);
             Session ss = sessionFactorynew.openSession();
             tbDirectoryList = ss.createQuery(hql).list();
@@ -1191,6 +1335,7 @@ public class DMT extends JFrame {
         return id;
     }   
     public Boolean getVirtual(long ownerId) throws RemoteException{
+        System.out.println("调用获取getVirtual");
         Boolean virtual = false;
          try {        
             String hql = "from TbUser where id = " + ownerId;
@@ -1199,6 +1344,10 @@ public class DMT extends JFrame {
             TbUser tbUser = (TbUser) ss.createQuery(hql).setMaxResults(1).uniqueResult();
             if(tbUser != null){
                 virtual = tbUser.getVirtual();
+                if(virtual){
+                    System.out.println("virtual:"+virtual);
+                }
+                
             }
             ss.close();
         } catch(Exception ex) {

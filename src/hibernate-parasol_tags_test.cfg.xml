@@ -3,9 +3,15 @@
 <hibernate-configuration>
   <session-factory>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.password">zhangwei</property>
-    <property name="hibernate.connection.url">jdbc:mysql://192.168.101.131/parasol_tags_test?useUnicode=true&amp;characterEncoding=UTF-8</property>
-    <property name="hibernate.connection.username">zhangwei</property>
+    <property name="hibernate.connection.password">dev</property>
+<!--    <property name="hibernate.connection.url">jdbc:mysql://192.168.101.131/parasol_tags_test?useUnicode=true&amp;characterEncoding=UTF-8</property>-->
+<!--    <property name="hibernate.connection.url">jdbc:mysql://192.168.101.42/parasol_associate?useUnicode=true&amp;characterEncoding=UTF-8</property>-->
+<!--    <property name="hibernate.connection.url">jdbc:mysql://192.168.101.42/parasol_tags?useUnicode=true&amp;characterEncoding=UTF-8</property>  -->
+    
+    <property name="hibernate.connection.url">jdbc:mysql://192.168.101.42/parasol_directory?useUnicode=true&amp;characterEncoding=UTF-8</property>         
+<!--<property name="hibernate.connection.url">jdbc:mysql://192.168.101.42/phoenix_permission?useUnicode=true&amp;characterEncoding=UTF-8</property>-->
+    
+    <property name="hibernate.connection.username">dev</property>
     <property name="hibernate.connection.pool.size">500</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <mapping resource="datacenterservice/vo/User.hbm.xml"/>

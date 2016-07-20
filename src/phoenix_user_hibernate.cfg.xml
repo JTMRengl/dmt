@@ -6,8 +6,9 @@
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.password">dev</property>
-        <property name="hibernate.connection.url">jdbc:mysql://192.168.101.42/phoenix_user</property>
+        <property name="hibernate.connection.url">jdbc:mysql://192.168.101.42/phoenix_user?useUnicode=true&amp;characterEncoding=UTF-8</property>
         <property name="hibernate.connection.username">dev</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <mapping resource="gintong/phoenix/user/TbUser.hbm.xml"/> 
     </session-factory>
 </hibernate-configuration>

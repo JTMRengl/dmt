@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 2016-5-26 15:08:34 by Hibernate Tools 4.3.1.Final -->
 <hibernate-mapping>
-    <class name="gintong.parasol.directory.test.now.TbDirectorySource" table="tb_directory_source" catalog="parasol_directory_test" optimistic-lock="version">
+    <class name="gintong.parasol.directory.test.now.TbDirectorySource" table="tb_directory_source" optimistic-lock="version">
         <id name="id" type="long">
             <column name="id" />
             <generator class="assigned" />

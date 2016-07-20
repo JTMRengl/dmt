@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 2016-5-28 10:05:05 by Hibernate Tools 4.3.1.Final -->
 <hibernate-mapping>
-    <class name="gintong.permission.test.now.TbPermission" table="tb_permission" catalog="phoenix_permission_test" optimistic-lock="version">
+    <class name="gintong.permission.test.now.TbPermission" table="tb_permission"  optimistic-lock="version">
         <id name="perId" type="java.lang.Long">
             <column name="per_id" />
             <generator class="identity" />
