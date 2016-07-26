@@ -6,71 +6,91 @@ package gintong.phoenix.knowledge.test.now.vo;
  */
 public class TbKnowledgeCount implements java.io.Serializable {
 
-	private TbKnowledgeCountId id;
-	private Long commentNum;
-	private Long shareNum;
-	private Long collectNum;
-	private Long clickNum;
+	private Long id;
+	private Long commentCount;
+	private Long shareCount;
+	private Long collectCount;
+	private Long clickCount;
+	private Long hotCount;     
+	private Long userId;        
 	private Short source;
 	private Short type;
 
 	public TbKnowledgeCount() {
 	}
 
-	public TbKnowledgeCount(TbKnowledgeCountId id) {
+	public TbKnowledgeCount(Long id) {
 		this.id = id;
 	}
 
-	public TbKnowledgeCount(TbKnowledgeCountId id, Long commentNum, Long shareNum, Long collectNum, Long clickNum,
-			Short source, Short type) {
+	public TbKnowledgeCount(Long id, Long commentCount, Long shareCount, Long collectCount, Long clickCount,Long hotCount,
+                Long userId,Short source, Short type) {
 		this.id = id;
-		this.commentNum = commentNum;
-		this.shareNum = shareNum;
-		this.collectNum = collectNum;
-		this.clickNum = clickNum;
+		this.commentCount = commentCount;
+		this.shareCount = shareCount;
+		this.collectCount = collectCount;
+		this.clickCount = clickCount;
+                this.hotCount = hotCount;
+                this.userId = userId;
 		this.source = source;
 		this.type = type;
 	}
 
-	public TbKnowledgeCountId getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(TbKnowledgeCountId id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public Long getCommentNum() {
-		return this.commentNum;
+	public Long getCommentCount() {
+		return this.commentCount;
 	}
 
-	public void setCommentNum(Long commentNum) {
-		this.commentNum = commentNum;
+	public void setCommentCount(Long commentCount) {
+		this.commentCount = commentCount;
 	}
 
-	public Long getShareNum() {
-		return this.shareNum;
+	public Long getShareCount() {
+		return this.shareCount;
 	}
 
-	public void setShareNum(Long shareNum) {
-		this.shareNum = shareNum;
+	public void setShareCount(Long shareCount) {
+		this.shareCount = shareCount;
 	}
 
-	public Long getCollectNum() {
-		return this.collectNum;
+	public Long getCollectCount() {
+		return this.collectCount;
 	}
 
-	public void setCollectNum(Long collectNum) {
-		this.collectNum = collectNum;
+	public void setCollectCount(Long collectCount) {
+		this.collectCount = collectCount;
 	}
 
-	public Long getClickNum() {
-		return this.clickNum;
+	public Long getClickCount() {
+		return this.clickCount;
 	}
 
-	public void setClickNum(Long clickNum) {
-		this.clickNum = clickNum;
+	public void setClickCount(Long clickCount) {
+		this.clickCount = clickCount;
+	}   
+        
+	public long getHotCount() {
+		return this.hotCount;
 	}
+
+	public void setHotCount(long hotCount) {
+		this.hotCount = hotCount;
+	}        
+        
+	public Long getUserId() {
+		return this.userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}          
 
 	public Short getSource() {
 		return this.source;

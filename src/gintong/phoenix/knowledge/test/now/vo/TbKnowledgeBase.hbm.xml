@@ -3,10 +3,10 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 2016-6-4 21:28:47 by Hibernate Tools 4.3.1.Final -->
 <hibernate-mapping>
-    <class name="gintong.phoenix.knowledge.test.now.vo.TbKnowledgeBase" table="tb_knowledge_base" catalog="phoenix_knowledge_test" optimistic-lock="version">
+    <class name="gintong.phoenix.knowledge.test.now.vo.TbKnowledgeBase" table="tb_knowledge_base" optimistic-lock="version">
         <id name="id" type="java.lang.Long">
             <column name="id" />
-            <generator class="identity" />
+            <generator class="assigned" />
         </id>
         <property name="knowledgeId" type="long">
             <column name="knowledge_id" not-null="true">
@@ -29,7 +29,7 @@
                 &#214;&#170;&#202;&#182;&#192;&#224;&#208;&#205;&#163;&#168;&#196;&#172;&#200;&#207;0&#163;&#186;&#198;&#228;&#203;&#251;,1&#163;&#186;&#215;&#202;&#209;&#182;&#163;&#172;2&#163;&#186;&#205;&#182;&#200;&#218;&#185;&#164;&#190;&#223;&#163;&#172;3&#163;&#186;&#208;&#208;&#210;&#181;&#163;&#172;4&#163;&#186;&#190;&#173;&#181;&#228;&#176;&#184;&#192;&#253;&#163;&#172;5&#163;&#186;&#205;&#188;&#202;&#233;&#177;&#168;&#184;&#230;&#163;&#172;6&#163;&#186;&#215;&#202;&#178;&#250;&#185;&#220;&#192;&#237;&#163;&#172;7&#163;&#186;&#186;&#234;&#185;&#219;&#163;&#172;8&#163;&#186;&#185;&#219;&#181;&#227;&#163;&#172;9&#163;&#186;&#197;&#208;&#192;&#253;&#163;&#172;10&#163;&#172;&#183;&#168;&#194;&#201;&#183;&#168;&#185;&#230;&#163;&#172;11&#163;&#186;&#206;&#196;&#213;&#194;&#163;&#169;</comment>
             </column>
         </property>
-        <property name="type" type="java.lang.Byte">
+        <property name="type" type="java.lang.Short">
             <column name="type">
                 <comment>
                 &#192;&#224;&#208;&#205;&#163;&#172;0&#206;&#170;&#207;&#181;&#205;&#179;&#180;&#180;&#189;&#168;&#163;&#172;1&#206;&#170;&#211;&#195;&#187;&#167;&#180;&#180;&#189;&#168;</comment>
@@ -40,6 +40,18 @@
                 <comment>&#192;&#180;&#212;&#180;</comment>
             </column>
         </property>
+        
+        <property name="taskId" type="string">
+            <column name="taskId">
+                <comment>&#192;&#180;&#212;&#180;</comment>
+            </column>
+        </property>  
+        
+        <property name="cpath" type="string">
+            <column name="cpath">
+                <comment>&#192;&#180;&#212;&#180;</comment>
+            </column>
+        </property>                    
         <property name="contentDesc" type="string">
             <column name="content_desc">
                 <comment>&#195;&#232;&#202;&#246;(&#214;&#170;&#202;&#182;&#199;&#176;50&#184;&#246;&#215;&#214;&#183;&#251;)</comment>
@@ -50,7 +62,7 @@
                 <comment>&#177;&#234;&#204;&#226;</comment>
             </column>
         </property>
-        <property name="essence" type="java.lang.Character">
+        <property name="essence" type="java.lang.Short">
             <column name="essence" length="1">
                 <comment>&#202;&#199;&#183;&#241;&#188;&#211;&#190;&#171;(0&#163;&#186;&#183;&#241;&#163;&#172;1&#163;&#186;&#190;&#171;)</comment>
             </column>
@@ -97,8 +109,8 @@
         <property name="attachmentId" type="java.lang.Integer">
             <column name="attachment_id" />
         </property>
-        <property name="pictureId" type="string">
-            <column name="picture_id" />
+        <property name="coverPic" type="string">
+            <column name="coverPic" />
         </property>
         <property name="tags" type="string">
             <column name="tags">

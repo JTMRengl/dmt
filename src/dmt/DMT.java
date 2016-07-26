@@ -797,11 +797,11 @@ public class DMT extends JFrame {
                                     tbPermission.setAppId(aId);
                                 
                                     session.save(tbPermission);
-                                    tx.commit(); 
+                                    tx.commit();
                                     //日志数据写入
                                     Document logDocument = new Document("oldId",tbPermission.getPerId()).
                                     append("type","tb_permission");
-                                    demandlog.insertOne(logDocument);  
+                                    demandlog.insertOne(logDocument);
                                 
                                 } catch (Exception ex) {
                                     ex.printStackTrace();

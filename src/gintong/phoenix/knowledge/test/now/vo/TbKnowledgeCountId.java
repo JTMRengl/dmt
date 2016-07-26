@@ -8,15 +8,15 @@ public class TbKnowledgeCountId implements java.io.Serializable {
 
 	private long id;
 	private long knowledgeId;
-	private long hotNum;
+	private long hotCount;
 
 	public TbKnowledgeCountId() {
 	}
 
-	public TbKnowledgeCountId(long id, long knowledgeId, long hotNum) {
+	public TbKnowledgeCountId(long id, long knowledgeId, long hotCount) {
 		this.id = id;
 		this.knowledgeId = knowledgeId;
-		this.hotNum = hotNum;
+		this.hotCount = hotCount;
 	}
 
 	public long getId() {
@@ -35,12 +35,12 @@ public class TbKnowledgeCountId implements java.io.Serializable {
 		this.knowledgeId = knowledgeId;
 	}
 
-	public long getHotNum() {
-		return this.hotNum;
+	public long getHotCount() {
+		return this.hotCount;
 	}
 
-	public void setHotNum(long hotNum) {
-		this.hotNum = hotNum;
+	public void setHotCount(long hotCount) {
+		this.hotCount = hotCount;
 	}
 
 	public boolean equals(Object other) {
@@ -53,7 +53,7 @@ public class TbKnowledgeCountId implements java.io.Serializable {
 		TbKnowledgeCountId castOther = (TbKnowledgeCountId) other;
 
 		return (this.getId() == castOther.getId()) && (this.getKnowledgeId() == castOther.getKnowledgeId())
-				&& (this.getHotNum() == castOther.getHotNum());
+				&& (this.getHotCount() == castOther.getHotCount());
 	}
 
 	public int hashCode() {
@@ -61,7 +61,7 @@ public class TbKnowledgeCountId implements java.io.Serializable {
 
 		result = 37 * result + (int) this.getId();
 		result = 37 * result + (int) this.getKnowledgeId();
-		result = 37 * result + (int) this.getHotNum();
+		result = 37 * result + (int) this.getHotCount();
 		return result;
 	}
 

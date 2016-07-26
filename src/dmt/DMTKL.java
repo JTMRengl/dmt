@@ -276,7 +276,12 @@ public class DMTKL extends JFrame {
                             cfgnew.configure("hibernate-parasol_tags_test.cfg.xml");
                             sessionFactorynew = cfgnew.buildSessionFactory();
                             
-                            //第一部分,查询旧知识base集合
+                            //mongodb
+                            MongoClient mongoClient = new MongoClient("192.168.101.131", 27017);
+                            MongoDatabase mongoDatabase = mongoClient.getDatabase("knowledge-test-2");
+                            MongoCollection<Document> knowledgelog = mongoDatabase.getCollection("Knowledgelog");
+                            
+//                            //第一部分,查询旧知识base集合
 //                            for(TbKnowledgeBase tbKnowledgeBase : tbKnowledgeBaseList){
 //                                
 //                                Session session = sessionFactorynew.openSession();
@@ -316,6 +321,11 @@ public class DMTKL extends JFrame {
 //                                                System.out.println("新数据的id:" + tbTag.getId() + " 对应的标签名称 ： " + tags[i]);
 //                                                j++;
 //                                                System.out.println("标签成功插入为： " + j + "条");
+//                                                
+//                                                                                    //日志数据写入
+//                                                 Document logKnowledge = new Document("oldId",tbTag.getId()).
+//                                                         append("type","tb_tag");
+//                                                 knowledgelog.insertOne(logKnowledge);                                              
 //                                            }
 //                                        }         
 //                                   }
@@ -330,12 +340,6 @@ public class DMTKL extends JFrame {
 //                                
 //                            }  
                             
-                            
-                            //mongodb
-                            MongoClient mongoClient = new MongoClient("192.168.101.131", 27017);
-                            MongoDatabase mongoDatabase = mongoClient.getDatabase("knowledge-test-2");
-                            MongoCollection<Document> collection = mongoDatabase.getCollection("Knowledge");                             
-                                                        
                             //第二部分
 //                            for(TbKnowledgeBase tbKnowledgeBase : tbKnowledgeBaseList){
 //                                
@@ -415,12 +419,9 @@ public class DMTKL extends JFrame {
                             
                             //第三部分,插入base
                             for(TbKnowledgeBase tbKnowledgeBase : tbKnowledgeBaseList){
-//                                if(j > 700){
-//                                    break;
+//                                if(tbKnowledgeBase.getKnowledgeId() <= 6370273){
+//                                    continue;
 //                                }
-                                if(tbKnowledgeBase.getKnowledgeId() <= 1429335){
-                                    continue;
-                                }
 
                                 Configuration cfg = new Configuration();
                                 cfg.configure("hibernate-phoenix_knowledge_test.cfg.xml");
@@ -434,23 +435,22 @@ public class DMTKL extends JFrame {
                                    gintong.phoenix.knowledge.test.now.vo.TbKnowledgeBase tbBase = new gintong.phoenix.knowledge.test.now.vo.TbKnowledgeBase();
                                    Transaction tx = session.beginTransaction();
                                    
+                                   tbBase.setCoverPic(tbKnowledgeBase.getPicPath());
+                                   tbBase.setId(tbKnowledgeBase.getKnowledgeId());
                                    tbBase.setKnowledgeId(tbKnowledgeBase.getKnowledgeId());
                                    
                                    tbBase.setCreateUserId(tbKnowledgeBase.getUserId());
                                    
-                                   if(tbKnowledgeBase.getUserId() != null && tbKnowledgeBase.getUserId() > 0){
-                                        tbBase.setModifyUserId(Integer.parseInt(tbKnowledgeBase.getUserId().toString()));
-                                        Byte type1 = 1;
-                                        tbBase.setType(type1);
-                                   }else{
-                                        Byte type0 = 0;
-                                        tbBase.setType(type0);
-                                   }
+                                   tbBase.setType(tbKnowledgeBase.getColumnType());
+
                                    
+                                          // tbKnowledgeBase.getPicPath();
                                    tbBase.setCreateUserName(tbKnowledgeBase.getAuthor());
                                    tbBase.setModifyUserName(tbKnowledgeBase.getAuthor());
                                    tbBase.setTitle(tbKnowledgeBase.getTitle());
                                    tbBase.setColumnId(tbKnowledgeBase.getColumnId());
+                                   tbBase.setTaskId(tbKnowledgeBase.getTaskid());
+                                   tbBase.setCpath(tbKnowledgeBase.getPath());
                                    
                                    String idStr = "";
                                    //标签名称串封装成标签id串
@@ -458,7 +458,8 @@ public class DMTKL extends JFrame {
                                    String[] tags = null;
                                    if(tbKnowledgeBase.getTag() != null && tbKnowledgeBase.getTag().length() > 0){
                                         tags = tbKnowledgeBase.getTag().split(" "); 
-                                   }                                   
+                                   }          
+                                   
                                    if(tags != null && tags.length > 0){
                                         for(int i = 0; i < tags.length; i++){  
                                             //根据名称查询id
@@ -482,7 +483,12 @@ public class DMTKL extends JFrame {
                                    tbBase.setCreateDate(date.getTime());
                                    tbBase.setPublicDate(date.getTime());   
                                    
-                                   tbBase.setModifyDate(System.currentTimeMillis());
+                                   if(tbKnowledgeBase.getEssence() == null  || tbKnowledgeBase.getEssence() == 0){
+                                       Short s = 0;
+                                       tbBase.setEssence(s);
+                                   }
+                               
+                                   //tbBase.setModifyDate(System.currentTimeMillis());
                                    
                                    Byte b1 = 2;
                                    tbBase.setAuditStatus(b1);
@@ -490,14 +496,19 @@ public class DMTKL extends JFrame {
                                    Byte b2 = 1;
                                    tbBase.setReportStatus(b2);
                                    tbBase.setContentDesc(tbKnowledgeBase.getCDesc());
+                                  
                                    
-                                   if(tbKnowledgeBase.getEssence() == 0){
-                                       char c = 0;
-                                      tbBase.setEssence(c);
-                                   }else if(tbKnowledgeBase.getEssence() == 1){
-                                       char c = 1;
-                                       tbBase.setEssence(c);                              
-                                   }
+                                   
+                                   
+//                                    if(tbKnowledgeBase.getEssence() == 0){
+//                                        char c = 0;
+//                                       tbBase.setEssence(c);
+//                                    }else if(tbKnowledgeBase.getEssence() == 1){
+//                                        char c = 1;
+//                                        tbBase.setEssence(c);                              
+//                                    }                                   
+     
+
                                    
                                    //tbBase.setAttachmentId(Integer.parseInt(tbKnowledgeBase.getTaskid()));
                                    
@@ -532,7 +543,12 @@ public class DMTKL extends JFrame {
                                    session.save(tbBase);
                                    tx.commit();        
                                    j++;
-                                   System.out.println("标签成功插入为： " + j + "条");                                   
+                                   System.out.println("base成功插入为： " + j + "条");    
+                                   
+                                                                                    //日志数据写入
+                                    Document logbaseKnowledge = new Document("oldId",tbBase.getId()).
+                                    append("type","tb_knowledge_base");
+                                    knowledgelog.insertOne(logbaseKnowledge);                                   
                                 }catch(Exception ex){
                                     textArea.append( "id" + tbKnowledgeBase.getKnowledgeId() + " 发生异常,\n");      
                                     ex.printStackTrace();
@@ -568,6 +584,17 @@ public class DMTKL extends JFrame {
                             Configuration cfgnew = new Configuration();
                             cfgnew.configure("hibernate-parasol_tags_test.cfg.xml");
                             sessionFactorynew = cfgnew.buildSessionFactory();    
+                            
+                            //mongodb
+                            MongoClient mongoClient = new MongoClient("192.168.101.131", 27017);
+                            MongoDatabase mongoDatabase = mongoClient.getDatabase("demand-test");
+                            MongoCollection<Document> collection = mongoDatabase.getCollection("Demand");    
+                            
+                            //mongodb
+                            MongoClient mongoClientl = new MongoClient("192.168.101.131", 27017);                            
+                            MongoDatabase mongoDatabasel = mongoClientl.getDatabase("knowledge-test-2");                            
+                            MongoCollection<Document> knowledgelog = mongoDatabase.getCollection("Knowledgelog");         
+
                             
 //                            List notOnlytbUserCategoryList = notOnlytbUserCategoryList();
 //                            for(int i=0;i<notOnlytbUserCategoryList.size();i++){
@@ -618,6 +645,11 @@ public class DMTKL extends JFrame {
                                    k++;
                                    //System.out.println("旧id:" + tbUserCategory.getId() + " 新id" + tbDirectory.getId());
                                    map.put(tbUserCategory.getId() + "", tbDirectory.getId() + "");
+                                   
+                                                                       //日志数据写入
+                                    Document logDocument = new Document("oldId",tbDirectory.getId()).
+                                            append("type","tb_directory");
+                                    knowledgelog.insertOne(logDocument);                                   
                                 }catch(Exception ex){ 
                                     System.out.println( "旧库id:" + tbUserCategory.getId() + " 发生异常,\n");
                                     textArea.append( "旧库id:" + tbUserCategory.getId() + " 发生异常,\n");   
@@ -668,11 +700,7 @@ public class DMTKL extends JFrame {
                                         ss.close();
                                    }   
                                 }                            
-                            
-                            //mongodb
-                            MongoClient mongoClient = new MongoClient("192.168.101.131", 27017);
-                            MongoDatabase mongoDatabase = mongoClient.getDatabase("demand-test");
-                            MongoCollection<Document> collection = mongoDatabase.getCollection("Demand");                         
+                                                    
                             
                             
                             //第二部分
@@ -749,7 +777,12 @@ public class DMTKL extends JFrame {
                             //写入mysql-关联数据
                             Configuration cfgnew = new Configuration();
                             cfgnew.configure("hibernate-parasol_tags_test.cfg.xml");
-                            sessionFactorynew = cfgnew.buildSessionFactory();     
+                            sessionFactorynew = cfgnew.buildSessionFactory();    
+                            
+                            MongoClient mongoClient = new MongoClient("192.168.101.131", 27017);
+                            MongoDatabase mongoDatabase = mongoClient.getDatabase("knowledge-test-2");
+                            MongoCollection<Document> knowledgelog = mongoDatabase.getCollection("Knowledgelog");   
+                            
                             
                             List<gintong.phoenix.knowledge.old.vo.TbConnectInfo> tbConnectInfoKLList = tbConnectInfoKLList();
                             for(gintong.phoenix.knowledge.old.vo.TbConnectInfo tbConnectInfo : tbConnectInfoKLList){
@@ -806,7 +839,11 @@ public class DMTKL extends JFrame {
                                         session.save(tbAssociate);
                                         tx.commit();        
 
-                                        k++;                                     
+                                        k++;    
+                                                                       //日志数据写入
+                                    Document logDocument = new Document("oldId",tbAssociate.getId()).
+                                            append("type","tb_associate");
+                                    knowledgelog.insertOne(logDocument);                                    
                                 }
                                    
                                 }catch(Exception ex){
@@ -839,7 +876,11 @@ public class DMTKL extends JFrame {
                             //写入mysql-权限数据
                             Configuration cfgnew = new Configuration();
                             cfgnew.configure("hibernate-parasol_tags_test.cfg.xml");
-                            sessionFactorynew = cfgnew.buildSessionFactory();     
+                            sessionFactorynew = cfgnew.buildSessionFactory();   
+                            
+                            MongoClient mongoClient = new MongoClient("192.168.101.131", 27017);
+                            MongoDatabase mongoDatabase = mongoClient.getDatabase("knowledge-test-2");
+                            MongoCollection<Document> knowledgelog = mongoDatabase.getCollection("Knowledgelog");                            
                             
                             List<TbUserPermission> tbUserPermissionList = tbUserPermissionList();
 
@@ -925,6 +966,10 @@ public class DMTKL extends JFrame {
                                    session.save(tbPermission);
                                    tx.commit();
                                    System.out.println("知识权限保存成功发的 ----------id:" + tbPermission.getPerId());
+                                    //日志数据写入
+                                    Document logDocument = new Document("oldId",tbPermission.getPerId()).
+                                    append("type","tb_permission");
+                                    knowledgelog.insertOne(logDocument);                                 
                                    
                                 }catch(Exception ex){
                                     textArea.append( "id" + tbUserPermission.getId() + " 发生异常,\n");      
@@ -957,6 +1002,10 @@ public class DMTKL extends JFrame {
                             cfgnew.configure("hibernate-phoenix_knowledge_test.cfg.xml");
                             sessionFactorynew = cfgnew.buildSessionFactory();
                             
+                            MongoClient mongoClient = new MongoClient("192.168.101.131", 27017);
+                            MongoDatabase mongoDatabase = mongoClient.getDatabase("knowledge-test-2");
+                            MongoCollection<Document> knowledgelog = mongoDatabase.getCollection("Knowledgelog");                             
+                            
                             List<TbKnowledgeStatics> tbKnowledgeStaticsList = tbKnowledgeStaticsList();
                             for(TbKnowledgeStatics tbKnowledgeStatics : tbKnowledgeStaticsList){
                                 
@@ -964,42 +1013,53 @@ public class DMTKL extends JFrame {
                                 Session session = sessionFactorynew.openSession();
                                 try{
                                     System.out.println("tbKnowledgeStatics.getKnowledgeId() ----------id:" + tbKnowledgeStatics.getKnowledgeId());
+                                    long num = tbKnowledgeStatics.getCollectionCount()*5 + tbKnowledgeStatics.getClickCount() + tbKnowledgeStatics.getShareCount()*2 + tbKnowledgeStatics.getCommentCount()*2;
+                                    if(num > 0){
+                                        TbKnowledgeCount tbKnowledgeCount = new TbKnowledgeCount();
+                                        Transaction tx = session.beginTransaction();
 
-                                   //base数据写入    
-                                   TbKnowledgeCount tbKnowledgeCount = new TbKnowledgeCount();
-                                   Transaction tx = session.beginTransaction();
-                                   
-                                   TbKnowledgeCountId tbKnowledgeCountId = new TbKnowledgeCountId();
-                                   tbKnowledgeCountId.setId(k+1);
-                                   //hot=收藏次数*5+阅读次数+分享次数*2+评论次数*2
-                                   long num = tbKnowledgeStatics.getCollectionCount()*5 + tbKnowledgeStatics.getClickCount() + tbKnowledgeStatics.getShareCount()*2 + tbKnowledgeStatics.getCommentCount()*2;
-                                   tbKnowledgeCountId.setHotNum(num);
-                                   tbKnowledgeCountId.setKnowledgeId(tbKnowledgeStatics.getKnowledgeId());
-                                   tbKnowledgeCount.setId(tbKnowledgeCountId);
-                                   
-                                   //评论数
-                                   tbKnowledgeCount.setCommentNum(tbKnowledgeStatics.getCommentCount());
-                                   //分享数
-                                   tbKnowledgeCount.setShareNum(tbKnowledgeStatics.getShareCount());
-                                   //收藏数
-                                   tbKnowledgeCount.setCollectNum(tbKnowledgeStatics.getCollectionCount());
-                                   //点击数
-                                   tbKnowledgeCount.setClickNum(tbKnowledgeStatics.getClickCount());
-                                   //知识来源
-                                   if(tbKnowledgeStatics.getSource() == null){
-                                        Short s = 1;
-                                        tbKnowledgeCount.setSource(s);
-                                   }else{
-                                        tbKnowledgeCount.setSource(tbKnowledgeStatics.getSource());
-                                   }
-                                   
-                                   
-                                   //类型
-                                   tbKnowledgeCount.setType(tbKnowledgeStatics.getType());
+                                        TbKnowledgeCountId tbKnowledgeCountId = new TbKnowledgeCountId();
+                                        tbKnowledgeCountId.setId(k+1);
+                                        //hot=收藏次数*5+阅读次数+分享次数*2+评论次数*2
+                                        tbKnowledgeCountId.setHotCount(num);
+                                        tbKnowledgeCountId.setKnowledgeId(tbKnowledgeStatics.getKnowledgeId());
+                                        //tbKnowledgeCount.setId(tbKnowledgeCountId);
+                                        tbKnowledgeCount.setId(tbKnowledgeStatics.getKnowledgeId());
+                                        //评论数
+                                        tbKnowledgeCount.setCommentCount(tbKnowledgeStatics.getCommentCount());
+                                        //分享数
+                                        tbKnowledgeCount.setShareCount(tbKnowledgeStatics.getShareCount());
+                                        //收藏数
+                                        tbKnowledgeCount.setCollectCount(tbKnowledgeStatics.getCollectionCount());
+                                        //点击数
+                                        tbKnowledgeCount.setClickCount(tbKnowledgeStatics.getClickCount());
 
-                                   session.save(tbKnowledgeCount);
-                                   tx.commit();        
-                                   k++;
+                                        tbKnowledgeCount.setHotCount(num);
+
+                                        tbKnowledgeCount.setUserId(null);
+
+                                        //知识来源
+                                        if(tbKnowledgeStatics.getSource() == null){
+                                             Short s = 1;
+                                             tbKnowledgeCount.setSource(s);
+                                        }else{
+                                             tbKnowledgeCount.setSource(tbKnowledgeStatics.getSource());
+                                        }
+
+
+                                        //类型
+                                        tbKnowledgeCount.setType(tbKnowledgeStatics.getType());
+
+                                        session.save(tbKnowledgeCount);
+                                        tx.commit();        
+                                        k++;
+
+                                         //日志数据写入
+                                         Document logDocument = new Document("oldId",tbKnowledgeCount.getId()).
+                                         append("type","tb_knowledge_count");
+                                         knowledgelog.insertOne(logDocument);                                            
+                                                                           
+                                    }    
                                    
                                 }catch(Exception ex){
                                     textArea.append( "id" + tbKnowledgeStatics.getKnowledgeId() + " 发生异常,\n");      
@@ -1033,8 +1093,8 @@ public class DMTKL extends JFrame {
                 //mongodb
                 MongoClient mongoClient = new MongoClient("192.168.101.131", 27017);
                 MongoDatabase mongoDatabase = mongoClient.getDatabase("knowledge-test");
-                MongoCollection<Document> collection = mongoDatabase.getCollection("KnowledgeComment");         
-            
+                MongoCollection<Document> collection = mongoDatabase.getCollection("KnowledgeComment");    
+                MongoCollection<Document> knowledgelog = mongoDatabase.getCollection("Knowledgelog");                
             
              try {            
                 
@@ -1064,6 +1124,12 @@ public class DMTKL extends JFrame {
                                 append("ownerName", tbKnowledgeComment.getUsername()).                                                
                                 append("visible", tbKnowledgeComment.getIsVisible());
                                 collection.insertOne(newDocument);
+                                
+                                   
+                                    //日志数据写入
+                                    Document logDocument = new Document("oldId",tbKnowledgeComment.getId()).
+                                    append("type","KnowledgeComment");
+                                    knowledgelog.insertOne(logDocument);                                
                             }                            
                         } catch (Exception ex) {
                             Logger.getLogger(DMTKL.class.getName()).log(Level.SEVERE, null, ex);
@@ -1079,7 +1145,8 @@ public class DMTKL extends JFrame {
                 //mongodb
                 MongoClient mongoClient = new MongoClient("192.168.101.131", 27017);
                 MongoDatabase mongoDatabase = mongoClient.getDatabase("knowledge-test");
-                MongoCollection<Document> collection = mongoDatabase.getCollection("KnowledgeReport");            
+                MongoCollection<Document> collection = mongoDatabase.getCollection("KnowledgeReport");    
+                MongoCollection<Document> knowledgelog = mongoDatabase.getCollection("Knowledgelog");
             
             
              try {            
@@ -1110,7 +1177,12 @@ public class DMTKL extends JFrame {
                                     append("userId", tbKnowledgeReport.getUserId()).  
                                     append("userName", tbKnowledgeReport.getUserName()).                                        
                                     append("columnId", tbKnowledgeReport.getColumnType());
-                                    collection.insertOne(newDocument);                               
+                                    collection.insertOne(newDocument);  
+                                    
+                                    //日志数据写入
+                                    Document logDocument = new Document("oldId",tbKnowledgeReport.getId()).
+                                    append("type","KnowledgeReport");
+                                    knowledgelog.insertOne(logDocument);                                    
                                 }catch(Exception e){
                                     e.printStackTrace();
                                 }
@@ -1131,6 +1203,7 @@ public class DMTKL extends JFrame {
                 MongoClient mongoClient = new MongoClient("192.168.101.131", 27017);
                 MongoDatabase mongoDatabase = mongoClient.getDatabase("knowledge-test");
                 MongoCollection<Document> collection = mongoDatabase.getCollection("KnowledgeCollection");
+                MongoCollection<Document> knowledgelog = mongoDatabase.getCollection("Knowledgelog");
             
             
                 try {            
@@ -1160,6 +1233,11 @@ public class DMTKL extends JFrame {
                                     append("source  ", tbKnowledgeCollection.getSource()).       
                                     append("userId", tbKnowledgeCollection.getUserId());                                       
                                     collection.insertOne(newDocument);
+                                    
+                                    //日志数据写入
+                                    Document logDocument = new Document("oldId",tbKnowledgeCollection.getId()).
+                                    append("type","KnowledgeCollection");
+                                    knowledgelog.insertOne(logDocument);                                    
                                }                            
                            } catch (Exception ex) {
                                Logger.getLogger(DMTKL.class.getName()).log(Level.SEVERE, null, ex);

@@ -11,11 +11,11 @@ public class TbKnowledgeBase implements java.io.Serializable {
 	private Long createUserId;
 	private String createUserName;
 	private Long columnId;
-	private Byte type;
+	private Short type;
 	private String source;
 	private String contentDesc;
 	private String title;
-	private Character essence;
+	private Short essence;
 	private Byte visible;
 	private Long publicDate;
 	private Long modifyDate;
@@ -24,13 +24,16 @@ public class TbKnowledgeBase implements java.io.Serializable {
 	private Byte reportStatus;
 	private long createDate;
 	private Integer attachmentId;
-	private String pictureId;
+	//private String pictureId;
+        private String coverPic;
+        private String cpath;
 	private String tags;
 	private String content;
 	private Integer modifyUserId;
 	private String modifyUserName;
 	private Byte userStar;
 	private Boolean isOld;
+        private String taskId; 
 
 	public TbKnowledgeBase() {
 	}
@@ -41,11 +44,11 @@ public class TbKnowledgeBase implements java.io.Serializable {
 		this.createDate = createDate;
 	}
 
-	public TbKnowledgeBase(long knowledgeId, Long createUserId, String createUserName, Long columnId, Byte type,
-			String source, String contentDesc, String title, Character essence, Byte visible, Long publicDate,
+	public TbKnowledgeBase(long knowledgeId, Long createUserId, String createUserName, Long columnId, Short type,
+			String source, String contentDesc, String title, Short essence, Byte visible, Long publicDate,
 			Long modifyDate, Byte auditStatus, boolean status, Byte reportStatus, long createDate,
-			Integer attachmentId, String pictureId, String tags, String content, Integer modifyUserId,
-			String modifyUserName, Byte userStar, Boolean isOld) {
+			Integer attachmentId, String coverPic, String tags, String content, Integer modifyUserId,
+			String cpath,String modifyUserName, Byte userStar, Boolean isOld) {
 		this.knowledgeId = knowledgeId;
 		this.createUserId = createUserId;
 		this.createUserName = createUserName;
@@ -63,13 +66,14 @@ public class TbKnowledgeBase implements java.io.Serializable {
 		this.reportStatus = reportStatus;
 		this.createDate = createDate;
 		this.attachmentId = attachmentId;
-		this.pictureId = pictureId;
+		//this.pictureId = pictureId;
 		this.tags = tags;
 		this.content = content;
 		this.modifyUserId = modifyUserId;
 		this.modifyUserName = modifyUserName;
 		this.userStar = userStar;
 		this.isOld = isOld;
+                this.cpath = cpath;
 	}
 
 	public Long getId() {
@@ -112,11 +116,11 @@ public class TbKnowledgeBase implements java.io.Serializable {
 		this.columnId = columnId;
 	}
 
-	public Byte getType() {
+	public Short getType() {
 		return this.type;
 	}
 
-	public void setType(Byte type) {
+	public void setType(Short type) {
 		this.type = type;
 	}
 
@@ -143,12 +147,20 @@ public class TbKnowledgeBase implements java.io.Serializable {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	public String getCpath() {
+		return this.title;
+	}
 
-	public Character getEssence() {
+	public void setCpath(String cpath) {
+		this.cpath = cpath;
+	}
+        
+        
+	public Short getEssence() {
 		return this.essence;
 	}
 
-	public void setEssence(Character essence) {
+	public void setEssence(Short essence) {
 		this.essence = essence;
 	}
 
@@ -216,13 +228,22 @@ public class TbKnowledgeBase implements java.io.Serializable {
 		this.attachmentId = attachmentId;
 	}
 
-	public String getPictureId() {
-		return this.pictureId;
+//	public String getPictureId() {
+//		return this.pictureId;
+//	}
+//
+//	public void setPictureId(String pictureId) {
+//		this.pictureId = pictureId;
+//	}
+        
+
+	public String getCoverPic() {
+		return this.coverPic;
 	}
 
-	public void setPictureId(String pictureId) {
-		this.pictureId = pictureId;
-	}
+	public void setCoverPic(String coverPic) {
+		this.coverPic = coverPic;
+	}        
 
 	public String getTags() {
 		return this.tags;
@@ -271,5 +292,13 @@ public class TbKnowledgeBase implements java.io.Serializable {
 	public void setIsOld(Boolean isOld) {
 		this.isOld = isOld;
 	}
+        
+	public String getTaskId() {
+		return this.taskId;
+	}
+
+	public void setTaskId(String taskId) {
+		this.taskId = taskId;
+	}        
 
 }
