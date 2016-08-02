@@ -795,47 +795,169 @@ public class DMTKL extends JFrame {
                                         //关联数据写入    
                                         TbAssociate tbAssociate = new TbAssociate();
                                         Transaction tx = session.beginTransaction();
-
-                                        //tbAssociate.setId(tbConnectInfo.getId());
-                                        if(tbConnectInfo.getOwnerId() != null){
-                                            tbAssociate.setUserId(tbConnectInfo.getOwnerId());
-                                        }
-                                        tbAssociate.setAppId(1);
-                                        tbAssociate.setSourceTypeId(666);
+                                        
+                                        
+                                        //7月27日新提供的关联变化
                                         tbAssociate.setSourceId(tbConnectInfo.getKnowledgeId());
-                                        
-                                        if(tbConnectInfo.getConnName() != null){
-                                            tbAssociate.setAssocTitle(tbConnectInfo.getConnName());
-                                        }else{
-                                           tbAssociate.setAssocTitle("");
-                                        }
-                                        
-                                        if(tbConnectInfo.getTag() != null && tbConnectInfo.getTag().length() > 30){
-                                            tbAssociate.setAssocDesc(tbConnectInfo.getTag().substring(0,30));
-                                        }else{
-                                            tbAssociate.setAssocDesc(tbConnectInfo.getTag());
-                                        }
-                                        
-
-                                        //assocTypeId
+                                        tbAssociate.setSourceTypeId(8);
+                                        tbAssociate.setAssocDesc(tbConnectInfo.getTag());
                                         if(tbConnectInfo.getConnType() == 1){
-                                             tbAssociate.setAssocTypeId(666);
+                                             tbAssociate.setAssocTypeId(7);
                                         }
                                         if(tbConnectInfo.getConnType() == 2){
-                                             tbAssociate.setAssocTypeId(444);
+                                             tbAssociate.setAssocTypeId(2);
                                         }
-                                        if(tbConnectInfo.getConnType() == 5){
-                                             tbAssociate.setAssocTypeId(555);
+                                        if(tbConnectInfo.getConnType() == 3){
+                                             tbAssociate.setAssocTypeId(4);
                                         }
-                                        if(tbConnectInfo.getConnType() == 6){
-                                             tbAssociate.setAssocTypeId(666);
-                                        }                                   
-
+                                        if(tbConnectInfo.getConnType() == 4){
+                                             tbAssociate.setAssocTypeId(8);
+                                        }    
                                         tbAssociate.setAssocId(tbConnectInfo.getConnId());
-                                        tbAssociate.setAssocMetadata("");
-
-                                        //将日期格式转换成毫秒;                
+                                        tbAssociate.setAssocTitle(tbConnectInfo.getConnName());
+                                        tbAssociate.setUserId(tbConnectInfo.getOwnerId());
+                                        tbAssociate.setUserName(tbConnectInfo.getOwner());
+                                        tbAssociate.setAppId(1);
                                         tbAssociate.setCreateAt(System.currentTimeMillis());
+                                        
+                                        tbAssociate.setAssocMetadata(numberCode);
+                                        
+                                        StringBuffer assocMetadata = new StringBuffer("{\"assocMetadata\":{");
+                                        //String assocMetadata = "{assocMetadata:{";
+                                        
+                                        if(tbConnectInfo.getRequirementtype() == null){
+                                            assocMetadata.append("\"requirementtype\":\"\",");
+                                            //assocMetadata += "requirementtype:" + "";
+                                        }else{
+                                            assocMetadata.append("\"requirementtype\":\"" + tbConnectInfo.getRequirementtype() + "\",");
+                                            //assocMetadata += "requirementtype:" + tbConnectInfo.getRequirementtype();
+                                        }        
+                                        
+                                        if(tbConnectInfo.getCareer() == null){
+                                            assocMetadata.append("\"career\":\"\",");
+                                            //assocMetadata += "career:" + "";
+                                        }else{
+                                            assocMetadata.append("\"career\":\"" + tbConnectInfo.getCareer() + "\",");
+                                            //assocMetadata += "career:" + tbConnectInfo.getCareer();
+                                        }
+                                        
+                                        if(tbConnectInfo.getCompany() == null){
+                                            assocMetadata.append("\"company\":\"\",");
+                                            //assocMetadata += "company:" + "";
+                                        }else{
+                                            assocMetadata.append("\"company\":\"" + tbConnectInfo.getCompany() + "\",");
+                                            //assocMetadata += "company:" + tbConnectInfo.getCompany();
+                                        }               
+                                        
+                                        if(tbConnectInfo.getAddress() == null){
+                                            assocMetadata.append("\"address\":\"\",");
+                                            //assocMetadata += "address:" + "";
+                                        }else{
+                                            assocMetadata.append("\"address\":\"" + tbConnectInfo.getAddress() + "\",");
+                                            //assocMetadata += "address:" + tbConnectInfo.getAddress();
+                                        }                   
+                                        
+                                        if(tbConnectInfo.getHy() == null){
+                                            assocMetadata.append("\"hy\":\"\",");
+                                            //assocMetadata += "hy:" + "";
+                                        }else{
+                                            assocMetadata.append("\"hy\":\"" + tbConnectInfo.getHy() + "\",");
+                                            //assocMetadata += "hy:" + tbConnectInfo.getHy();
+                                        }     
+                                        
+                                        if(tbConnectInfo.getColumnPath() == null){
+                                            assocMetadata.append("\"columnPath\":\"\",");
+                                            //assocMetadata += "columnPath:" + "";
+                                        }else{
+                                            assocMetadata.append("\"columnPath\":\"" + tbConnectInfo.getColumnPath() + "\",");
+                                            //assocMetadata += "columnPath:" + tbConnectInfo.getColumnPath();
+                                        }
+                                        
+                                        if(tbConnectInfo.getColumnType() == null){
+                                            assocMetadata.append("\"columnType\":\"\",");
+                                            //assocMetadata += "columnType:" + "";
+                                        }else{
+                                            assocMetadata.append("\"columnType\":\"" + tbConnectInfo.getColumnType() + "\",");
+                                            //assocMetadata += "columnType:" + tbConnectInfo.getColumnType();
+                                        }       
+                                        
+                                        if(tbConnectInfo.getUrl() == null){
+                                            assocMetadata.append("\"url\":\"\",");
+                                            //assocMetadata += "url:" + "";
+                                        }else{
+                                            assocMetadata.append("\"url\":\"" + tbConnectInfo.getUrl() + "\",");
+                                            //assocMetadata += "url:" + tbConnectInfo.getUrl();
+                                        }
+                                        
+                                        if(tbConnectInfo.getGroupName() == null){
+                                            assocMetadata.append("\"groupName\":\"\",");
+                                            //assocMetadata += "groupName:" + "";
+                                        }else{
+                                            assocMetadata.append("\"groupName\":\"" + tbConnectInfo.getGroupName() + "\",");
+                                            //assocMetadata += "groupName:" + tbConnectInfo.getGroupName();
+                                        }
+                                        
+                                        if(tbConnectInfo.getPicPath() == null){
+                                            assocMetadata.append("\"picPath\":\"\",");
+                                            //assocMetadata += "picPath:" + "";
+                                        }else{
+                                            assocMetadata.append("\"picPath\":\"" + tbConnectInfo.getPicPath() + "\",");
+                                            //assocMetadata += "picPath:" + tbConnectInfo.getPicPath();
+                                        }     
+                                        
+                                        if(tbConnectInfo.getAllasso() == null){
+                                            assocMetadata.append("\"allasso\":\"\"");
+                                            //assocMetadata += "allasso:" + "";
+                                        }else{
+                                            assocMetadata.append("\"allasso\":\"" + tbConnectInfo.getAllasso() + "\"");
+                                            //assocMetadata += "allasso:" + tbConnectInfo.getAllasso();
+                                        }                                        
+                                        
+                                        assocMetadata.append("}}");
+                                        //assocMetadata += "}}";
+                                        
+                                        tbAssociate.setAssocMetadata(assocMetadata.toString());
+
+                                        
+//                                        if(tbConnectInfo.getOwnerId() != null){
+//                                            tbAssociate.setUserId(tbConnectInfo.getOwnerId());
+//                                        }
+//                                        tbAssociate.setAppId(1);
+//                                        tbAssociate.setSourceTypeId(666);
+//                                        tbAssociate.setSourceId(tbConnectInfo.getKnowledgeId());
+//                                        
+//                                        if(tbConnectInfo.getConnName() != null){
+//                                            tbAssociate.setAssocTitle(tbConnectInfo.getConnName());
+//                                        }else{
+//                                           tbAssociate.setAssocTitle("");
+//                                        }
+//                                        
+//                                        if(tbConnectInfo.getTag() != null && tbConnectInfo.getTag().length() > 30){
+//                                            tbAssociate.setAssocDesc(tbConnectInfo.getTag().substring(0,30));
+//                                        }else{
+//                                            tbAssociate.setAssocDesc(tbConnectInfo.getTag());
+//                                        }
+//                                        
+//
+//                                        //assocTypeId
+//                                        if(tbConnectInfo.getConnType() == 1){
+//                                             tbAssociate.setAssocTypeId(666);
+//                                        }
+//                                        if(tbConnectInfo.getConnType() == 2){
+//                                             tbAssociate.setAssocTypeId(444);
+//                                        }
+//                                        if(tbConnectInfo.getConnType() == 5){
+//                                             tbAssociate.setAssocTypeId(555);
+//                                        }
+//                                        if(tbConnectInfo.getConnType() == 6){
+//                                             tbAssociate.setAssocTypeId(666);
+//                                        }                                   
+//
+//                                        tbAssociate.setAssocId(tbConnectInfo.getConnId());
+//                                        tbAssociate.setAssocMetadata("");
+//
+//                                        //将日期格式转换成毫秒;                
+//                                        tbAssociate.setCreateAt(System.currentTimeMillis());
                                         session.save(tbAssociate);
                                         tx.commit();        
 

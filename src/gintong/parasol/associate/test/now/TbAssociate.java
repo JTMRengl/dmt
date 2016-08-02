@@ -17,12 +17,13 @@ public class TbAssociate implements java.io.Serializable {
 	private String assocTitle;
 	private String assocMetadata;
 	private Long createAt;
+	private String userName;        
 
 	public TbAssociate() {
 	}
 
 	public TbAssociate(long userId, long appId, long sourceTypeId, long sourceId, String assocDesc, long assocTypeId,
-			long assocId, String assocTitle) {
+			long assocId, String assocTitle, String userName) {
 		this.userId = userId;
 		this.appId = appId;
 		this.sourceTypeId = sourceTypeId;
@@ -31,6 +32,7 @@ public class TbAssociate implements java.io.Serializable {
 		this.assocTypeId = assocTypeId;
 		this.assocId = assocId;
 		this.assocTitle = assocTitle;
+                this.userName = userName;
 	}
 
 	public TbAssociate(long userId, long appId, long sourceTypeId, long sourceId, String assocDesc, long assocTypeId,
@@ -133,6 +135,14 @@ public class TbAssociate implements java.io.Serializable {
 
 	public void setCreateAt(Long createAt) {
 		this.createAt = createAt;
+	}
+        
+	public String getUserName() {
+		return this.userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 }

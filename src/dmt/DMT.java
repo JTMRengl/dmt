@@ -6,10 +6,7 @@
 package dmt;
 
 import com.mongodb.BasicDBObject;
-import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
-import com.mongodb.MongoOptions;
-import com.mongodb.ServerAddress;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
@@ -178,11 +175,11 @@ public class DMT extends JFrame {
             sessionFactoryuser = cfguser.buildSessionFactory();            
 
             //省id
-            long provinceId = 0;
+            String provinceId = "";
             //市id
-            long cityId = 0;
+            String cityId = "";
             //区id
-            long districtId = 0;
+            String districtId = "";
 
             try {
                 FindIterable<Document> findIterable = collection.find();
@@ -208,15 +205,15 @@ public class DMT extends JFrame {
                                 }
 
                                 if (i == 1) {//省
-                                    provinceId = getProvinceId(0, areas[i]);
+                                    provinceId = getProvinceId(0, areas[i]) + "";
                                     //System.out.println(areas[i] + "i = " + i + " 省id = " + provinceId);
                                     provinceDoc.append("_id", provinceId).append("name", areas[i]);
                                     area.append("province", provinceDoc);
                                 }
                                 if (i == 2) {//市
-                                    cityId = getCityIdId(provinceId, areas[i]);
+                                    cityId = getCityIdId(provinceId, areas[i]) + "";
                                     //System.out.println(areas[i] + "i = " + i + " 市id = " + cityId);
-                                    if (cityId != 0) {
+                                    if (cityId != "") {
                                         cityDoc.append("_id", cityId).append("name", areas[i]);
                                         area.append("city", cityDoc);
                                     } else {
@@ -224,9 +221,9 @@ public class DMT extends JFrame {
                                     }
                                 }
                                 if (i == 3) {//区
-                                    districtId = getCityIdId(cityId, areas[i]);
+                                    districtId = getCityIdId(cityId, areas[i]) + "";
                                    // System.out.println(areas[i] + "i = " + i + " 区id = " + districtId);
-                                    if (districtId != 0) {
+                                    if (districtId != "") {
                                         districtDoc.append("_id", districtId).append("name", areas[i]);
                                         area.append("district", districtDoc);
                                     } else {
@@ -264,8 +261,7 @@ public class DMT extends JFrame {
         });
         panel.add(button7);  
                         
- 
- //------------------------------   mongo --->> mongo end  --------------------------------------------------------------------------------
+  //------------------------------   mongo --->> mongo end  --------------------------------------------------------------------------------
         
  //------------------------------   mysql --->> mysql start  ------------------------------------------------------------------------------
         JButton button1 = new JButton("标签");
@@ -632,15 +628,53 @@ public class DMT extends JFrame {
                             
                             MongoClient mongoClient = new MongoClient("192.168.120.133", 27017);
                             MongoDatabase mongoDatabase = mongoClient.getDatabase("demand-new");
-                            MongoCollection<Document> demandlog = mongoDatabase.getCollection("Demandlog");                             
+                            MongoCollection<Document> demandlog = mongoDatabase.getCollection("Demandlog");         
+                            MongoCollection<Document> demandTypecollection = mongoDatabase.getCollection("DemandType");
+                            
+                            //旧数据Demand链接
+                           // MongoClient oldDemandmongoClient = new MongoClient("192.168.101.131", 27017);
+                            //MongoDatabase oldDemandmongoDatabase = oldDemandmongoClient.getDatabase("demand-test-2");            
+                            //MongoCollection<Document> demandTypecollection = oldDemandmongoDatabase.getCollection("DemandType");
+                            
                             
                             List<TbConnectInfo> tbConnectInfoList = tbConnectInfoList();
                             for(TbConnectInfo tbConnectInfo : tbConnectInfoList){
-//                                
-//                                if(k == 1){
-//                                    break;
-//                                }
                                 
+                                //type查询
+                                String type = "";
+                                BasicDBObject query = new BasicDBObject();
+                                query.put("typeId",tbConnectInfo.getConnId());
+                                FindIterable<Document> findIterable = demandTypecollection.find(query);
+                                MongoCursor<Document> mongoCursor = findIterable.iterator(); 
+                                while(mongoCursor.hasNext()){
+                                    Document document = mongoCursor.next();
+                                    System.out.println(document.get("oldId"));
+                                    System.out.println(document.get("typeId"));
+                                    System.out.println(document.get("type"));
+                                    type = document.get("type") + "";
+                                    if(type.length() > 0){
+                                        break;
+                                    }
+                                }
+                                
+                                //columnType查询
+                                String columnType = "";
+                                BasicDBObject columnTypeQuery = new BasicDBObject();
+                                query.put("oldId",tbConnectInfo.getDemandId());
+                                FindIterable<Document> columnTypefindIterable = demandTypecollection.find(columnTypeQuery);
+                                MongoCursor<Document> columnTypemongoCursor = columnTypefindIterable.iterator(); 
+                                while(columnTypemongoCursor.hasNext()){
+                                    Document document = columnTypemongoCursor.next();
+                                    System.out.println(document.get("oldId"));
+                                    Object o = document.get("columnType");
+                                    if(o != null){
+                                        columnType = o.toString();
+                                    }
+                                    if(columnType.length() > 0){
+                                        break;
+                                    }
+                                }                                
+                              
                                 Session session = sessionFactorynew.openSession();
                                 try{
                                     if(tbConnectInfo.getConnType() == 1 || tbConnectInfo.getConnType() == 2 || tbConnectInfo.getConnType() == 5 || tbConnectInfo.getConnType() == 6){
@@ -681,7 +715,34 @@ public class DMT extends JFrame {
                                         }                                   
 
                                         tbAssociate.setAssocId(tbConnectInfo.getConnId());
-                                        tbAssociate.setAssocMetadata("");
+                                        
+                                        
+                                        String assocMetadata ="{";
+                                        //拼接头像
+                                        if(tbConnectInfo.getPicPath() == null){
+                                            assocMetadata += "\"userPicPath\":\"\",";
+                                        }else{
+                                            //仿真数据
+                                            assocMetadata += "\"userPicPath\":\"" + "http://test.online.gintong.com/cross"  + tbConnectInfo.getPicPath() + "\",";
+                                        }   
+                                       
+                                        if(type.equals("")){
+                                            assocMetadata += "\"type\":\"\",";
+                                        }else{
+                                            assocMetadata += "\"type\":\" " + type + " \",";
+                                        }  
+                                        
+                                        if(!columnType.equals("0") && columnType.length() > 0){
+                                            assocMetadata += "\"columnType\":\" " + columnType + " \"";
+                                        }else{
+                                            assocMetadata += "\"columnType\":\"\"";
+                                        }                                        
+                                        
+                                        assocMetadata += "}";
+                                        
+                                        if(assocMetadata.length() > 0){
+                                            tbAssociate.setAssocMetadata(assocMetadata);
+                                        }
                                         
                                    //将日期格式转换成毫秒;                
                                     tbAssociate.setCreateAt(System.currentTimeMillis());
@@ -1359,7 +1420,7 @@ public class DMT extends JFrame {
     
     
     //
-    public long getCityIdId(long provinceId, String cname) throws RemoteException{
+    public long getCityIdId(String provinceId, String cname) throws RemoteException{
         long id = 0;
         
          try {        
