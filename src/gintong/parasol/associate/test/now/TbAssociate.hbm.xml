@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 2016-5-26 15:04:05 by Hibernate Tools 4.3.1.Final -->
 <hibernate-mapping>
-    <class name="gintong.parasol.associate.test.now.TbAssociate" table="tb_associate" catalog="parasol_associate_test"  optimistic-lock="version">
+    <class name="gintong.parasol.associate.test.now.TbAssociate" table="tb_associate"  optimistic-lock="version">
         <id name="id" type="java.lang.Long">
             <column name="id" />
             <generator class="identity" />
@@ -30,7 +30,7 @@
             </column>
         </property>
         <property name="assocDesc" type="string">
-            <column name="assocDesc" length="30" not-null="false">
+            <column name="assocDesc" length="100" not-null="false">
                 <comment>
                 &#185;&#216;&#193;&#170;&#195;&#232;&#202;&#246;&#163;&#172;&#177;&#200;&#200;&#231;&#206;&#196;&#213;&#194;&#181;&#196;&#215;&#247;&#213;&#223;&#163;&#172;&#187;&#242;&#213;&#223;&#177;&#224;&#188;&#173;&#181;&#200;&#163;&#187;&#185;&#216;&#193;&#170;&#177;&#234;&#199;&#169;&#195;&#232;&#202;&#246;</comment>
             </column>

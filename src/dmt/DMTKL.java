@@ -57,6 +57,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.exception.ConstraintViolationException;
 
 /**
  *
@@ -153,109 +154,109 @@ public class DMTKL extends JFrame {
 
  //------------------------------   mongo --->> mongo start  ------------------------------------------------------------------------------
  
-        JButton button11 = new JButton("知识标签更新");
-        button11.addActionListener((ActionEvent arg0) -> {
-            int n = 0;
-            //mongodb-old
-            MongoClient mongoClient = new MongoClient("192.168.101.131", 27017);
-            MongoDatabase mongoDatabase = mongoClient.getDatabase("knowledge-test-2");
-            MongoCollection<Document> collection = mongoDatabase.getCollection("Knowledge");
-
-            //写入mysql-标签数据
-            Configuration cfgnew = new Configuration();
-            cfgnew.configure("hibernate-phoenix_knowledge_test.cfg.xml");
-            sessionFactorynew = cfgnew.buildSessionFactory();
-
-            try {
-                FindIterable<Document> findIterable = collection.find();
-                MongoCursor<Document> mongoCursor = findIterable.iterator();
-                while (mongoCursor.hasNext()) {
-                    n++;
-                    Document document = mongoCursor.next();
-                    System.out.println("当前数据知识id即:_id = " + document.get("_id"));
-
-                    List<String> tags = new ArrayList<String>();
-                    
-                    //根据知识id查询base
-                    gintong.phoenix.knowledge.test.now.vo.TbKnowledgeBase tbKnowledgeBase = getTbKnowledgeBaseByKnowledgeId(Long.valueOf(document.get("_id").toString()));
-                    
-                    if (tbKnowledgeBase != null) {
-                        if(tbKnowledgeBase.getTags() != null && tbKnowledgeBase.getTags().length() > 0){
-                            String[] tagsStr = tbKnowledgeBase.getTags().split(" ");
-                            if(tagsStr != null && tagsStr.length > 0){
-                                for(int i = 0;i<tagsStr.length; i++){
-                                    tags.add(tagsStr[i]);
-                                }
-                            }
-                        }
-
-                        Document newDocument = new Document();
-                        newDocument.append("tags", tags);
-
-                        collection.updateOne(document, new Document("$set", newDocument));
-                    }
-                }
-            } catch (Exception ex) {
-                Logger.getLogger(DMT.class.getName()).log(Level.SEVERE, null, ex);
-                ex.printStackTrace();
-            }
-            System.out.println("总计修改知识标签字段条数:" + n);
-        });
-        panel.add(button11);  
+//        JButton button11 = new JButton("知识标签更新");
+//        button11.addActionListener((ActionEvent arg0) -> {
+//            int n = 0;
+//            //mongodb-old
+//            MongoClient mongoClient = new MongoClient("192.168.101.131", 27017);
+//            MongoDatabase mongoDatabase = mongoClient.getDatabase("knowledge-test-2");
+//            MongoCollection<Document> collection = mongoDatabase.getCollection("Knowledge");
+//
+//            //写入mysql-标签数据
+//            Configuration cfgnew = new Configuration();
+//            cfgnew.configure("hibernate-phoenix_knowledge_test.cfg.xml");
+//            sessionFactorynew = cfgnew.buildSessionFactory();
+//
+//            try {
+//                FindIterable<Document> findIterable = collection.find();
+//                MongoCursor<Document> mongoCursor = findIterable.iterator();
+//                while (mongoCursor.hasNext()) {
+//                    n++;
+//                    Document document = mongoCursor.next();
+//                    System.out.println("当前数据知识id即:_id = " + document.get("_id"));
+//
+//                    List<String> tags = new ArrayList<String>();
+//                    
+//                    //根据知识id查询base
+//                    gintong.phoenix.knowledge.test.now.vo.TbKnowledgeBase tbKnowledgeBase = getTbKnowledgeBaseByKnowledgeId(Long.valueOf(document.get("_id").toString()));
+//                    
+//                    if (tbKnowledgeBase != null) {
+//                        if(tbKnowledgeBase.getTags() != null && tbKnowledgeBase.getTags().length() > 0){
+//                            String[] tagsStr = tbKnowledgeBase.getTags().split(" ");
+//                            if(tagsStr != null && tagsStr.length > 0){
+//                                for(int i = 0;i<tagsStr.length; i++){
+//                                    tags.add(tagsStr[i]);
+//                                }
+//                            }
+//                        }
+//
+//                        Document newDocument = new Document();
+//                        newDocument.append("tags", tags);
+//
+//                        collection.updateOne(document, new Document("$set", newDocument));
+//                    }
+//                }
+//            } catch (Exception ex) {
+//                Logger.getLogger(DMT.class.getName()).log(Level.SEVERE, null, ex);
+//                ex.printStackTrace();
+//            }
+//            System.out.println("总计修改知识标签字段条数:" + n);
+//        });
+//        panel.add(button11);  
         
         
-        JButton button12 = new JButton("知识目录更新");
-        button12.addActionListener((ActionEvent arg0) -> {
-            int n = 0;
-            //mongodb-old
-            MongoClient mongoClient = new MongoClient("192.168.101.131", 27017);
-            MongoDatabase mongoDatabase = mongoClient.getDatabase("knowledge-test-2");
-            MongoCollection<Document> collection = mongoDatabase.getCollection("Knowledge");
-
-            //写入mysql-标签数据
-            Configuration cfgnew = new Configuration();
-            cfgnew.configure("hibernate-parasol_tags_test.cfg.xml");
-            sessionFactorynew = cfgnew.buildSessionFactory();
-
-            try {
-                FindIterable<Document> findIterable = collection.find();
-                MongoCursor<Document> mongoCursor = findIterable.iterator();
-                while (mongoCursor.hasNext()) {
-                    n++;
-                    Document document = mongoCursor.next();
-                    System.out.println("当前数据知识id即:_id = " + document.get("_id"));
-
-                    List<String> categoryIds = new ArrayList<String>();
-                    
-                    //根据知识id查询tb_directory_source
-                    
-                    List<TbDirectorySource> tbDirectorySourceList = getTbDirectorySourceListByKnowledgeId(Long.valueOf(document.get("_id").toString()));
-                    
-                    if(tbDirectorySourceList != null && tbDirectorySourceList.size() > 0){
-                        for(TbDirectorySource tbDirectorySource:tbDirectorySourceList){
-                            categoryIds.add(tbDirectorySource.getDirectoryId()+"");
-                        }
-                        
-                        Document newDocument = new Document();
-                        newDocument.append("categoryIds", categoryIds);
-
-                        collection.updateOne(document, new Document("$set", newDocument));                          
-                    }else{
-                         Document newDocument = new Document();
-                         newDocument.append("categoryIds", categoryIds);
-
-                        collection.updateOne(document, new Document("$set", newDocument));                   
-                    }
-                    
-                  
-                }
-            } catch (Exception ex) {
-                Logger.getLogger(DMT.class.getName()).log(Level.SEVERE, null, ex);
-                ex.printStackTrace();
-            }
-            System.out.println("总计修改知识目录字段条数:" + n);
-        });
-        panel.add(button12);          
+//        JButton button12 = new JButton("知识目录更新");
+//        button12.addActionListener((ActionEvent arg0) -> {
+//            int n = 0;
+//            //mongodb-old
+//            MongoClient mongoClient = new MongoClient("192.168.101.131", 27017);
+//            MongoDatabase mongoDatabase = mongoClient.getDatabase("knowledge-test-2");
+//            MongoCollection<Document> collection = mongoDatabase.getCollection("Knowledge");
+//
+//            //写入mysql-标签数据
+//            Configuration cfgnew = new Configuration();
+//            cfgnew.configure("hibernate-parasol_tags_test.cfg.xml");
+//            sessionFactorynew = cfgnew.buildSessionFactory();
+//
+//            try {
+//                FindIterable<Document> findIterable = collection.find();
+//                MongoCursor<Document> mongoCursor = findIterable.iterator();
+//                while (mongoCursor.hasNext()) {
+//                    n++;
+//                    Document document = mongoCursor.next();
+//                    System.out.println("当前数据知识id即:_id = " + document.get("_id"));
+//
+//                    List<String> categoryIds = new ArrayList<String>();
+//                    
+//                    //根据知识id查询tb_directory_source
+//                    
+//                    List<TbDirectorySource> tbDirectorySourceList = getTbDirectorySourceListByKnowledgeId(Long.valueOf(document.get("_id").toString()));
+//                    
+//                    if(tbDirectorySourceList != null && tbDirectorySourceList.size() > 0){
+//                        for(TbDirectorySource tbDirectorySource:tbDirectorySourceList){
+//                            categoryIds.add(tbDirectorySource.getDirectoryId()+"");
+//                        }
+//                        
+//                        Document newDocument = new Document();
+//                        newDocument.append("categoryIds", categoryIds);
+//
+//                        collection.updateOne(document, new Document("$set", newDocument));                          
+//                    }else{
+//                         Document newDocument = new Document();
+//                         newDocument.append("categoryIds", categoryIds);
+//
+//                        collection.updateOne(document, new Document("$set", newDocument));                   
+//                    }
+//                    
+//                  
+//                }
+//            } catch (Exception ex) {
+//                Logger.getLogger(DMT.class.getName()).log(Level.SEVERE, null, ex);
+//                ex.printStackTrace();
+//            }
+//            System.out.println("总计修改知识目录字段条数:" + n);
+//        });
+//        panel.add(button12);          
                         
  
  //------------------------------   mongo --->> mongo end  --------------------------------------------------------------------------------        
@@ -290,6 +291,10 @@ public class DMTKL extends JFrame {
 //                                   //处理tag
 //                                   String[] tags = null;
 //                                   if(tbKnowledgeBase.getTag() != null && tbKnowledgeBase.getTag().length() > 0){
+//                                       
+//                                       if(tbKnowledgeBase.getKnowledgeId() == 252995 && tbKnowledgeBase.getUserId() == 13594){
+//                                           System.out.println("tbKnowledgeBase.getKnowledgeId() ----------id:" + tbKnowledgeBase.getKnowledgeId() + " 准备入库标签：" + tbKnowledgeBase.getTag());
+//                                       }
 //                                       System.out.println("tbKnowledgeBase.getKnowledgeId() ----------id:" + tbKnowledgeBase.getKnowledgeId() + " 准备入库标签：" + tbKnowledgeBase.getTag());
 //                                       String tag = tbKnowledgeBase.getTag();
 //                                       tag = tag.replaceAll("'", "''");
@@ -299,20 +304,20 @@ public class DMTKL extends JFrame {
 //                                        for(int i = 0; i < tags.length; i++){
 //                                            String tag = tags[i];                                      
 //                                            //根据userId,tagType,tagName联合查询标签表中是否存在,存在跳过,不存在插入
-//                                            if(getTagByUserIdTagtypTagname(tbKnowledgeBase.getUserId(),3,tag)){
+//                                            if(getTagByUserIdTagtypTagname(tbKnowledgeBase.getUserId(),8,tag)){
 //                                                continue;
 //                                            }else{
 //                                                //标签数据写入    
 //                                                TbTag tbTag = new TbTag();
 //                                                Transaction tx = session.beginTransaction();
 //
-//                                                tbTag.setId(j+352+1);
+//                                                tbTag.setId(j+1);
 //                                                //id自增      
 //                                                tbTag.setUserId(tbKnowledgeBase.getUserId());
 //                                                //固定字段，需求为1
 //                                                tbTag.setAppId(1);
-//                                                //固定字段，需求为3
-//                                                tbTag.setTagType(3);                                                
+//                                                //固定字段，需求为8
+//                                                tbTag.setTagType(8);                                                
 //                                                tbTag.setTagName(tags[i]);
 //                                                
 //                                                session.save(tbTag);
@@ -345,12 +350,12 @@ public class DMTKL extends JFrame {
 //                                
 //                                
 //                                
-//                                BasicDBObject query = new BasicDBObject();
-//                                query.put("_id",tbKnowledgeBase.getKnowledgeId());
-//                                Document document = collection.find(query).first();
-//                                if(document == null){
-//                                    continue;
-//                                }                                
+////                                BasicDBObject query = new BasicDBObject();
+////                                query.put("_id",tbKnowledgeBase.getKnowledgeId());
+////                                Document document = collection.find(query).first();
+////                                if(document == null){
+////                                    continue;
+////                                }                                
 //                                
 //                                Session session = sessionFactorynew.openSession();
 //                                try{
@@ -369,12 +374,12 @@ public class DMTKL extends JFrame {
 //                                            long id = 0;
 //                                            if(tags[i] != null && tags[i].length() > 0){
 //                                                
-//                                                id = getTagIdByUserIdTagtypTagname(tbKnowledgeBase.getUserId(),3,tags[i]);
+//                                                id = getTagIdByUserIdTagtypTagname(tbKnowledgeBase.getUserId(),8,tags[i]);
 //                                                if(id != 0){
 //                                                    //标签source数据写入    
 //                                                   TbTagSource tbTagSource = new TbTagSource();
 //                                                   Transaction tx = session.beginTransaction();
-//                                                   tbTagSource.setId(j + 1 + 3902);
+//                                                   tbTagSource.setId(j + 1);
 //                                                   //tbTagSource.set
 //                                                   tbTagSource.setTagId(id);
 //                                                   //固定字段，需求为1
@@ -383,7 +388,7 @@ public class DMTKL extends JFrame {
 //                                                   tbTagSource.setUserId(tbKnowledgeBase.getUserId());
 //                                                   tbTagSource.setSourceId(tbKnowledgeBase.getKnowledgeId());
 //                                                   //固定字段，知识为3
-//                                                   tbTagSource.setSourceType(3);    
+//                                                   tbTagSource.setSourceType(8);    
 //
 //                                                    //将日期格式转换成毫秒
 //                                                    SimpleDateFormat format =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -394,7 +399,7 @@ public class DMTKL extends JFrame {
 //                                                    tbTagSource.setCreateAt(date.getTime());
 //                                                    
 //                                                    //sourceTitle,从mongo的demand中根基demand_id查询demandTitle
-//                                                    tbTagSource.setSourceTitle(document.get("title") + "");
+//                                                    tbTagSource.setSourceTitle("");
 //                                                    if(tbTagSource.getTagId() != 0){
 //                                                         session.save(tbTagSource);
 //                                                         tx.commit();    
@@ -416,12 +421,14 @@ public class DMTKL extends JFrame {
 //
 //                            } 
                             
-                            
+                            //System.out.println("tbKnowledgeBaseList size is = " + tbKnowledgeBaseList.size());
                             //第三部分,插入base
                             for(TbKnowledgeBase tbKnowledgeBase : tbKnowledgeBaseList){
-//                                if(tbKnowledgeBase.getKnowledgeId() <= 6370273){
-//                                    continue;
-//                                }
+                                if(tbKnowledgeBase.getKnowledgeId() <= 6370182){
+                                    continue;
+                                }
+
+                                
 
                                 Configuration cfg = new Configuration();
                                 cfg.configure("hibernate-phoenix_knowledge_test.cfg.xml");
@@ -465,9 +472,13 @@ public class DMTKL extends JFrame {
                                             //根据名称查询id
                                             long id = 0;
                                             if(tags[i] != null && tags[i].length() > 0){
-                                                id = getTagIdByUserIdTagtypTagname(tbKnowledgeBase.getUserId(),3,tags[i]);
+                                                id = getTagIdByUserIdTagtypTagname(tbKnowledgeBase.getUserId(),8,tags[i]);
                                                 if(id != 0){
-                                                    idStr = idStr + " " + id;
+                                                    if(!idStr.equals("")){
+                                                        idStr = idStr + "," + id;
+                                                    }else{
+                                                        idStr = idStr + id;
+                                                    }
                                                 }
                                             }                                           
                                         }
@@ -790,17 +801,21 @@ public class DMTKL extends JFrame {
                                 Session session = sessionFactorynew.openSession();
                                 try{
                                     if(tbConnectInfo.getConnType() == 1 || tbConnectInfo.getConnType() == 2 || tbConnectInfo.getConnType() == 5 || tbConnectInfo.getConnType() == 6){
-                                        System.out.println("id:" + tbConnectInfo.getId());
+                                        //System.out.println("id:" + tbConnectInfo.getId());
 
                                         //关联数据写入    
                                         TbAssociate tbAssociate = new TbAssociate();
                                         Transaction tx = session.beginTransaction();
-                                        
-                                        
+                                                                                
                                         //7月27日新提供的关联变化
                                         tbAssociate.setSourceId(tbConnectInfo.getKnowledgeId());
                                         tbAssociate.setSourceTypeId(8);
-                                        tbAssociate.setAssocDesc(tbConnectInfo.getTag());
+                                        
+                                        if(tbConnectInfo.getTag() != null && tbConnectInfo.getTag().length() > 100){
+                                            tbAssociate.setAssocDesc(tbConnectInfo.getTag().substring(0,100));
+                                        }else{
+                                            tbAssociate.setAssocDesc(tbConnectInfo.getTag());
+                                        }                                        
                                         if(tbConnectInfo.getConnType() == 1){
                                              tbAssociate.setAssocTypeId(7);
                                         }
@@ -968,9 +983,15 @@ public class DMTKL extends JFrame {
                                     knowledgelog.insertOne(logDocument);                                    
                                 }
                                    
+                                    
+                                }catch(ConstraintViolationException cve){
+                                    textArea.append( "id" + tbConnectInfo.getId() + " 发生异常,\n");
+                                    cve.printStackTrace();    
+                                    continue;
                                 }catch(Exception ex){
-                                    textArea.append( "id" + tbConnectInfo.getId() + " 发生异常,\n");     
+                                    textArea.append( "id" + tbConnectInfo.getId() + " 发生异常,\n");
                                     ex.printStackTrace();
+                                    break;
                                 }finally{
                                      session.close(); 
                                 }

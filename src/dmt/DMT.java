@@ -746,6 +746,8 @@ public class DMT extends JFrame {
                                         
                                    //将日期格式转换成毫秒;                
                                     tbAssociate.setCreateAt(System.currentTimeMillis());
+                                    
+                                    tbAssociate.setUserName("");
 
                                     session.save(tbAssociate);
                                     
